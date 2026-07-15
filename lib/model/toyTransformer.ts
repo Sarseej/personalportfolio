@@ -355,3 +355,190 @@ export function forward(
 
   return logits;
 }
+
+// ── Forward pass with attention patterns ────────────────────────────────────
+
+/** Attention pattern: [n_layers][n_heads][T][T] (row-major within each). */
+export type AttentionPatterns = number[][][][];
+
+/**
+ * Same as forward(), but also captures the softmax attention weights
+ * for every layer, head, and (query, key) position pair.
+ *
+ * The returned patterns are plain number arrays for easy JSON handling
+ * and React rendering.
+ */
+export function forwardWithPatterns(
+  weights: ModelWeights,
+  tokens: number[],
+): { logits: Float64Array; patterns: AttentionPatterns } {
+  const { config, W_E, W_pos, W_U, layers, ln_final_w, ln_final_b } = weights;
+  const { d_model, n_heads, d_head, d_vocab } = config;
+  const T = tokens.length;
+
+  // ── 1. Token + positional embedding ──
+  const residual = new Float64Array(T * d_model);
+  for (let t = 0; t < T; t++) {
+    const tok = tokens[t];
+    const rOff = t * d_model;
+    const eOff = tok * d_model;
+    const pOff = t * d_model;
+    for (let i = 0; i < d_model; i++) {
+      residual[rOff + i] = W_E[eOff + i] + W_pos[pOff + i];
+    }
+  }
+
+  // ── Attention pattern storage ──
+  // patterns[layer][head][query][key] = attention weight
+  const patterns: AttentionPatterns = [];
+  for (let l = 0; l < layers.length; l++) {
+    const layerPatterns: number[][][] = [];
+    for (let h = 0; h < n_heads; h++) {
+      const headPattern: number[][] = [];
+      for (let t = 0; t < T; t++) {
+        headPattern.push(new Array(T).fill(0));
+      }
+      layerPatterns.push(headPattern);
+    }
+    patterns.push(layerPatterns);
+  }
+
+  // ── Per-layer transformer blocks ──
+  const lnBuf = new Float64Array(T * d_model);
+  const qAll = new Float64Array(T * n_heads * d_head);
+  const kAll = new Float64Array(T * n_heads * d_head);
+  const vAll = new Float64Array(T * n_heads * d_head);
+
+  for (let layer = 0; layer < layers.length; layer++) {
+    const lw = layers[layer];
+
+    // LayerNorm for all positions
+    for (let t = 0; t < T; t++) {
+      const rOff = t * d_model;
+      layerNorm(
+        residual.subarray(rOff, rOff + d_model),
+        lw.ln1_w,
+        lw.ln1_b,
+        lnBuf.subarray(rOff, rOff + d_model),
+        d_model,
+      );
+    }
+
+    // Q, K, V projections
+    for (let h = 0; h < n_heads; h++) {
+      const wqBase = h * d_model * d_head;
+      const wkBase = h * d_model * d_head;
+      const wvBase = h * d_model * d_head;
+      const bqBase = h * d_head;
+      const bkBase = h * d_head;
+      const bvBase = h * d_head;
+
+      for (let t = 0; t < T; t++) {
+        const lOff = t * d_model;
+        const qOff = t * n_heads * d_head + h * d_head;
+
+        for (let j = 0; j < d_head; j++) {
+          let qSum = lw.b_Q[bqBase + j];
+          let kSum = lw.b_K[bkBase + j];
+          let vSum = lw.b_V[bvBase + j];
+          const wqCol = wqBase + j;
+          const wkCol = wkBase + j;
+          const wvCol = wvBase + j;
+          for (let i = 0; i < d_model; i++) {
+            const lnVal = lnBuf[lOff + i];
+            qSum += lnVal * lw.W_Q[wqCol + i * d_head];
+            kSum += lnVal * lw.W_K[wkCol + i * d_head];
+            vSum += lnVal * lw.W_V[wvCol + i * d_head];
+          }
+          qAll[qOff + j] = qSum;
+          kAll[qOff + j] = kSum;
+          vAll[qOff + j] = vSum;
+        }
+      }
+    }
+
+    // Attention + W_O projection + residual
+    const scale = 1 / Math.sqrt(d_head);
+    const attnOut = new Float64Array(d_model);
+
+    for (let t = 0; t < T; t++) {
+      for (let d = 0; d < d_model; d++) attnOut[d] = 0;
+
+      for (let h = 0; h < n_heads; h++) {
+        const qBase = t * n_heads * d_head + h * d_head;
+
+        // Attention scores
+        const scores = new Float64Array(t + 1);
+        let maxScore = -Infinity;
+        for (let s = 0; s <= t; s++) {
+          const kBase = s * n_heads * d_head + h * d_head;
+          let dot = 0;
+          for (let j = 0; j < d_head; j++) {
+            dot += qAll[qBase + j] * kAll[kBase + j];
+          }
+          scores[s] = dot * scale;
+          if (scores[s] > maxScore) maxScore = scores[s];
+        }
+
+        // Softmax
+        let sumExp = 0;
+        for (let s = 0; s <= t; s++) {
+          scores[s] = Math.exp(scores[s] - maxScore);
+          sumExp += scores[s];
+        }
+        for (let s = 0; s <= t; s++) {
+          scores[s] /= sumExp;
+          // Store attention pattern
+          patterns[layer][h][t][s] = scores[s];
+        }
+
+        // Weighted sum + W_O projection
+        const woBase = h * d_head * d_model;
+        for (let s = 0; s <= t; s++) {
+          const w = scores[s];
+          if (w < 1e-30) continue;
+          const vBase = s * n_heads * d_head + h * d_head;
+          for (let dh = 0; dh < d_head; dh++) {
+            const vVal = w * vAll[vBase + dh];
+            const woOff = woBase + dh * d_model;
+            for (let d = 0; d < d_model; d++) {
+              attnOut[d] += vVal * lw.W_O[woOff + d];
+            }
+          }
+        }
+      }
+
+      // Residual add
+      const rOff = t * d_model;
+      for (let d = 0; d < d_model; d++) {
+        residual[rOff + d] += attnOut[d] + lw.b_O[d];
+      }
+    }
+  }
+
+  // ── Final LayerNorm → Unembed ──
+  const logits = new Float64Array(T * d_vocab);
+  const finalLn = new Float64Array(d_model);
+
+  for (let t = 0; t < T; t++) {
+    const rOff = t * d_model;
+    layerNorm(
+      residual.subarray(rOff, rOff + d_model),
+      ln_final_w,
+      ln_final_b,
+      finalLn,
+      d_model,
+    );
+
+    const lOff = t * d_vocab;
+    for (let v = 0; v < d_vocab; v++) {
+      let sum = 0;
+      for (let d = 0; d < d_model; d++) {
+        sum += finalLn[d] * W_U[d * d_vocab + v];
+      }
+      logits[lOff + v] = sum;
+    }
+  }
+
+  return { logits, patterns };
+}
