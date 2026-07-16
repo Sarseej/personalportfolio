@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback } from "react";
-import ModeToggle from "@/components/mode-toggle";
 
 const NAV_LINKS = [
   { label: "Skills", href: "#skills" },
@@ -48,7 +47,6 @@ export default function StickyNav() {
             </button>
           ))}
         </div>
-        <ModeToggle />
       </div>
     </nav>
   );
