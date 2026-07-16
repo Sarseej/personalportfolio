@@ -2,31 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Standard mode tokens ─── */
-html[data-mode="standard"] {
-  --bg: #f7f5f0;
-  --fg: #1a1a1a;
-  --fg-muted: #4a4844;
-  --accent: #2b4c7e;
-  --border: #1a1a1a22;
-}
-
-/* ─── Decompile mode tokens (placeholder) ─── */
-html[data-mode="decompile"] {
-  --bg: #0b0d10;
-  --fg: #e7ecef;
-  --fg-muted: #8a939b;
-  --accent-pos: #ef4444;
-  --accent-neg: #3b82f6;
-  --border: #ffffff1a;
-}
-
 /* ─── Base layer ─── */
 @layer base {
   html {
-    background-color: var(--bg);
-    color: var(--fg);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #050508;
+    color: #e0e0e0;
+  }
+
+  body {
+    margin: 0;
+    overflow: hidden;
   }
 
   @media (prefers-reduced-motion: reduce) {

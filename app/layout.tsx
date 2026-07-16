@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "The Decompiled Mind",
   description:
-    "An interactive toy transformer that answers 'Who is [Name]?'",
+    "An interactive 3D attention space — click nodes to explore how a trained transformer reasons.",
 };
 
 export default function RootLayout({
@@ -33,7 +33,6 @@ export default function RootLayout({
 }) {
   return (
     <html
-      data-mode="standard"
       className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-screen font-[family-name:var(--font-body)] antialiased">
