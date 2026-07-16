@@ -4,10 +4,16 @@ export interface NodeMapEntry {
 }
 
 export const nodeMap: Record<string, NodeMapEntry> = {
-  "mech-interp": { layer: 0, head: 0 },
-  "transformer-toy": { layer: 0, head: 1 },
-  pytorch: { layer: 1, head: 0 },
-  "data-pipeline": { layer: 1, head: 1 },
-  "research-intern": { layer: 2, head: 0 },
-  fullstack: { layer: 2, head: 1 },
+  "python-pytorch": { layer: 0, head: 0 },
+  "computer-vision": { layer: 0, head: 1 },
+  "mech-interp": { layer: 0, head: 2 },
+  "applied-math": { layer: 0, head: 3 },
+  "frontend-engineering": { layer: 1, head: 0 },
+  "decompiled-mind": { layer: 1, head: 1 },
+  "lung-nodule": { layer: 1, head: 2 },
+  "exam-monitoring": { layer: 1, head: 3 },
+  "rift-nyc": { layer: 0, head: 0 },
+  "ruskin-archive": { layer: 0, head: 1 },
+  "senior-tutor": { layer: 0, head: 2 },
+  "cv-intern": { layer: 0, head: 3 },
 };
