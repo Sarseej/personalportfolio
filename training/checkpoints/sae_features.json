@@ -1,0 +1,122 @@
+[
+  {
+    "id": 301,
+    "label": "in_pattern",
+    "lift": 0.7272,
+    "rate": 0.994
+  },
+  {
+    "id": 413,
+    "label": "in_pattern",
+    "lift": 0.7622,
+    "rate": 0.0378
+  },
+  {
+    "id": 8,
+    "label": "token_19",
+    "lift": 0.765,
+    "rate": 0.9908
+  },
+  {
+    "id": 290,
+    "label": "token_17",
+    "lift": 0.95,
+    "rate": 0.9702
+  },
+  {
+    "id": 70,
+    "label": "in_pattern",
+    "lift": 0.7522,
+    "rate": 0.9957
+  },
+  {
+    "id": 218,
+    "label": "token_16",
+    "lift": 0.815,
+    "rate": 0.9952
+  },
+  {
+    "id": 350,
+    "label": "token_2",
+    "lift": 0.655,
+    "rate": 0.4992
+  },
+  {
+    "id": 120,
+    "label": "in_pattern",
+    "lift": 0.7422,
+    "rate": 0.5383
+  },
+  {
+    "id": 397,
+    "label": "token_14",
+    "lift": 0.825,
+    "rate": 0.9321
+  },
+  {
+    "id": 234,
+    "label": "in_pattern",
+    "lift": 0.7172,
+    "rate": 0.9945
+  },
+  {
+    "id": 106,
+    "label": "in_pattern",
+    "lift": 0.7522,
+    "rate": 0.9934
+  },
+  {
+    "id": 142,
+    "label": "in_pattern",
+    "lift": 0.733,
+    "rate": 0.0014
+  },
+  {
+    "id": 9,
+    "label": "in_pattern",
+    "lift": 0.5772,
+    "rate": 0.9789
+  },
+  {
+    "id": 317,
+    "label": "in_pattern",
+    "lift": 0.7572,
+    "rate": 0.9895
+  },
+  {
+    "id": 247,
+    "label": "in_pattern",
+    "lift": 0.7572,
+    "rate": 0.1063
+  },
+  {
+    "id": 208,
+    "label": "in_pattern",
+    "lift": 0.7572,
+    "rate": 0.113
+  },
+  {
+    "id": 52,
+    "label": "in_pattern",
+    "lift": 0.7572,
+    "rate": 0.0968
+  },
+  {
+    "id": 16,
+    "label": "in_pattern",
+    "lift": 0.6972,
+    "rate": 0.9967
+  },
+  {
+    "id": 56,
+    "label": "in_pattern",
+    "lift": 0.7522,
+    "rate": 0.0051
+  },
+  {
+    "id": 309,
+    "label": "in_pattern",
+    "lift": 0.7572,
+    "rate": 0.9968
+  }
+]

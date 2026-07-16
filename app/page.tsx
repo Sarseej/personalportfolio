@@ -5,6 +5,8 @@ import ModeToggle from "@/components/mode-toggle";
 import Hero from "@/components/standard/Hero";
 import NodeGraph from "@/components/standard/NodeGraph";
 import AttentionMatrix from "@/components/decompile/AttentionMatrix";
+import PatchingSandbox from "@/components/decompile/PatchingSandbox";
+import SAEFindings from "@/components/decompile/SAEFindings";
 
 export default function Home() {
   const mode = useModelStore((s) => s.mode);
@@ -53,7 +55,11 @@ export default function Home() {
           <NodeGraph />
         </>
       ) : (
-        <AttentionMatrix />
+        <>
+          <AttentionMatrix />
+          <PatchingSandbox />
+          <SAEFindings />
+        </>
       )}
     </main>
   );

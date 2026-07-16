@@ -1,0 +1,503 @@
+{
+  "k=8": {
+    "mse": 0.9361099973320961,
+    "l0": 8.0,
+    "n_dead": 299,
+    "features": [
+      {
+        "feature": 20,
+        "rate": 0.019999999552965164,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 21199.3046875,
+        "property_mass": 21199.3046875
+      },
+      {
+        "feature": 89,
+        "rate": 0.019999999552965164,
+        "property": "pos_30-40",
+        "purity": 1.0,
+        "total_mass": 20517.78125,
+        "property_mass": 20517.78125
+      },
+      {
+        "feature": 113,
+        "rate": 0.019990000873804092,
+        "property": "pos_30-40",
+        "purity": 1.0,
+        "total_mass": 19104.421875,
+        "property_mass": 19104.421875
+      },
+      {
+        "feature": 166,
+        "rate": 0.020519999787211418,
+        "property": "out_of_pattern",
+        "purity": 1.0,
+        "total_mass": 21440.744140625,
+        "property_mass": 21440.744140625
+      },
+      {
+        "feature": 169,
+        "rate": 0.01648000068962574,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 20784.515625,
+        "property_mass": 20784.515625
+      },
+      {
+        "feature": 217,
+        "rate": 0.02092999964952469,
+        "property": "out_of_pattern",
+        "purity": 1.0,
+        "total_mass": 36608.8125,
+        "property_mass": 36608.8125
+      },
+      {
+        "feature": 269,
+        "rate": 0.004910000134259462,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 5238.24267578125,
+        "property_mass": 5238.24267578125
+      },
+      {
+        "feature": 282,
+        "rate": 0.0200399998575449,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 27388.65234375,
+        "property_mass": 27388.65234375
+      },
+      {
+        "feature": 292,
+        "rate": 0.11999999731779099,
+        "property": "out_of_pattern",
+        "purity": 1.0,
+        "total_mass": 433870.625,
+        "property_mass": 433870.625
+      },
+      {
+        "feature": 333,
+        "rate": 0.01996999979019165,
+        "property": "pos_20-30",
+        "purity": 1.0,
+        "total_mass": 14923.9091796875,
+        "property_mass": 14923.9091796875
+      },
+      {
+        "feature": 380,
+        "rate": 0.019999999552965164,
+        "property": "pos_20-30",
+        "purity": 1.0,
+        "total_mass": 16994.30859375,
+        "property_mass": 16994.30859375
+      },
+      {
+        "feature": 407,
+        "rate": 0.019999999552965164,
+        "property": "pos_30-40",
+        "purity": 1.0,
+        "total_mass": 21688.3515625,
+        "property_mass": 21688.3515625
+      },
+      {
+        "feature": 429,
+        "rate": 0.019999999552965164,
+        "property": "out_of_pattern",
+        "purity": 1.0,
+        "total_mass": 25370.23828125,
+        "property_mass": 25370.23828125
+      },
+      {
+        "feature": 442,
+        "rate": 0.020010000094771385,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 22114.3984375,
+        "property_mass": 22114.3984375
+      },
+      {
+        "feature": 443,
+        "rate": 0.019999999552965164,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 26423.73046875,
+        "property_mass": 26423.73046875
+      },
+      {
+        "feature": 450,
+        "rate": 0.019999999552965164,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 27711.267578125,
+        "property_mass": 27711.267578125
+      },
+      {
+        "feature": 502,
+        "rate": 0.019999999552965164,
+        "property": "out_of_pattern",
+        "purity": 1.0,
+        "total_mass": 21441.05078125,
+        "property_mass": 21441.05078125
+      },
+      {
+        "feature": 245,
+        "rate": 0.041689999401569366,
+        "property": "token_19",
+        "purity": 0.999927323971738,
+        "total_mass": 39505.375,
+        "property_mass": 39502.50390625
+      },
+      {
+        "feature": 207,
+        "rate": 0.015119999647140503,
+        "property": "pos_40-50",
+        "purity": 0.9999137049183998,
+        "total_mass": 16748.4921875,
+        "property_mass": 16747.046875
+      },
+      {
+        "feature": 50,
+        "rate": 0.04098999872803688,
+        "property": "token_17",
+        "purity": 0.9998393150137902,
+        "total_mass": 39382.1796875,
+        "property_mass": 39375.8515625
+      }
+    ]
+  },
+  "k=16": {
+    "mse": 0.3517152912914753,
+    "l0": 16.0,
+    "n_dead": 291,
+    "features": [
+      {
+        "feature": 81,
+        "rate": 0.019999999552965164,
+        "property": "out_of_pattern",
+        "purity": 1.0,
+        "total_mass": 33899.52734375,
+        "property_mass": 33899.52734375
+      },
+      {
+        "feature": 153,
+        "rate": 0.019999999552965164,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 20152.26171875,
+        "property_mass": 20152.26171875
+      },
+      {
+        "feature": 155,
+        "rate": 0.020010000094771385,
+        "property": "pos_30-40",
+        "purity": 1.0,
+        "total_mass": 17767.68359375,
+        "property_mass": 17767.68359375
+      },
+      {
+        "feature": 156,
+        "rate": 0.019999999552965164,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 24539.806640625,
+        "property_mass": 24539.806640625
+      },
+      {
+        "feature": 222,
+        "rate": 0.019999999552965164,
+        "property": "pos_30-40",
+        "purity": 1.0,
+        "total_mass": 17877.619140625,
+        "property_mass": 17877.619140625
+      },
+      {
+        "feature": 247,
+        "rate": 0.019999999552965164,
+        "property": "out_of_pattern",
+        "purity": 1.0,
+        "total_mass": 16711.85546875,
+        "property_mass": 16711.85546875
+      },
+      {
+        "feature": 254,
+        "rate": 0.019999999552965164,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 20267.234375,
+        "property_mass": 20267.234375
+      },
+      {
+        "feature": 288,
+        "rate": 0.001120000029914081,
+        "property": "in_pattern",
+        "purity": 1.0,
+        "total_mass": 524.6400756835938,
+        "property_mass": 524.6400756835938
+      },
+      {
+        "feature": 330,
+        "rate": 0.020010000094771385,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 25133.34375,
+        "property_mass": 25133.34375
+      },
+      {
+        "feature": 341,
+        "rate": 0.019999999552965164,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 23793.80859375,
+        "property_mass": 23793.80859375
+      },
+      {
+        "feature": 373,
+        "rate": 0.020020000636577606,
+        "property": "pos_30-40",
+        "purity": 1.0,
+        "total_mass": 16929.3984375,
+        "property_mass": 16929.3984375
+      },
+      {
+        "feature": 377,
+        "rate": 0.020020000636577606,
+        "property": "out_of_pattern",
+        "purity": 1.0,
+        "total_mass": 19334.888671875,
+        "property_mass": 19334.888671875
+      },
+      {
+        "feature": 381,
+        "rate": 0.019999999552965164,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 20628.884765625,
+        "property_mass": 20628.884765625
+      },
+      {
+        "feature": 407,
+        "rate": 0.0010300000431016088,
+        "property": "token_1",
+        "purity": 1.0,
+        "total_mass": 671.0889282226562,
+        "property_mass": 671.0889282226562
+      },
+      {
+        "feature": 471,
+        "rate": 0.019999999552965164,
+        "property": "out_of_pattern",
+        "purity": 1.0,
+        "total_mass": 15867.109375,
+        "property_mass": 15867.109375
+      },
+      {
+        "feature": 404,
+        "rate": 0.12008000165224075,
+        "property": "out_of_pattern",
+        "purity": 0.9999969011226855,
+        "total_mass": 413456.1875,
+        "property_mass": 413454.90625
+      },
+      {
+        "feature": 472,
+        "rate": 0.020010000094771385,
+        "property": "pos_30-40",
+        "purity": 0.9999744007365586,
+        "total_mass": 17853.296875,
+        "property_mass": 17852.83984375
+      },
+      {
+        "feature": 245,
+        "rate": 0.02022000029683113,
+        "property": "pos_40-50",
+        "purity": 0.999964345864825,
+        "total_mass": 25363.029296875,
+        "property_mass": 25362.125
+      },
+      {
+        "feature": 252,
+        "rate": 0.020010000094771385,
+        "property": "pos_40-50",
+        "purity": 0.9999553912343334,
+        "total_mass": 22110.634765625,
+        "property_mass": 22109.6484375
+      },
+      {
+        "feature": 80,
+        "rate": 0.10022000223398209,
+        "property": "out_of_pattern",
+        "purity": 0.9999547742094663,
+        "total_mass": 201765.40625,
+        "property_mass": 201756.28125
+      }
+    ]
+  },
+  "k=32": {
+    "mse": 0.10525340940803289,
+    "l0": 31.999980926513672,
+    "n_dead": 267,
+    "features": [
+      {
+        "feature": 36,
+        "rate": 0.08305999636650085,
+        "property": "out_of_pattern",
+        "purity": 1.0,
+        "total_mass": 111253.0390625,
+        "property_mass": 111253.0390625
+      },
+      {
+        "feature": 121,
+        "rate": 0.020010000094771385,
+        "property": "out_of_pattern",
+        "purity": 1.0,
+        "total_mass": 19332.82421875,
+        "property_mass": 19332.82421875
+      },
+      {
+        "feature": 326,
+        "rate": 0.02012999914586544,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 23139.701171875,
+        "property_mass": 23139.701171875
+      },
+      {
+        "feature": 509,
+        "rate": 0.019999999552965164,
+        "property": "pos_40-50",
+        "purity": 1.0,
+        "total_mass": 21563.212890625,
+        "property_mass": 21563.212890625
+      },
+      {
+        "feature": 422,
+        "rate": 0.12018000334501266,
+        "property": "out_of_pattern",
+        "purity": 0.9999959155270808,
+        "total_mass": 581470.375,
+        "property_mass": 581468.0
+      },
+      {
+        "feature": 230,
+        "rate": 0.020109999924898148,
+        "property": "pos_40-50",
+        "purity": 0.9999870535500184,
+        "total_mass": 23987.029296875,
+        "property_mass": 23986.71875
+      },
+      {
+        "feature": 261,
+        "rate": 0.02012999914586544,
+        "property": "out_of_pattern",
+        "purity": 0.9999628171794732,
+        "total_mass": 22429.29296875,
+        "property_mass": 22428.458984375
+      },
+      {
+        "feature": 144,
+        "rate": 0.0200399998575449,
+        "property": "pos_40-50",
+        "purity": 0.9999609037605888,
+        "total_mass": 21631.31640625,
+        "property_mass": 21630.470703125
+      },
+      {
+        "feature": 61,
+        "rate": 0.020010000094771385,
+        "property": "out_of_pattern",
+        "purity": 0.9999571728666181,
+        "total_mass": 25629.92578125,
+        "property_mass": 25628.828125
+      },
+      {
+        "feature": 350,
+        "rate": 0.02012000046670437,
+        "property": "pos_40-50",
+        "purity": 0.9999424353252072,
+        "total_mass": 24395.115234375,
+        "property_mass": 24393.7109375
+      },
+      {
+        "feature": 456,
+        "rate": 0.020010000094771385,
+        "property": "pos_30-40",
+        "purity": 0.9999340817331902,
+        "total_mass": 20029.5390625,
+        "property_mass": 20028.21875
+      },
+      {
+        "feature": 235,
+        "rate": 0.049949999898672104,
+        "property": "token_13",
+        "purity": 0.9999322964903767,
+        "total_mass": 49330.4375,
+        "property_mass": 49327.09765625
+      },
+      {
+        "feature": 435,
+        "rate": 0.020029999315738678,
+        "property": "pos_30-40",
+        "purity": 0.9999258399574925,
+        "total_mass": 19015.041015625,
+        "property_mass": 19013.630859375
+      },
+      {
+        "feature": 362,
+        "rate": 0.1001800000667572,
+        "property": "out_of_pattern",
+        "purity": 0.9999249403049681,
+        "total_mass": 166117.78125,
+        "property_mass": 166105.3125
+      },
+      {
+        "feature": 272,
+        "rate": 0.020069999620318413,
+        "property": "pos_10-20",
+        "purity": 0.9999050943354876,
+        "total_mass": 21032.3984375,
+        "property_mass": 21030.40234375
+      },
+      {
+        "feature": 470,
+        "rate": 0.020109999924898148,
+        "property": "pos_40-50",
+        "purity": 0.9998874234744348,
+        "total_mass": 21027.36328125,
+        "property_mass": 21024.99609375
+      },
+      {
+        "feature": 150,
+        "rate": 0.020029999315738678,
+        "property": "pos_10-20",
+        "purity": 0.9998810822336857,
+        "total_mass": 17623.12890625,
+        "property_mass": 17621.033203125
+      },
+      {
+        "feature": 327,
+        "rate": 0.020029999315738678,
+        "property": "pos_20-30",
+        "purity": 0.9998754449201842,
+        "total_mass": 19036.5078125,
+        "property_mass": 19034.13671875
+      },
+      {
+        "feature": 283,
+        "rate": 0.0200399998575449,
+        "property": "out_of_pattern",
+        "purity": 0.9998749690059288,
+        "total_mass": 20369.94921875,
+        "property_mass": 20367.40234375
+      },
+      {
+        "feature": 352,
+        "rate": 0.02013999968767166,
+        "property": "out_of_pattern",
+        "purity": 0.9998729325134996,
+        "total_mass": 22010.94140625,
+        "property_mass": 22008.14453125
+      }
+    ]
+  }
+}
