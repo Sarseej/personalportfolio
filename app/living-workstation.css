@@ -1,0 +1,385 @@
+/* Identity, destination modes, and explanatory drawings. */
+.entrance-copy {
+  max-width: none;
+  width: calc(100% - 80px);
+}
+.entrance-copy .opening-identity {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  font-size: clamp(52px, 7.8vw, 128px);
+  line-height: 0.92;
+  letter-spacing: -0.075em;
+  white-space: nowrap;
+  margin: 0 0 28px;
+  max-width: none;
+  transform-origin: left top;
+}
+.identity-entering .opening-identity {
+  animation: identity-dock 0.9s 0.75s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+.identity-arrived .opening-identity {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.identity-entering .identity strong {
+  animation: identity-receive 0.4s 1.2s both;
+}
+.entrance-copy .studio-introduction {
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 340px;
+}
+.identity-arrived .entrance-copy {
+  max-width: 420px;
+}
+.identity-arrived .entrance-copy > .overline {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+}
+.identity strong {
+  text-transform: uppercase;
+  font-weight: 800;
+}
+[data-station="career"] {
+  --mode-accent: #e7bd7b;
+}
+[data-station="projects"] {
+  --mode-accent: #94def8;
+}
+[data-station="cv"] {
+  --mode-accent: #f0dab5;
+}
+.station-focused .atelier-header nav a[aria-current="page"] {
+  color: var(--mode-accent);
+  border-color: var(--mode-accent);
+}
+[data-station="cv"] .room-vignette {
+  background: #060b1640;
+  transition: background 0.7s;
+}
+.interface-career {
+  box-shadow:
+    0 0 0 1px #b494644a,
+    0 12px 65px #01091880;
+}
+.interface-career .interface-toolbar {
+  border-bottom-color: #ad875847;
+}
+.interface-career .overline {
+  color: #dec69b;
+}
+.project-visual {
+  margin: 5px 0 18px;
+}
+.project-visual svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 175px;
+  color: #688f9f;
+}
+.project-visual svg path,
+.project-visual svg rect,
+.project-visual svg circle {
+  fill: #142533;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+.project-visual svg path {
+  fill: none;
+}
+.project-visual svg .diagram-wire {
+  stroke: #486374;
+}
+.project-visual svg .diagram-emphasis {
+  color: #abedff;
+  filter: drop-shadow(0 0 4px #59b6d344);
+}
+.project-visual .human-gate {
+  color: #e2be86;
+}
+.project-visual svg .human-gate path {
+  fill: #332d26;
+}
+.project-visual svg .human-gate path + path {
+  fill: none;
+}
+.project-visual svg .reader-contours path:nth-child(2) {
+  stroke: #d9c8a9;
+}
+.project-visual svg .reader-contours path:nth-child(3) {
+  stroke: #939fce;
+  stroke-dasharray: 4 3;
+}
+.project-visual svg .uncertainty-branch {
+  color: #d5bd92;
+}
+.project-visual svg .structural-mesh path {
+  stroke-width: 0.85;
+  animation: mesh-resolve 0.65s calc(var(--mesh-order, 0) * 35ms) both;
+}
+.project-visual svg .structural-support {
+  stroke: #e2be86;
+}
+.project-visual svg .baseline-path {
+  stroke: #e2be86;
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+}
+.project-visual figcaption {
+  color: #c1cbd2;
+  font-size: 12px;
+  line-height: 1.65;
+  max-width: 650px;
+}
+.project-visual figcaption span {
+  display: block;
+  color: #98b6c7;
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.project-visual svg > g {
+  animation: diagram-resolve 0.55s ease-out both;
+}
+.interface-projects.is-ready .flow-diagram {
+  animation: diagram-resolve 0.55s 0.12s both;
+}
+.history-graph {
+  --date-width: 118px;
+  --graph-gap: 12px;
+  --graph-pad: 10px;
+}
+.history-graph:before,
+.history-graph li:not(:last-child):after {
+  display: none;
+}
+.history-graph button {
+  grid-template-columns: var(--date-width) 64px 1fr 15px;
+  column-gap: var(--graph-gap);
+}
+.history-route {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--date-width) + var(--graph-gap) + var(--graph-pad));
+  width: 64px;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+.history-route path {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+.history-rails {
+  stroke: #71859b20;
+  stroke-width: 1;
+}
+.history-thread {
+  stroke: #9b886d;
+  stroke-width: 1.5;
+  stroke-dasharray: 1;
+  animation: history-draw 0.8s ease-out both;
+  animation-delay: calc(var(--node-order) * 60ms);
+}
+.is-connected .history-thread {
+  stroke: #e3bd80;
+}
+.history-graph .timeline-dot {
+  margin-left: calc(var(--lane) - 4.5px);
+  z-index: 1;
+  width: 9px;
+  height: 9px;
+  background: #151e2c;
+  border-color: #d0ad77;
+}
+.history-graph .kind-project .timeline-dot {
+  border-radius: 2px;
+  border-color: #9dbacb;
+}
+.history-graph .kind-education .timeline-dot {
+  border-color: #ece0c7;
+}
+.history-graph .is-current .timeline-dot {
+  background: #e8c68d;
+  box-shadow: 0 0 16px #e4ac5750;
+}
+.history-graph .timeline-pulse {
+  border-color: #e8c68d;
+}
+.history-graph .is-current button {
+  background: #d4b97a0b;
+  border-color: #b6996940;
+}
+.history-graph button:hover {
+  background: #d4b97a10;
+}
+.interface-career .career-detail {
+  border-color: #af97704d;
+}
+.interface-career .promotion-milestone {
+  color: #efd4a6;
+}
+@keyframes identity-receive {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes diagram-resolve {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes mesh-resolve {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes history-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@media (max-width: 1100px) {
+  .history-graph {
+    --date-width: 100px;
+    --graph-gap: 9px;
+  }
+  .history-graph button {
+    grid-template-columns: var(--date-width) 64px 1fr 10px;
+  }
+}
+@media (max-width: 700px) {
+  .entrance-copy {
+    width: calc(100% - 40px);
+  }
+  .entrance-copy .opening-identity {
+    white-space: normal;
+    font-size: clamp(48px, 14vw, 76px);
+    width: 100%;
+    max-width: 350px;
+    line-height: 0.94;
+  }
+  .identity-arrived .entrance-copy {
+    max-width: 330px;
+  }
+  .identity-arrived .entrance-copy > .overline {
+    font-size: 9px;
+  }
+  .entrance-copy .studio-introduction {
+    font-size: 13px;
+  }
+  .history-graph {
+    --date-width: 70px;
+    --graph-gap: 6px;
+    --graph-pad: 1px;
+  }
+  .history-graph button {
+    grid-template-columns: var(--date-width) 64px 1fr 10px;
+    column-gap: 6px;
+  }
+  .history-graph time {
+    font-size: 9px;
+  }
+  .history-graph .timeline-label strong {
+    font-size: 12px;
+  }
+  .history-graph .timeline-label small {
+    font-size: 10px;
+  }
+  .project-visual figcaption {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .identity-entering .opening-identity,
+  .identity-entering .identity strong,
+  .identity-entering .entrance-copy > .overline,
+  .project-visual svg > g,
+  .project-visual svg .structural-mesh path,
+  .interface-projects.is-ready .flow-diagram,
+  .history-thread {
+    animation: none;
+  }
+  [data-station="cv"] .room-vignette {
+    transition: none;
+  }
+}
+
+.history-graph .timeline-dot {
+  border: 1.5px solid #d0ad77;
+}
+.history-graph .kind-project .timeline-dot {
+  border-color: #9dbacb;
+}
+.history-graph .kind-education .timeline-dot {
+  border-color: #ece0c7;
+  border-width: 2px;
+}
+.interface-career .timeline-legend .kind-experience span {
+  background: #d0ad77;
+}
+.interface-career .timeline-legend .kind-project span {
+  background: #9dbacb;
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+.interface-career .timeline-legend .kind-education span {
+  background: transparent;
+  border: 1.5px solid #ece0c7;
+}
+.identity-entering .opening-identity {
+  max-height: 130px;
+}
+@keyframes identity-dock {
+  0%,
+  12% {
+    opacity: 1;
+    transform: none;
+    max-height: 130px;
+    margin-bottom: 28px;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-108px) scale(0.2);
+    max-height: 0;
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 700px) {
+  @keyframes identity-dock {
+    0%,
+    12% {
+      opacity: 1;
+      transform: none;
+      max-height: 130px;
+      margin-bottom: 28px;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-125px) scale(0.35);
+      max-height: 0;
+      margin-bottom: 0;
+    }
+  }
+}

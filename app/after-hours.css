@@ -1,0 +1,582 @@
+/* After-hours material and motion layer; destination geometry remains unchanged. */
+.atelier {
+  background: #101726;
+}
+.room-view .room-vignette {
+  background:
+    linear-gradient(
+      180deg,
+      #080f1b91,
+      transparent 35%,
+      transparent 70%,
+      #080f1bc9
+    ),
+    linear-gradient(90deg, #080f1b70, transparent 53%);
+}
+.room-ready .architectural-scene {
+  animation: studio-exposure 1s ease-out both;
+}
+.station-focused .room-vignette {
+  background: linear-gradient(
+    #060e1cb0,
+    transparent 17%,
+    transparent 88%,
+    #060e1b88
+  );
+}
+.atelier-header nav a[aria-current="page"] {
+  color: #c5eaff;
+  border-color: #86d8ef;
+}
+.identity strong {
+  letter-spacing: -0.035em;
+}
+.entrance-copy > .overline {
+  color: #a9d9ef;
+  letter-spacing: 0.19em;
+}
+.entrance-copy h1 {
+  color: #f1eddf;
+  text-shadow: 0 3px 35px #030b1766;
+}
+.entrance-copy > p:not(.overline) {
+  color: #cbd3dd;
+}
+.entrance-actions button {
+  background: #e8e1d1;
+  box-shadow: 0 4px 24px #080e2033;
+}
+.entrance-actions a {
+  border-color: #8aa1b954;
+}
+.workspace-footer {
+  color: #cfdae6;
+}
+.station-controls {
+  background: #111d2be8;
+  border-color: #637d944d;
+  box-shadow: 0 10px 34px #0003;
+}
+.station-controls button:hover,
+.station-controls button:focus-visible {
+  background: #244454;
+  color: #ebfaff;
+}
+.station-controls button small {
+  color: #b5c5d6;
+}
+.station-marker {
+  background: #111e2bf0;
+  border-color: #7fb0c26b;
+  box-shadow: 0 5px 25px #050c2280;
+}
+.station-marker > span,
+.station-marker i {
+  color: #9ee6f4;
+}
+.station-marker.is-hovered {
+  color: #edfaff;
+  background: #254653;
+  border-color: #97e5fa;
+  box-shadow:
+    0 0 24px #78cbf226,
+    0 5px 25px #050c2280;
+}
+.station-marker.is-hovered > span,
+.station-marker.is-hovered i {
+  color: #c3edff;
+}
+.station-marker:after {
+  background: #85c9e4;
+}
+.render-status {
+  color: #bdcbd7;
+}
+.interface-projects,
+.interface-career {
+  background: #111c2a;
+  color: #ecede7;
+  color-scheme: dark;
+  box-shadow:
+    0 0 0 1px #729aad40,
+    0 12px 55px #01091866;
+}
+.interface-projects .interface-toolbar,
+.interface-career .interface-toolbar {
+  background: #0c1521;
+  border-color: #36475d;
+}
+.interface-projects .interface-toolbar > span,
+.interface-career .interface-toolbar > span {
+  color: #b5c6d8;
+}
+.interface-projects .interface-toolbar button,
+.interface-career .interface-toolbar button {
+  color: #d2e4ed;
+}
+.interface-projects a:hover,
+.interface-projects button:hover,
+.interface-career button:hover {
+  color: #aee8ff;
+}
+.interface-projects button:focus-visible,
+.interface-projects summary:focus-visible,
+.interface-career button:focus-visible {
+  outline-color: #91dff5;
+}
+.interface-projects h2,
+.interface-career h2 {
+  color: #f1ece0;
+}
+.project-rail {
+  background: #0c1520;
+  border-color: #2c3e51;
+}
+.project-rail > .overline {
+  color: #a4bdce;
+  letter-spacing: 0.17em;
+}
+.project-rail button {
+  color: #d8e4ea;
+  border-radius: 0;
+  border-left: 2px solid transparent;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+.project-rail button[aria-pressed="true"] {
+  background: #1a2c3b;
+  border-color: transparent;
+  border-left-color: #84d8ef;
+  box-shadow: none;
+  border-radius: 0;
+}
+.project-rail small,
+.project-ordinal,
+.rail-note {
+  color: #b0bdca;
+}
+.project-reading .overline {
+  color: #9bb8cb;
+}
+.project-reading h2 {
+  font-size: clamp(31px, 3.1vw, 48px);
+  margin-bottom: 18px;
+}
+.project-outcome {
+  color: #d9e1e5;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.flow-diagram {
+  background-color: #152837;
+  background-image:
+    linear-gradient(#a6d4f107 1px, transparent 1px),
+    linear-gradient(90deg, #a6d4f107 1px, transparent 1px);
+  background-size: 23px 23px;
+  border-color: #40586d;
+  border-radius: 1px;
+  position: relative;
+  padding: 20px;
+}
+.flow-title {
+  color: #d8e7ed;
+}
+.flow-title small {
+  color: #aebfcd;
+}
+.flow-stages button {
+  background: #111e2c;
+  border-color: #4e677a;
+  color: #e0e8ed;
+  border-radius: 2px;
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+.flow-stages button[aria-pressed="true"] {
+  background: #285160;
+  border-color: #8dcadd;
+  color: #f3fcff;
+  box-shadow:
+    0 0 22px #7dbed80d,
+    inset 0 1px #c3f1ff22;
+}
+.flow-stages button[aria-pressed="true"]:hover {
+  color: #fff;
+}
+.flow-stages i {
+  color: #9dbdd1;
+}
+.flow-stages span {
+  opacity: 1;
+  color: #b4cbd7;
+}
+.flow-explanation {
+  color: #c4d3de;
+  font-size: 13px;
+}
+.project-copy-grid p,
+.approach p,
+.project-limitations p {
+  color: #b8c8d4;
+}
+.project-reading h3 {
+  color: #e4e9e8;
+  font-size: 12px;
+}
+.result-note {
+  border-color: #70b9c7;
+  color: #d8e6ea;
+}
+.result-note > span {
+  color: #a3d2e0;
+}
+.technical-details {
+  border-color: #3b4c60;
+}
+.technical-details summary {
+  color: #cfe3ed;
+}
+.technical-details p {
+  color: #c1d0da;
+}
+.technology-list li {
+  background: #243346;
+  color: #cdd8e2;
+  border: 1px solid #3b5063;
+  border-radius: 1px;
+}
+.project-limitations {
+  border-left: 1px solid #b193634f;
+  padding-left: 15px;
+}
+.interface-projects.is-ready .project-rail {
+  animation: interface-arrive 0.4s 0.04s backwards;
+}
+.interface-projects.is-ready .project-reading article {
+  animation: interface-arrive 0.48s 0.1s backwards;
+}
+.flow-explanation {
+  animation: diagram-explain 0.35s ease-out;
+}
+.interface-cv.is-ready .cv-document {
+  animation: paper-settle 0.5s ease-out both;
+}
+.interface-cv {
+  box-shadow:
+    0 15px 65px #0007,
+    inset 0 0 60px #b68b3a09;
+}
+.interface-cv .interface-toolbar {
+  border-bottom-color: #b9ad954f;
+}
+.cv-document header {
+  border-color: #6e6b50;
+}
+.career-workspace {
+  background: radial-gradient(ellipse at 95% 10%, #23325066, transparent 45%);
+}
+.career-intro p:not(.overline) {
+  color: #b4c6d5;
+}
+.career-intro > .overline,
+.career-intro .overline {
+  color: #9fcfdf;
+}
+.timeline-legend {
+  color: #c9d6e0;
+}
+.kind-experience {
+  --node: #8ed1e2;
+}
+.kind-project {
+  --node: #b0b4e6;
+}
+.kind-education {
+  --node: #dfc194;
+}
+.career-graph {
+  position: relative;
+}
+.career-graph:before {
+  content: "";
+  position: absolute;
+  left: 146px;
+  top: 27px;
+  bottom: 29px;
+  width: 1px;
+  background: linear-gradient(#7edff0, #8498d4 75%, #cab68f);
+  transform-origin: top;
+  animation: timeline-draw 0.85s 0.08s backwards;
+  box-shadow: 0 0 9px #86c4ff55;
+}
+.career-graph li:not(:last-child):after {
+  background: #647e9b40;
+}
+.career-graph li {
+  animation: node-arrive 0.4s calc(var(--node-order) * 45ms) backwards;
+}
+.career-graph button {
+  border: 1px solid transparent;
+  border-radius: 2px;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.career-graph time {
+  color: #b0c0d0;
+}
+.timeline-label strong {
+  color: #e2e9eb;
+}
+.timeline-label small {
+  color: #a6bacb;
+}
+.timeline-dot {
+  box-shadow: 0 0 0 4px #111c2a;
+}
+.is-current button {
+  background: #23384b;
+  border-color: #7897b63d;
+}
+.is-current .timeline-dot {
+  box-shadow:
+    0 0 0 4px #23384b,
+    0 0 17px #9de3ff7a;
+}
+.timeline-chevron {
+  color: #b0e5f5;
+}
+.career-detail {
+  background: #1c2a3b;
+  border-top-width: 2px;
+  border-bottom: 1px solid #495b6e;
+  box-shadow: 0 10px 30px #050c1422;
+}
+.career-detail h3 {
+  color: #f1ece2;
+  font-size: 26px;
+}
+.career-detail p {
+  color: #c2d0dd;
+}
+.career-detail .overline {
+  color: #b1cbdc;
+}
+.career-detail div {
+  border-color: #475b70;
+}
+.career-detail h4 {
+  color: #d5e6ef;
+}
+.career-detail-copy {
+  animation: diagram-explain 0.3s ease-out;
+}
+.timeline-footnote {
+  color: #adbdcb;
+}
+.promotion-milestone {
+  display: block;
+  margin-top: 6px;
+  color: #b7e9ed;
+  font-size: 9px;
+  letter-spacing: 0.02em;
+}
+.promotion-milestone i {
+  font-style: normal;
+  margin-right: 5px;
+}
+.career-detail .promotion-note {
+  font-size: 10px;
+  border-left: 1px solid #8fcfdb;
+  padding-left: 10px;
+  margin-top: 14px;
+}
+.timeline-return {
+  color: #bbe7f3;
+}
+.timeline-pulse {
+  position: absolute;
+  inset: -5px;
+  border: 1px solid #a0dcf3;
+  border-radius: 50%;
+  animation: node-pulse 0.65s ease-out both;
+  pointer-events: none;
+}
+@keyframes studio-exposure {
+  from {
+    filter: brightness(0.7);
+  }
+  to {
+    filter: brightness(1);
+  }
+}
+@keyframes interface-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes diagram-explain {
+  from {
+    opacity: 0.35;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes paper-settle {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes timeline-draw {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes node-arrive {
+  from {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes node-pulse {
+  from {
+    opacity: 0.7;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.4);
+  }
+}
+@media (max-width: 1050px) {
+  .career-graph:before {
+    left: 124px;
+  }
+  .project-outcome {
+    font-size: 16px;
+  }
+  .career-detail h3 {
+    font-size: 22px;
+  }
+}
+@media (max-width: 700px) {
+  .project-reading h2 {
+    font-size: 32px;
+  }
+  .project-outcome {
+    font-size: 15px;
+  }
+  .flow-diagram {
+    padding: 12px;
+  }
+  .flow-explanation {
+    font-size: 12px;
+  }
+  .project-rail button {
+    min-height: 46px;
+  }
+  .career-graph:before {
+    left: 93px;
+  }
+  .promotion-milestone {
+    font-size: 8px;
+    line-height: 1.5;
+  }
+  .career-graph button {
+    min-height: 65px;
+  }
+  .career-detail h3 {
+    font-size: 25px;
+  }
+  .career-workspace {
+    background: #111c2a;
+  }
+  .entrance-copy h1 {
+    font-size: 30px;
+  }
+  .room-ready .architectural-scene {
+    animation: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .room-ready .architectural-scene,
+  .interface-projects.is-ready .project-rail,
+  .interface-projects.is-ready .project-reading article,
+  .interface-cv.is-ready .cv-document,
+  .career-graph:before,
+  .career-graph li,
+  .timeline-pulse,
+  .career-detail-copy,
+  .flow-explanation {
+    animation: none !important;
+  }
+  .project-rail button,
+  .flow-stages button,
+  .career-graph button {
+    transition: none;
+  }
+  .timeline-pulse {
+    display: none;
+  }
+}
+.interface-career:not(.is-ready) .career-graph:before,
+.interface-career:not(.is-ready) .career-graph li,
+.interface-career:not(.is-ready) .timeline-pulse,
+.interface-career:not(.is-ready) .career-detail-copy {
+  animation: none;
+}
+.flow-diagram {
+  background-position: var(--diagram-x, 0px) var(--diagram-y, 0px);
+}
+.career-detail:has(.promotion-note) h3 {
+  font-size: 22px;
+  line-height: 1.25;
+}
+.career-detail:has(.promotion-note) .career-organization {
+  margin-bottom: 18px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow-diagram {
+    background-position: 0 0;
+  }
+}
+.interface-toolbar > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 66px;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid #849caf66;
+  border-radius: 2px;
+  line-height: 1;
+  isolation: isolate;
+  background: #192a3955;
+}
+.interface-cv .interface-toolbar > button {
+  border-color: #9d907366;
+  background: #f3eee3;
+}
