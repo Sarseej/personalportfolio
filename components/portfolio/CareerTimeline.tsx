@@ -1,6 +1,8 @@
 "use client";
 import { useState, type CSSProperties } from "react";
 import { career } from "@/lib/content/portfolio";
+const lane = (kind: string) =>
+  kind === "Experience" ? 10 : kind === "Project" ? 32 : 54;
 export default function CareerTimeline() {
   const [selected, setSelected] = useState(0);
   const node = career[selected];
@@ -9,8 +11,11 @@ export default function CareerTimeline() {
       <header className="career-intro">
         <div>
           <p className="overline">2020 → 2027</p>
-          <h2>A path through computation.</h2>
-          <p>From structured data to intelligent, reliable systems.</p>
+          <h2>A history of building.</h2>
+          <p>
+            Data systems → mathematical communication → applied AI → scientific
+            ML → uncertainty-aware systems.
+          </p>
         </div>
         <ul className="timeline-legend" aria-label="Timeline categories">
           {["Experience", "Project", "Education"].map((kind) => (
@@ -23,15 +28,40 @@ export default function CareerTimeline() {
       </header>
       <div className="career-layout">
         <ol
-          className="career-graph"
+          className="career-graph history-graph"
           aria-label="Career timeline, ordered by start date"
         >
           {career.map((entry, index) => (
             <li
               key={entry.id}
               className={`kind-${entry.kind.toLowerCase()} ${selected === index ? "is-current" : ""} ${index <= selected ? "is-connected" : ""}`}
-              style={{ "--node-order": index } as CSSProperties}
+              style={
+                {
+                  "--node-order": index,
+                  "--lane": `${lane(entry.kind)}px`,
+                } as CSSProperties
+              }
             >
+              <svg
+                className="history-route"
+                viewBox="0 0 64 100"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  className="history-rails"
+                  d="M10 0V100 M32 0V100 M54 0V100"
+                />
+                <path
+                  className="history-thread"
+                  pathLength="1"
+                  d={
+                    index === 0
+                      ? "M10 50V100"
+                      : `M${lane(career[index - 1].kind)} 0 C${lane(career[index - 1].kind)} 28 ${lane(entry.kind)} 22 ${lane(entry.kind)} 50 ${index === career.length - 1 ? "" : `L${lane(entry.kind)} 100`}`
+                  }
+                />
+              </svg>
               <button
                 type="button"
                 aria-pressed={selected === index}
@@ -113,7 +143,8 @@ export default function CareerTimeline() {
       </div>
       <p className="timeline-footnote">
         Dates overlap where roles and projects ran alongside one another.
-        Graduation is expected, not completed.
+        Spacing shows sequence, not duration. Graduation is expected, not
+        completed.
       </p>
     </div>
   );

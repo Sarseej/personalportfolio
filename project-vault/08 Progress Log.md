@@ -52,3 +52,9 @@ Completed the focused visual/content pass without replacing navigation, state, c
 Final lint, TypeScript, production build/static export and protected-file verification passed. The complete browser run reported zero console errors and zero violations across nine accessibility scans. Additional final desktop/mobile captures verified the clearer Back control and all three mobile return actions after its cosmetic refinement. Reduced-motion tests cover both camera cuts and disabled timeline effects. Current screenshots, promotion detail and browser results are in review/after-hours; before captures are in review/before-after-hours. Refreshed posters are included in the final static build.
 
 All nine protected deployment files remain byte-for-byte unchanged. No dependencies were installed and no commit, push, merge, tag, identity or remote changes occurred. The branch remains portfolio-rebuild. Ready for user review and a user-authored milestone commit. Hardware GPU profiling and other browser engines remain outside this local software-WebGL verification.
+
+## Living Workstation implementation
+
+The cleaned checkpoint is e0de243f6b647a581636d65e07b50100fefee685 on portfolio-rebuild. The visual branch started at that exact commit. Review captures remain local and excluded from version control.
+
+Implemented an identity-led entrance, Build/Trace/Document lighting, four explanatory project drawings, and connected Career lanes. Tutoring and its promotion remain visible in Career and CV. Existing navigation and camera systems are preserved. Validation is in progress; deployment hashes currently pass for all nine protected paths.

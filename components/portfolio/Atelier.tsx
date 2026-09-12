@@ -39,6 +39,14 @@ class RoomBoundary extends Component<
   }
 }
 export default function Atelier() {
+  const [identityArrived, setIdentityArrived] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(
+      () => setIdentityArrived(true),
+      matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 1800,
+    );
+    return () => clearTimeout(timer);
+  }, []);
   const [navigationVersion, setNavigationVersion] = useState(0);
   const [Room, setRoom] = useState<ComponentType<RoomProps> | null>(null);
   const [view, setView] = useState<View>("home"),
@@ -162,7 +170,7 @@ export default function Atelier() {
   return (
     <main
       id="main"
-      className={`atelier ${view === "home" ? "room-view" : "station-focused"} ${ready ? "room-ready" : ""} ${exploring ? "is-exploring" : ""}`}
+      className={`atelier ${view === "home" ? "room-view" : "station-focused"} ${ready ? "room-ready" : ""} ${exploring ? "is-exploring" : ""} ${identityArrived ? "identity-arrived" : "identity-entering"}`}
       data-station={view}
       onPointerMove={(event) => {
         if (
@@ -249,12 +257,12 @@ export default function Atelier() {
       {view === "home" && (
         <>
           <section className="entrance-copy">
-            <p className="overline">A workspace for ideas that hold up</p>
-            <h1>
-              I build intelligent systems—and study what makes them trustworthy.
-            </h1>
-            <p>
-              Applied AI, thoughtful software, and the questions behind them.
+            <h1 className="opening-identity">SARSEEJ SHRESTHA</h1>
+            <p className="overline">Computer Science / AI / Systems</p>
+            <p className="studio-introduction">
+              A working practice in intelligent software.
+              <br />
+              Built with care. Examined with curiosity.
             </p>
             <div className="entrance-actions">
               <button
@@ -333,9 +341,9 @@ export default function Atelier() {
             </h1>
             <span>
               {view === "projects" ? (
-                "A body of engineering work"
+                "Build mode · A body of engineering work"
               ) : view === "career" ? (
-                "The path so far"
+                "Trace mode · The path so far"
               ) : (
                 <Link href="/resume">Print-friendly view ↗</Link>
               )}

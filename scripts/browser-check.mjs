@@ -20,7 +20,8 @@ const browser = await chromium.launch({
 });
 const base = process.env.PORTFOLIO_PREVIEW_URL || "http://127.0.0.1:4173",
   output =
-    process.env.PORTFOLIO_REVIEW_OUTPUT || "project-vault/review/after-hours";
+    process.env.PORTFOLIO_REVIEW_OUTPUT ||
+    "project-vault/review/living-workstation";
 mkdirSync(output, { recursive: true });
 const report = { checks: [], consoleErrors: [], accessibility: [] };
 async function page(options = {}) {
@@ -93,6 +94,14 @@ try {
     await browser.close();
     process.exit(0);
   }
+  assert.equal(
+    await p.locator(".identity strong").innerText(),
+    "SARSEEJ SHRESTHA",
+  );
+  assert.equal(
+    await p.locator("#destination-nav a").last().getAttribute("href"),
+    "mailto:sarseej.shrestha@selu.edu",
+  );
   await axe(p, "desktop home");
   const home = await p.locator("canvas").getAttribute("data-camera");
   for (const view of ["projects", "career", "cv"]) {
@@ -123,6 +132,16 @@ try {
             .getAttribute("aria-pressed"),
           "true",
         );
+        assert.equal(
+          await p.locator(".project-visual").getAttribute("data-step"),
+          "2",
+        );
+        assert.match(
+          await p.locator(".project-visual figcaption").innerText(),
+          /not experimental data|not measured stress/i,
+        );
+        await p.waitForTimeout(650);
+        await p.screenshot({ path: `${output}/project-${i + 1}.png` });
         await p.locator(".technical-details summary").click();
       }
       report.checks.push(
@@ -310,8 +329,21 @@ try {
       .first()
       .evaluate((el) => getComputedStyle(el).animationName === "none"),
   );
+  assert(
+    await reduced
+      .locator(".history-thread")
+      .first()
+      .evaluate((el) => getComputedStyle(el).animationName === "none"),
+  );
+  await nav(reduced, "cv");
+  assert.equal(
+    await reduced.locator("canvas").getAttribute("data-transition"),
+    "settled",
+  );
+  await nav(reduced, "home");
+  assert(await reduced.locator(".identity-arrived").count());
   report.checks.push(
-    "Reduced motion uses immediate camera cut and disables timeline entry effects",
+    "Reduced motion uses immediate camera cuts, disables graph drawing and skips the identity sequence",
   );
   const fallback = await page({ viewport: { width: 390, height: 844 } });
   await fallback.addInitScript(() => {

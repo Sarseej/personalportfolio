@@ -19,3 +19,7 @@ Commands: npm run dev; npm run lint; ./node_modules/.bin/tsc --noEmit --incremen
 The existing camera, navigation state, projected surface bounds and mobile adaptations remain intact. DestinationLighting interpolates a small set of local light intensities over a finite interval on entry/hover/selection, then stops requesting frames. MonitorSweep is a transient procedural plane during activation. Architectural additions reuse existing geometry/material resources. A focused after-hours.css layer supplies finite interface motion, timeline drawing/pulses and the darker screen palette. Project diagram drafting detail responds by only a few pixels to mouse movement, disabled with reduced motion.
 
 The existing DPR caps, economy geometry reductions, no dynamic shadows on weaker devices, visibility pause and demand rendering remain in force. No dependencies, inference services or postprocessing stack were introduced.
+
+## Living Workstation extension
+
+Routing, camera interpolation, projected interface bounds and focus restoration remain unchanged. ProjectVisual renders small local SVG diagrams driven by the existing walkthrough step. CareerTimeline adds decorative lane paths while retaining the semantic ordered list and selection behavior. Identity timing is local presentation state. Paper lift settles before camera arrival; reduced motion disables it. No additional dependencies.

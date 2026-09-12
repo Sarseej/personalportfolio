@@ -6,6 +6,7 @@ import {
   useThree,
   type ThreeEvent,
 } from "@react-three/fiber";
+import { ContactShadows } from "@react-three/drei/core/ContactShadows";
 import { Environment } from "@react-three/drei/core/Environment";
 import { Lightformer } from "@react-three/drei/core/Lightformer";
 import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
@@ -325,11 +326,32 @@ function Workbench({
   active,
   hovered,
   mobile,
+  reduced,
 }: {
   active: View;
   hovered: Station | null;
   mobile: boolean;
+  reduced: boolean;
 }) {
+  const folio = useRef<Group>(null);
+  const liftStarted = useRef(0);
+  const { invalidate } = useThree();
+  useEffect(() => {
+    liftStarted.current = performance.now();
+    invalidate();
+  }, [active, reduced, invalidate]);
+  useFrame(() => {
+    if (!folio.current) return;
+    const progress = Math.min(
+      1,
+      (performance.now() - liftStarted.current) / 700,
+    );
+    const lifting = active === "cv" && !reduced && progress < 1;
+    folio.current.position.y = lifting
+      ? Math.sin(progress * Math.PI) * 0.045
+      : 0;
+    if (lifting) invalidate();
+  });
   const keys = useMemo(
     () =>
       Array.from({ length: mobile ? 12 : 60 }, (_, i) => ({
@@ -402,7 +424,9 @@ function Workbench({
             material={
               hovered === (side === -1 ? "projects" : "career") ||
               active === (side === -1 ? "projects" : "career")
-                ? "screenFrameActive"
+                ? side === -1
+                  ? "screenFrameActive"
+                  : "frameTrace"
                 : "metal"
             }
           />
@@ -411,7 +435,9 @@ function Workbench({
             scale={[1.91, 1.16, 0.015]}
             material={
               active === (side === -1 ? "projects" : "career")
-                ? "screenOn"
+                ? side === -1
+                  ? "screenOn"
+                  : "screenTrace"
                 : "screenOff"
             }
             cast={false}
@@ -508,31 +534,35 @@ function Workbench({
         scale={[0.2, 0.07, 0.31]}
         material="key"
       />
-      <Box
-        position={[-2, 1.37, 0.7]}
-        scale={[0.82, 0.07, 1.05]}
-        material={hovered === "cv" || active === "cv" ? "folioActive" : "folio"}
-        rotation={[0, 0, 0]}
-      />
-      <Box
-        position={[-2, 1.412, 0.7]}
-        scale={[0.78, 0.015, 1.01]}
-        material="paper"
-        rotation={[0, 0, 0]}
-      />
-      {active === "home" && (
-        <Html
-          position={[-2, 1.44, 0.7]}
-          transform
-          rotation={[-Math.PI / 2, 0, 0]}
-          distanceFactor={1.5}
-          zIndexRange={[1, 0]}
-        >
-          <span className="physical-cv" aria-hidden="true">
-            CV
-          </span>
-        </Html>
-      )}
+      <group ref={folio}>
+        <Box
+          position={[-2, 1.37, 0.7]}
+          scale={[0.82, 0.07, 1.05]}
+          material={
+            hovered === "cv" || active === "cv" ? "folioActive" : "folio"
+          }
+          rotation={[0, 0, 0]}
+        />
+        <Box
+          position={[-2, 1.412, 0.7]}
+          scale={[0.78, 0.015, 1.01]}
+          material="paper"
+          rotation={[0, 0, 0]}
+        />
+        {active === "home" && (
+          <Html
+            position={[-2, 1.44, 0.7]}
+            transform
+            rotation={[-Math.PI / 2, 0, 0]}
+            distanceFactor={1.5}
+            zIndexRange={[1, 0]}
+          >
+            <span className="physical-cv" aria-hidden="true">
+              CV
+            </span>
+          </Html>
+        )}
+      </group>
       <Box
         position={[2.13, 1.38, -0.2]}
         scale={[0.35, 0.1, 0.35]}
@@ -901,7 +931,9 @@ function DestinationLighting({
       <pointLight
         ref={secondary}
         position={[1.06, 2.03, 0.26]}
-        color="#969cff"
+        color={
+          station === "career" || hovered === "career" ? "#f2bd72" : "#969cff"
+        }
         intensity={reduced ? 1.4 : 0}
         distance={3.4}
         decay={2}
@@ -954,7 +986,7 @@ function MonitorSweep({ station, reduced }: RoomProps) {
     <mesh ref={mesh} visible={false}>
       <planeGeometry args={[1.87, 0.055]} />
       <meshBasicMaterial
-        color="#a2dfff"
+        color={station === "career" ? "#f4ce91" : "#a2dfff"}
         transparent
         opacity={0}
         depthWrite={false}
@@ -999,6 +1031,13 @@ function Studio(props: RoomProps) {
         emissiveIntensity: 0.45,
         roughness: 0.28,
       }),
+      screenTrace: new MeshStandardMaterial({
+        color: "#423323",
+        emissive: "#987248",
+        emissiveIntensity: 0.45,
+        roughness: 0.28,
+      }),
+      frameTrace: standard("#6b5941", 0.4, 0.4),
       screenLine: new MeshStandardMaterial({
         color: "#73bdd4",
         emissive: "#447aac",
@@ -1097,10 +1136,12 @@ function Studio(props: RoomProps) {
     <RoomResources.Provider value={resources}>
       <color attach="background" args={["#121a2b"]} />
       <fog attach="fog" args={["#141c30", 20, 55]} />
-      <hemisphereLight args={["#9aa9d5", "#4a4042", 0.7]} />
+      <hemisphereLight
+        args={["#9aa9d5", "#4a4042", props.station === "cv" ? 0.45 : 0.7]}
+      />
       <directionalLight
         position={[5, 8, -3]}
-        intensity={2.5}
+        intensity={props.station === "cv" ? 1.6 : 2.5}
         color="#8194ed"
         castShadow={!props.economy}
         shadow-mapSize={[1024, 1024]}
@@ -1154,8 +1195,21 @@ function Studio(props: RoomProps) {
           active={props.station}
           hovered={props.hovered}
           mobile={props.economy}
+          reduced={props.reduced}
         />
         <SupportingObjects mobile={props.economy} />
+        {!props.economy && (
+          <ContactShadows
+            position={[0, 0.039, 1]}
+            scale={[7.6, 5.9]}
+            opacity={0.4}
+            blur={2.5}
+            far={3}
+            resolution={256}
+            frames={1}
+            color="#101523"
+          />
+        )}
         <MonitorSweep {...props} />
         <InteractionTargets {...props} />
       </group>

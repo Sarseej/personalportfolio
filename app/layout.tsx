@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./after-hours.css";
+import "./living-workstation.css";
 
 export const metadata: Metadata = {
   title: "Sarseej Shrestha — AI/ML Developer",

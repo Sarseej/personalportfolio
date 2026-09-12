@@ -14,3 +14,7 @@ Desktop panels use projected world-space corners to align to the actual monitor 
 Motion is finite: one-second room exposure, a monitor wake sweep during camera travel, layered Projects entry, a one-time chronological Career path and node arrival, a connected-stage pulse on selection, and a gentle CV document settle after arrival. Reduced motion disables these effects. Hover/focus changes localized monitor/paper lighting and dims competing destinations. Paper focus uses warm folio trim and task illumination. No full-screen bloom or postprocessing stack is added; emissive details and local bounce create controlled glow.
 
 Visual review corrected overly dark background architecture and distracting screen specular reflections. Wall/shelf fill reveals material separation without lighting the whole room evenly. Main and secondary displays carry different procedural previews. The promotion detail uses a compact heading to preserve reading space.
+
+## Living Workstation refinement
+
+The opening identity is large editorial sans-serif typography that docks into the persistent header. Destination accents are deliberately localized: cyan for Build, amber for Trace, ivory and task light for Document. Project drawings have distinct topology within one interface. The Career graph uses connected lanes rather than a uniform list. See [[ADR — Living Workstation]].

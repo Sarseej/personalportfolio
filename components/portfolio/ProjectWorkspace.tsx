@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import ProjectVisual from "./ProjectVisual";
 import { projects, projectStories } from "@/lib/content/portfolio";
 
 export default function ProjectWorkspace() {
@@ -67,6 +68,7 @@ export default function ProjectWorkspace() {
               <span>How the system works</span>
               <small>Select a step</small>
             </div>
+            <ProjectVisual project={project.id} stage={stage} />
             <div className="flow-stages">
               {story.stages.map((step, index) => (
                 <button
