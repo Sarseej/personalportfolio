@@ -44,6 +44,8 @@ import {
   type View,
 } from "./atelier-types";
 
+import { warmAero as palette } from "@/lib/visual/warm-aero";
+
 type V3 = [number, number, number];
 type Block = { position: V3; scale: V3; rotation?: V3 };
 type Materials = Record<string, Material>;
@@ -66,7 +68,7 @@ function surfaceTexture(kind: "wood" | "stone") {
           ? Math.sin(y * 0.9 + Math.sin(x * 0.025) * 3) * 9 +
             Math.sin(y * 2.8) * 5
           : Math.sin(x * 73.17 + y * 32.43) * Math.cos(x * 13.9 - y * 11.6) * 7;
-      const base = kind === "wood" ? [89, 58, 40] : [43, 47, 57];
+      const base = kind === "wood" ? palette.woodGrain : palette.stoneGrain;
       pixels.data[index] = base[0] + grain * 0.32;
       pixels.data[index + 1] = base[1] + grain * 0.32;
       pixels.data[index + 2] = base[2] + grain * 0.32;
@@ -646,7 +648,7 @@ function SupportingObjects({ mobile }: { mobile: boolean }) {
     <group position={[4.7, 0, -3.5]}>
       <mesh position={[0, 0.34, 0]} castShadow receiveShadow>
         <cylinderGeometry args={[0.42, 0.3, 0.68, 24]} />
-        <meshStandardMaterial color="#cac4b5" roughness={0.9} />
+        <meshStandardMaterial color={palette.cream} roughness={0.9} />
       </mesh>
       {[0, 1, 2, 3, 4, 5, 6].slice(0, mobile ? 4 : 7).map((i) => (
         <group key={i} rotation={[0, i * 2.4, 0]}>
@@ -663,7 +665,7 @@ function SupportingObjects({ mobile }: { mobile: boolean }) {
             castShadow
           >
             <sphereGeometry args={[1, 12, 8]} />
-            <meshStandardMaterial color="#637e64" roughness={0.85} />
+            <meshStandardMaterial color={palette.olive} roughness={0.85} />
           </mesh>
         </group>
       ))}
@@ -923,7 +925,7 @@ function DestinationLighting({
       <pointLight
         ref={main}
         position={[-1.06, 2.03, 0.26]}
-        color="#70c9ff"
+        color={palette.parchment}
         intensity={reduced ? 1.6 : 0}
         distance={3.4}
         decay={2}
@@ -931,9 +933,7 @@ function DestinationLighting({
       <pointLight
         ref={secondary}
         position={[1.06, 2.03, 0.26]}
-        color={
-          station === "career" || hovered === "career" ? "#f2bd72" : "#969cff"
-        }
+        color={palette.parchment}
         intensity={reduced ? 1.4 : 0}
         distance={3.4}
         decay={2}
@@ -941,7 +941,7 @@ function DestinationLighting({
       <pointLight
         ref={paper}
         position={[-1.7, 2.6, 1.05]}
-        color="#ffe0ab"
+        color={palette.parchment}
         intensity={reduced ? 2.8 : 0}
         distance={3.4}
         decay={2}
@@ -949,7 +949,7 @@ function DestinationLighting({
       <pointLight
         ref={lamp}
         position={[1.8, 2.38, -0.05]}
-        color="#ffd099"
+        color={palette.parchment}
         intensity={reduced ? 5 : 0}
         distance={4}
         decay={2}
@@ -986,7 +986,7 @@ function MonitorSweep({ station, reduced }: RoomProps) {
     <mesh ref={mesh} visible={false}>
       <planeGeometry args={[1.87, 0.055]} />
       <meshBasicMaterial
-        color={station === "career" ? "#f4ce91" : "#a2dfff"}
+        color={palette.parchment}
         transparent
         opacity={0}
         depthWrite={false}
@@ -1010,67 +1010,67 @@ function Studio(props: RoomProps) {
         roughness: 0.38,
         metalness: 0.15,
       }),
-      plaster: standard("#424650", 0.83),
-      limestone: standard("#4b4b50"),
-      seam: standard("#737a77"),
-      bronze: standard("#a68a5e", 0.35, 0.65),
-      metal: standard("#111a25", 0.3, 0.65),
-      cabinet: standard("#455051", 0.5, 0.3),
-      vent: standard("#080f13"),
-      mat: standard("#344245"),
+      plaster: standard(palette.eggshell, 0.83),
+      limestone: standard(palette.cream),
+      seam: standard(palette.taupe),
+      bronze: standard(palette.taupe, 0.35, 0.65),
+      metal: standard(palette.espresso, 0.3, 0.65),
+      cabinet: standard(palette.sand, 0.5, 0.3),
+      vent: standard(palette.ink),
+      mat: standard(palette.sage),
       screenOff: new MeshStandardMaterial({
-        color: "#091623",
-        emissive: "#163d5a",
+        color: palette.cream,
+        emissive: palette.parchment,
         emissiveIntensity: 0.5,
         roughness: 0.78,
         metalness: 0,
       }),
       screenOn: new MeshStandardMaterial({
-        color: "#183747",
-        emissive: "#417db9",
+        color: palette.parchment,
+        emissive: palette.cream,
         emissiveIntensity: 0.45,
         roughness: 0.28,
       }),
       screenTrace: new MeshStandardMaterial({
-        color: "#423323",
-        emissive: "#987248",
+        color: palette.cream,
+        emissive: palette.parchment,
         emissiveIntensity: 0.45,
         roughness: 0.28,
       }),
-      frameTrace: standard("#6b5941", 0.4, 0.4),
+      frameTrace: standard(palette.olive, 0.4, 0.4),
       screenLine: new MeshStandardMaterial({
-        color: "#73bdd4",
-        emissive: "#447aac",
+        color: palette.olive,
+        emissive: palette.sage,
         emissiveIntensity: 0.7,
       }),
       screenLineActive: new MeshStandardMaterial({
-        color: "#b7cfcd",
-        emissive: "#85b9bc",
+        color: palette.cream,
+        emissive: palette.sage,
         emissiveIntensity: 0.2,
       }),
       screenFrameActive: new MeshStandardMaterial({
-        color: "#36566b",
+        color: palette.olive,
         metalness: 0.4,
         roughness: 0.4,
       }),
-      key: standard("#6e7776"),
-      paper: standard("#f1ebde"),
-      folio: standard("#464030"),
-      folioActive: standard("#88684b", 0.5, 0.35),
-      book: standard("#3c5557"),
-      chair: standard("#222a36", 0.78),
+      key: standard(palette.eggshell),
+      paper: standard(palette.parchment),
+      folio: standard(palette.espresso),
+      folioActive: standard(palette.olive, 0.5, 0.35),
+      book: standard(palette.olive),
+      chair: standard(palette.sage, 0.78),
       warmLight: new MeshStandardMaterial({
-        color: "#ead1a1",
-        emissive: "#e1ba77",
+        color: palette.parchment,
+        emissive: palette.cream,
         emissiveIntensity: 1.1,
       }),
       coldLight: new MeshStandardMaterial({
-        color: "#aedbdc",
-        emissive: "#73b5c3",
+        color: palette.parchment,
+        emissive: palette.cream,
         emissiveIntensity: 0.8,
       }),
       glass: new MeshPhysicalMaterial({
-        color: "#9bbbc0",
+        color: palette.glass,
         metalness: 0.15,
         roughness: 0.13,
         transparent: true,
@@ -1079,35 +1079,35 @@ function Studio(props: RoomProps) {
         side: DoubleSide,
         clearcoat: 1,
       }),
-      glassEdge: standard("#91b9bc", 0.2, 0.35),
+      glassEdge: standard(palette.sage, 0.2, 0.35),
       exterior: new MeshStandardMaterial({
-        color: "#17203e",
-        emissive: "#242d5c",
+        color: palette.cream,
+        emissive: palette.parchment,
         emissiveIntensity: 0.65,
       }),
-      exteriorColumn: standard("#141d31"),
-      timeline: standard("#778d8e"),
+      exteriorColumn: standard(palette.taupe),
+      timeline: standard(palette.olive),
       windowGlass: new MeshPhysicalMaterial({
-        color: "#7386bc",
+        color: palette.glass,
         roughness: 0.23,
         metalness: 0.2,
         transparent: true,
         opacity: 0.12,
         depthWrite: false,
       }),
-      recess: standard("#0b1420"),
-      art: standard("#172131", 0.45, 0.15),
+      recess: standard(palette.sand),
+      art: standard(palette.cream, 0.45, 0.15),
       accent: new MeshStandardMaterial({
-        color: "#88d6fa",
-        emissive: "#4b7cd6",
-        emissiveIntensity: 1.8,
+        color: palette.cream,
+        emissive: palette.parchment,
+        emissiveIntensity: 0.35,
       }),
       shelfLight: new MeshStandardMaterial({
-        color: "#e6c799",
-        emissive: "#cb9a57",
+        color: palette.parchment,
+        emissive: palette.cream,
         emissiveIntensity: 1.2,
       }),
-      rug: standard("#777976", 0.98),
+      rug: standard(palette.sand, 0.98),
     };
     return {
       box: new RoundedBoxGeometry(1, 1, 1, 2, 0.012),
@@ -1134,15 +1134,19 @@ function Studio(props: RoomProps) {
   }, [onReady]);
   return (
     <RoomResources.Provider value={resources}>
-      <color attach="background" args={["#121a2b"]} />
-      <fog attach="fog" args={["#141c30", 20, 55]} />
+      <color attach="background" args={[palette.eggshell]} />
+      <fog attach="fog" args={[palette.eggshell, 20, 55]} />
       <hemisphereLight
-        args={["#9aa9d5", "#4a4042", props.station === "cv" ? 0.45 : 0.7]}
+        args={[
+          palette.parchment,
+          palette.taupe,
+          props.station === "cv" ? 0.85 : 1.05,
+        ]}
       />
       <directionalLight
         position={[5, 8, -3]}
-        intensity={props.station === "cv" ? 1.6 : 2.5}
-        color="#8194ed"
+        intensity={props.station === "cv" ? 2.1 : 2.8}
+        color={palette.parchment}
         castShadow={!props.economy}
         shadow-mapSize={[1024, 1024]}
         shadow-radius={3}
@@ -1155,8 +1159,8 @@ function Studio(props: RoomProps) {
       />
       <directionalLight
         position={[-3, 5, 7]}
-        intensity={1.35}
-        color="#dac7ad"
+        intensity={0.85}
+        color={palette.parchment}
       />
       <DestinationLighting {...props} />
       <pointLight
@@ -1164,28 +1168,28 @@ function Studio(props: RoomProps) {
         intensity={6}
         distance={5}
         decay={2}
-        color="#dfb883"
+        color={palette.parchment}
       />
       <pointLight
         position={[3.6, 4.3, -3.9]}
         intensity={8}
         distance={7}
         decay={2}
-        color="#8292db"
+        color={palette.parchment}
       />
       <Environment resolution={64} frames={1} environmentIntensity={0.4}>
         <Lightformer
           position={[0, 6, 3]}
           scale={[9, 4, 1]}
           intensity={2}
-          color="#a5b8ef"
+          color={palette.parchment}
           target={[0, 0, 0]}
         />
         <Lightformer
           position={[5, 4, -6]}
           scale={[5, 5, 1]}
           intensity={3}
-          color="#8991e7"
+          color={palette.parchment}
           target={[0, 1, 0]}
         />
       </Environment>
@@ -1207,7 +1211,7 @@ function Studio(props: RoomProps) {
             far={3}
             resolution={256}
             frames={1}
-            color="#101523"
+            color={palette.espresso}
           />
         )}
         <MonitorSweep {...props} />
@@ -1240,7 +1244,8 @@ export default function AtelierRoom(props: RoomProps) {
         frameloop={props.visible ? "demand" : "never"}
         gl={{ antialias: true, alpha: false, powerPreference: "low-power" }}
         onCreated={({ gl }) => {
-          gl.setClearColor(new Color("#121a2b"));
+          gl.toneMappingExposure = 1.05;
+          gl.setClearColor(new Color(palette.eggshell));
           const lost = (event: Event) => {
             event.preventDefault();
             props.onFailure();

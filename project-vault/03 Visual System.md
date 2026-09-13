@@ -1,5 +1,17 @@
 # Visual system
 
+Current direction: **Warm Aero**, superseding the after-hours palette below. Eggshell architecture, cream surfaces, light warm wood, sage upholstery, espresso hardware, and warm-white morning illumination. Geometry, composition, camera paths and destination interaction systems are preserved.
+
+Palette sources: `app/warm-aero.css` and `lib/visual/warm-aero.ts`. Shared names: eggshell, parchment, cream, sand, taupe, gray, espresso, ink, olive, sage and glass. CSS adds shadow/highlight mixes; Three.js adds wood/stone grain RGB bases. Existing visual layers reference these tokens rather than retaining obsolete literal colors. Standalone favicon uses the same three palette values because SVG is a separate document.
+
+Projects and Career share dimensional pearl title bars, inset highlights, taupe borders, 10px outer corners, cream content surfaces and layered espresso shadows. Projects retains its navigation rail and document/animated preview, adds previous/next project controls and a location strip, and shows selection/technologies in a persistent bottom status bar. Mobile retains its horizontal project selector and fixed reading interface. Career preserves connected lanes, category shapes, dates and the tutoring promotion, with espresso paths and olive selection. CV uses dark ink on parchment.
+
+Texture is confined to procedural wood/stone variation and extremely faint preview stippling. No grain overlays the WebGL canvas or site text. Roughness variation, existing directional/contact shadows, and light material values provide depth. Reduced-motion behavior is unchanged.
+
+Current review: `review/warm-aero/`. `comparison.html` places the room beside the saved pre-change living-workstation screenshot. The attempted fresh baseline capture could not connect to the initial sandboxed preview server; the existing screenshot is explicitly identified as the comparison source. Both fallback posters are captured from the actual recolored scene. No image reference attachment was available; the supplied written art direction and hex palette guided the pass.
+
+## Historical visual direction (superseded)
+
 Current direction: cinematic after-hours studio, retaining full-viewport architecture and desk destinations. Midnight/charcoal surfaces, rich walnut, brushed black metal, ivory paper/textiles, amber task light and concentrated cyan-to-blue-violet computation accents. No cultural ornament, themed lattice, brick identity or whiteboard remains in the current scene.
 
 The composition centers a substantial desk with two independently selectable displays, keyboard, mouse, paper folio and an upholstered professional chair. Shelving, books, acoustic panels, abstract noninteractive artwork and one plant provide balance. A recessed window, subtle evening skyline, ceiling reveal and illuminated built-in shelf establish architectural depth. Rounded furniture, reusable materials, contact shadows and subdued procedural grain support scale and ground contact.

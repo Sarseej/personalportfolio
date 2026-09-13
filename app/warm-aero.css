@@ -1,0 +1,350 @@
+/* Warm Aero: pearl chrome, paper surfaces, espresso detail. */
+:root {
+  --aero-eggshell: #e9e1d2;
+  --aero-parchment: #f7f2e8;
+  --aero-cream: #efe7d8;
+  --aero-sand: #d2c4ad;
+  --aero-taupe: #a99a84;
+  --aero-gray: #807568;
+  --aero-espresso: #463a30;
+  --aero-ink: #29251f;
+  --aero-olive: #68705a;
+  --aero-sage: #89917b;
+  --aero-glass: #81939a;
+  --aero-shadow: color-mix(in srgb, var(--aero-espresso) 26%, transparent);
+  --aero-highlight: color-mix(in srgb, var(--aero-parchment) 85%, transparent);
+}
+:root {
+  --paper: var(--aero-parchment);
+  --ink: var(--aero-ink);
+  --muted: var(--aero-espresso);
+  --line: var(--aero-taupe);
+}
+body,
+.atelier {
+  color: var(--aero-ink);
+  background: var(--aero-eggshell);
+}
+::selection {
+  background: var(--aero-sand);
+  color: var(--aero-ink);
+}
+* {
+  scrollbar-color: var(--aero-taupe) var(--aero-cream);
+  scrollbar-width: thin;
+}
+.room-view .room-vignette {
+  background:
+    linear-gradient(
+      180deg,
+      var(--aero-highlight),
+      transparent 36%,
+      transparent 70%,
+      var(--aero-highlight)
+    ),
+    linear-gradient(90deg, var(--aero-highlight), transparent 45%);
+}
+.station-focused .room-vignette,
+[data-station="cv"] .room-vignette {
+  background: linear-gradient(
+    var(--aero-highlight),
+    transparent 18%,
+    transparent 90%,
+    var(--aero-shadow)
+  );
+}
+.entrance-copy h1 {
+  color: var(--aero-ink);
+  text-shadow: none;
+}
+.entrance-copy > .overline,
+.entrance-copy > p:not(.overline),
+.workspace-footer,
+.render-status,
+.identity small {
+  color: var(--aero-espresso);
+}
+.atelier-header nav {
+  padding: 0 18px;
+  border: 1px solid var(--aero-taupe);
+  border-radius: 8px;
+  background: linear-gradient(var(--aero-highlight), var(--aero-eggshell));
+  box-shadow:
+    inset 0 1px var(--aero-parchment),
+    0 5px 16px var(--aero-shadow);
+}
+.atelier-header nav a[aria-current="page"],
+.station-focused .atelier-header nav a[aria-current="page"] {
+  color: var(--aero-ink);
+  border-color: var(--aero-olive);
+}
+.entrance-actions button,
+.station-controls,
+.station-marker {
+  color: var(--aero-ink);
+  border: 1px solid var(--aero-taupe);
+  border-radius: 8px;
+  background: linear-gradient(
+    var(--aero-parchment),
+    var(--aero-eggshell) 48%,
+    var(--aero-sand)
+  );
+  box-shadow:
+    inset 0 1px var(--aero-parchment),
+    0 5px 18px var(--aero-shadow);
+}
+.station-marker.is-hovered,
+.station-controls button:hover {
+  background: var(--aero-cream);
+  color: var(--aero-ink);
+  border-color: var(--aero-olive);
+}
+.station-marker > span,
+.station-marker i,
+.station-marker.is-hovered > span,
+.station-marker.is-hovered i,
+.station-controls button small {
+  color: var(--aero-espresso);
+}
+.object-interface {
+  border: 1px solid var(--aero-espresso);
+  border-radius: 10px;
+  padding: 5px;
+  background: var(--aero-sand);
+  box-shadow:
+    inset 0 0 0 1px var(--aero-highlight),
+    0 18px 55px var(--aero-shadow),
+    0 3px 9px var(--aero-shadow);
+}
+.interface-projects,
+.interface-career {
+  color-scheme: light;
+  color: var(--aero-ink);
+  background: linear-gradient(120deg, var(--aero-eggshell), var(--aero-sand));
+}
+.object-interface .interface-toolbar {
+  background: linear-gradient(
+    var(--aero-highlight),
+    var(--aero-eggshell) 48%,
+    var(--aero-sand) 52%,
+    var(--aero-eggshell)
+  );
+  border: 0;
+  border-bottom: 1px solid var(--aero-taupe);
+  border-radius: 6px 6px 0 0;
+  height: 46px;
+  padding: 0 14px;
+  gap: 16px;
+  text-shadow: 0 1px var(--aero-parchment);
+}
+.interface-toolbar h1::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  vertical-align: -1px;
+  border: 1px solid var(--aero-espresso);
+  border-radius: 2px;
+  background: linear-gradient(var(--aero-parchment) 30%, var(--aero-sage) 31%);
+}
+.object-interface .interface-toolbar > button,
+.explorer-location button {
+  color: var(--aero-ink);
+  border: 1px solid var(--aero-taupe);
+  border-radius: 5px;
+  background: linear-gradient(var(--aero-parchment), var(--aero-sand));
+  box-shadow:
+    inset 0 1px var(--aero-highlight),
+    0 1px 2px var(--aero-shadow);
+}
+.object-interface .interface-toolbar > span {
+  color: var(--aero-espresso);
+}
+.interface-content {
+  background: var(--aero-parchment);
+  border: 1px solid var(--aero-taupe);
+  border-radius: 0 0 5px 5px;
+}
+.project-rail {
+  background: linear-gradient(100deg, var(--aero-cream), var(--aero-eggshell));
+}
+.project-rail button {
+  border-radius: 5px;
+  color: var(--aero-ink);
+}
+.project-rail button[aria-pressed="true"] {
+  background: linear-gradient(var(--aero-parchment), var(--aero-sand));
+  border: 1px solid var(--aero-taupe);
+  border-left: 3px solid var(--aero-olive);
+  border-radius: 5px;
+  box-shadow:
+    inset 0 1px var(--aero-highlight),
+    0 2px 4px var(--aero-shadow);
+}
+.project-reading {
+  background: var(--aero-parchment);
+}
+.explorer-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: -12px 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--aero-sand);
+  font-size: 11px;
+}
+.explorer-location button {
+  width: 32px;
+  height: 30px;
+  flex-shrink: 0;
+}
+.explorer-location button:disabled {
+  opacity: 0.45;
+}
+.explorer-location span {
+  padding: 5px 10px;
+  background: var(--aero-cream);
+  border: 1px solid var(--aero-sand);
+  border-radius: 4px;
+}
+.project-reading h2,
+.interface-career h2 {
+  color: var(--aero-ink);
+}
+.flow-diagram {
+  background-color: var(--aero-cream);
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--aero-espresso) 6%, transparent) 0.4px,
+    transparent 0.6px
+  );
+  background-size: 5px 5px;
+  border: 1px solid var(--aero-taupe);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 1px var(--aero-parchment),
+    0 3px 8px var(--aero-shadow);
+}
+.project-visual svg {
+  color: var(--aero-olive);
+}
+.project-visual svg rect,
+.project-visual svg circle {
+  fill: var(--aero-parchment);
+}
+.project-visual svg .diagram-emphasis {
+  color: var(--aero-espresso);
+  filter: none;
+}
+.flow-stages button {
+  border-radius: 5px;
+  background: linear-gradient(var(--aero-parchment), var(--aero-eggshell));
+}
+.flow-stages button[aria-pressed="true"],
+.flow-stages button[aria-pressed="true"]:hover {
+  color: var(--aero-ink);
+  background: linear-gradient(var(--aero-eggshell), var(--aero-sand));
+  border-color: var(--aero-olive);
+  box-shadow: inset 0 1px var(--aero-parchment);
+}
+.technology-list {
+  padding: 8px;
+  background: var(--aero-eggshell);
+  border-block: 1px solid var(--aero-taupe);
+}
+.technology-list li {
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--aero-taupe);
+}
+.career-workspace {
+  background: var(--aero-cream);
+}
+.history-thread,
+.is-connected .history-thread {
+  stroke: var(--aero-espresso);
+}
+.history-graph .timeline-dot {
+  background: var(--aero-taupe);
+  border-color: var(--aero-espresso);
+  box-shadow: 0 0 0 3px var(--aero-cream);
+}
+.history-graph .is-current .timeline-dot {
+  background: var(--aero-olive);
+  box-shadow: 0 0 0 3px var(--aero-eggshell);
+}
+.history-graph .is-current button {
+  background: linear-gradient(var(--aero-parchment), var(--aero-eggshell));
+  border-color: var(--aero-taupe);
+  border-radius: 6px;
+}
+.interface-career .career-detail {
+  border: 1px solid var(--aero-taupe);
+  border-top: 5px solid var(--aero-sage);
+  border-radius: 8px;
+  background: linear-gradient(var(--aero-eggshell), var(--aero-parchment) 65px);
+  box-shadow:
+    inset 0 1px var(--aero-parchment),
+    0 8px 20px var(--aero-shadow);
+}
+.interface-career .promotion-milestone {
+  color: var(--aero-espresso);
+}
+.object-interface button:hover,
+.object-interface a:hover {
+  color: var(--aero-ink);
+}
+@media (max-width: 700px) {
+  .atelier-header nav {
+    padding: 3px 10px;
+  }
+  .object-interface .interface-toolbar {
+    padding: 0 8px;
+    gap: 10px;
+  }
+  .explorer-location {
+    margin-top: -5px;
+    font-size: 10px;
+  }
+  .explorer-location span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.projects-workspace {
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+.explorer-status {
+  grid-column: 1 / -1;
+  flex-shrink: 0;
+  padding: 5px 14px;
+  border-top: 1px solid var(--aero-taupe);
+  background: linear-gradient(var(--aero-cream), var(--aero-eggshell));
+  color: var(--aero-espresso);
+  font-size: 10px;
+}
+.interface-career .timeline-legend .kind-experience span {
+  background: var(--aero-olive);
+}
+.interface-career .timeline-legend .kind-project span {
+  background: var(--aero-taupe);
+}
+.interface-career .timeline-legend .kind-education span {
+  border-color: var(--aero-espresso);
+}
+.history-graph .kind-project .timeline-dot,
+.history-graph .kind-education .timeline-dot {
+  border-color: var(--aero-espresso);
+}
+.cv-document,
+.standalone-cv,
+.interface-cv {
+  color: var(--aero-ink);
+}
+.cv-summary,
+.cv-date,
+.cv-document footer {
+  color: var(--aero-espresso);
+}
