@@ -35,6 +35,29 @@ export default function ProjectWorkspace() {
       </nav>
       <div className="project-reading" key={project.id}>
         <article>
+          <div className="explorer-location" aria-label="Project location">
+            <button
+              aria-label="Previous project"
+              disabled={selected === 0}
+              onClick={() => {
+                setSelected(selected - 1);
+                setStage(0);
+              }}
+            >
+              ←
+            </button>
+            <button
+              aria-label="Next project"
+              disabled={selected === projects.length - 1}
+              onClick={() => {
+                setSelected(selected + 1);
+                setStage(0);
+              }}
+            >
+              →
+            </button>
+            <span>Projects / {project.title}</span>
+          </div>
           <p className="overline">
             {project.category} <span> / {project.date}</span>
           </p>
@@ -124,6 +147,10 @@ export default function ProjectWorkspace() {
           </ul>
         </article>
       </div>
+      <footer className="explorer-status" aria-live="polite">
+        {selected + 1} of {projects.length} · {project.title} ·{" "}
+        {story.technologies.slice(0, 3).join(" / ")}
+      </footer>
     </div>
   );
 }

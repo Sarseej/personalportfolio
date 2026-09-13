@@ -44,32 +44,32 @@
   font-weight: 800;
 }
 [data-station="career"] {
-  --mode-accent: #e7bd7b;
+  --mode-accent: var(--aero-olive);
 }
 [data-station="projects"] {
-  --mode-accent: #94def8;
+  --mode-accent: var(--aero-olive);
 }
 [data-station="cv"] {
-  --mode-accent: #f0dab5;
+  --mode-accent: var(--aero-olive);
 }
 .station-focused .atelier-header nav a[aria-current="page"] {
   color: var(--mode-accent);
   border-color: var(--mode-accent);
 }
 [data-station="cv"] .room-vignette {
-  background: #060b1640;
+  background: color-mix(in srgb, var(--aero-cream) 25.1%, transparent);
   transition: background 0.7s;
 }
 .interface-career {
   box-shadow:
-    0 0 0 1px #b494644a,
-    0 12px 65px #01091880;
+    0 0 0 1px color-mix(in srgb, var(--aero-espresso) 29%, transparent),
+    0 12px 65px color-mix(in srgb, var(--aero-espresso) 50.2%, transparent);
 }
 .interface-career .interface-toolbar {
-  border-bottom-color: #ad875847;
+  border-bottom-color: color-mix(in srgb, var(--aero-taupe) 27.8%, transparent);
 }
 .interface-career .overline {
-  color: #dec69b;
+  color: var(--aero-espresso);
 }
 .project-visual {
   margin: 5px 0 18px;
@@ -79,12 +79,12 @@
   width: 100%;
   height: auto;
   max-height: 175px;
-  color: #688f9f;
+  color: var(--aero-olive);
 }
 .project-visual svg path,
 .project-visual svg rect,
 .project-visual svg circle {
-  fill: #142533;
+  fill: var(--aero-olive);
   stroke: currentColor;
   stroke-width: 1.4;
   vector-effect: non-scaling-stroke;
@@ -93,52 +93,54 @@
   fill: none;
 }
 .project-visual svg .diagram-wire {
-  stroke: #486374;
+  stroke: var(--aero-olive);
 }
 .project-visual svg .diagram-emphasis {
-  color: #abedff;
-  filter: drop-shadow(0 0 4px #59b6d344);
+  color: var(--aero-espresso);
+  filter: drop-shadow(
+    0 0 4px color-mix(in srgb, var(--aero-eggshell) 26.7%, transparent)
+  );
 }
 .project-visual .human-gate {
-  color: #e2be86;
+  color: var(--aero-espresso);
 }
 .project-visual svg .human-gate path {
-  fill: #332d26;
+  fill: var(--aero-olive);
 }
 .project-visual svg .human-gate path + path {
   fill: none;
 }
 .project-visual svg .reader-contours path:nth-child(2) {
-  stroke: #d9c8a9;
+  stroke: var(--aero-espresso);
 }
 .project-visual svg .reader-contours path:nth-child(3) {
-  stroke: #939fce;
+  stroke: var(--aero-espresso);
   stroke-dasharray: 4 3;
 }
 .project-visual svg .uncertainty-branch {
-  color: #d5bd92;
+  color: var(--aero-espresso);
 }
 .project-visual svg .structural-mesh path {
   stroke-width: 0.85;
   animation: mesh-resolve 0.65s calc(var(--mesh-order, 0) * 35ms) both;
 }
 .project-visual svg .structural-support {
-  stroke: #e2be86;
+  stroke: var(--aero-espresso);
 }
 .project-visual svg .baseline-path {
-  stroke: #e2be86;
+  stroke: var(--aero-espresso);
   stroke-width: 2;
   stroke-dasharray: 4 4;
 }
 .project-visual figcaption {
-  color: #c1cbd2;
+  color: var(--aero-espresso);
   font-size: 12px;
   line-height: 1.65;
   max-width: 650px;
 }
 .project-visual figcaption span {
   display: block;
-  color: #98b6c7;
+  color: var(--aero-espresso);
   font-size: 10px;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -178,53 +180,54 @@
   vector-effect: non-scaling-stroke;
 }
 .history-rails {
-  stroke: #71859b20;
+  stroke: color-mix(in srgb, var(--aero-olive) 12.5%, transparent);
   stroke-width: 1;
 }
 .history-thread {
-  stroke: #9b886d;
+  stroke: var(--aero-olive);
   stroke-width: 1.5;
   stroke-dasharray: 1;
   animation: history-draw 0.8s ease-out both;
   animation-delay: calc(var(--node-order) * 60ms);
 }
 .is-connected .history-thread {
-  stroke: #e3bd80;
+  stroke: var(--aero-espresso);
 }
 .history-graph .timeline-dot {
   margin-left: calc(var(--lane) - 4.5px);
   z-index: 1;
   width: 9px;
   height: 9px;
-  background: #151e2c;
-  border-color: #d0ad77;
+  background: var(--aero-cream);
+  border-color: var(--aero-taupe);
 }
 .history-graph .kind-project .timeline-dot {
   border-radius: 2px;
-  border-color: #9dbacb;
+  border-color: var(--aero-taupe);
 }
 .history-graph .kind-education .timeline-dot {
-  border-color: #ece0c7;
+  border-color: var(--aero-taupe);
 }
 .history-graph .is-current .timeline-dot {
-  background: #e8c68d;
-  box-shadow: 0 0 16px #e4ac5750;
+  background: var(--aero-eggshell);
+  box-shadow: 0 0 16px
+    color-mix(in srgb, var(--aero-espresso) 31.4%, transparent);
 }
 .history-graph .timeline-pulse {
-  border-color: #e8c68d;
+  border-color: var(--aero-taupe);
 }
 .history-graph .is-current button {
-  background: #d4b97a0b;
-  border-color: #b6996940;
+  background: color-mix(in srgb, var(--aero-eggshell) 4.3%, transparent);
+  border-color: color-mix(in srgb, var(--aero-taupe) 25.1%, transparent);
 }
 .history-graph button:hover {
-  background: #d4b97a10;
+  background: color-mix(in srgb, var(--aero-eggshell) 6.3%, transparent);
 }
 .interface-career .career-detail {
-  border-color: #af97704d;
+  border-color: color-mix(in srgb, var(--aero-taupe) 30.2%, transparent);
 }
 .interface-career .promotion-milestone {
-  color: #efd4a6;
+  color: var(--aero-espresso);
 }
 @keyframes identity-receive {
   from {
@@ -327,26 +330,26 @@
 }
 
 .history-graph .timeline-dot {
-  border: 1.5px solid #d0ad77;
+  border: 1.5px solid var(--aero-taupe);
 }
 .history-graph .kind-project .timeline-dot {
-  border-color: #9dbacb;
+  border-color: var(--aero-taupe);
 }
 .history-graph .kind-education .timeline-dot {
-  border-color: #ece0c7;
+  border-color: var(--aero-taupe);
   border-width: 2px;
 }
 .interface-career .timeline-legend .kind-experience span {
-  background: #d0ad77;
+  background: var(--aero-eggshell);
 }
 .interface-career .timeline-legend .kind-project span {
-  background: #9dbacb;
+  background: var(--aero-eggshell);
   border-radius: 1px;
   transform: rotate(45deg);
 }
 .interface-career .timeline-legend .kind-education span {
   background: transparent;
-  border: 1.5px solid #ece0c7;
+  border: 1.5px solid var(--aero-taupe);
 }
 .identity-entering .opening-identity {
   max-height: 130px;

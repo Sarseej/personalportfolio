@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
-  --paper: #f0eadc;
-  --ink: #1d282b;
-  --muted: #c2c9c5;
-  --bronze: #caa778;
-  --line: #d5dfd22b;
+  color-scheme: light;
+  --paper: var(--aero-parchment);
+  --ink: var(--aero-ink);
+  --muted: var(--aero-espresso);
+  --bronze: var(--aero-olive);
+  --line: color-mix(in srgb, var(--aero-espresso) 16.9%, transparent);
 }
 * {
   box-sizing: border-box;
@@ -18,7 +18,7 @@ html {
 }
 body {
   margin: 0;
-  background: #253236;
+  background: var(--aero-cream);
   color: var(--paper);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
@@ -42,12 +42,12 @@ a {
 button:focus-visible,
 a:focus-visible,
 summary:focus-visible {
-  outline: 2px solid #f4c883;
+  outline: 2px solid var(--aero-eggshell);
   outline-offset: 5px;
 }
 button:hover,
 a:hover {
-  color: #ffe3b8;
+  color: var(--aero-espresso);
 }
 h1,
 h2,
@@ -98,7 +98,7 @@ button:disabled {
   min-height: 650px;
   isolation: isolate;
   overflow: hidden;
-  background: #374548;
+  background: var(--aero-sand);
 }
 .room-backdrop,
 .architectural-scene,
@@ -124,17 +124,22 @@ button:disabled {
   background:
     linear-gradient(
       180deg,
-      #102025b8 0%,
-      #17272926 22%,
+      color-mix(in srgb, var(--aero-cream) 72.2%, transparent) 0%,
+      color-mix(in srgb, var(--aero-cream) 14.9%, transparent) 22%,
       transparent 50%,
-      #15252a18 69%,
-      #101e26d4 100%
+      color-mix(in srgb, var(--aero-cream) 9.4%, transparent) 69%,
+      color-mix(in srgb, var(--aero-cream) 83.1%, transparent) 100%
     ),
-    linear-gradient(90deg, #101e288f 0%, #17262730 29%, transparent 60%);
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--aero-cream) 56.1%, transparent) 0%,
+      color-mix(in srgb, var(--aero-cream) 18.8%, transparent) 29%,
+      transparent 60%
+    );
   transition: background-color 0.5s;
 }
 .station-focused .room-vignette {
-  background-color: #0c1a2526;
+  background-color: color-mix(in srgb, var(--aero-cream) 14.9%, transparent);
 }
 .atelier-header {
   position: absolute;
@@ -158,11 +163,11 @@ button:disabled {
   letter-spacing: -0.045em;
 }
 .identity-dot {
-  color: #e3bc83;
+  color: var(--aero-espresso);
 }
 .identity small {
   font-size: 9px;
-  color: #e2e4db;
+  color: var(--aero-espresso);
   letter-spacing: 0.035em;
 }
 .atelier-header nav {
@@ -184,12 +189,13 @@ button:disabled {
   z-index: 20;
 }
 .entrance-copy .eyebrow {
-  color: #e5cda7;
+  color: var(--aero-espresso);
   margin-bottom: 18px;
 }
 .entrance-copy h1 {
   font-size: clamp(30px, 3.05vw, 47px);
-  text-shadow: 0 2px 25px #18272b44;
+  text-shadow: 0 2px 25px
+    color-mix(in srgb, var(--aero-espresso) 26.7%, transparent);
 }
 .entrance-actions {
   display: flex;
@@ -202,7 +208,7 @@ button:disabled {
 .entrance-actions button {
   background: var(--paper);
   border: 0;
-  color: #243235;
+  color: var(--aero-olive);
   padding: 11px 17px;
   display: flex;
   gap: 26px;
@@ -210,11 +216,12 @@ button:disabled {
   font-weight: 600;
 }
 .entrance-actions button:hover {
-  background: #fff7e8;
+  background: var(--aero-parchment);
 }
 .entrance-actions a {
   padding-block: 8px;
-  border-bottom: 1px solid #d9d8c96b;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--aero-taupe) 42%, transparent);
 }
 .is-exploring .entrance-copy {
   display: none;
@@ -228,11 +235,12 @@ button:disabled {
   align-items: center;
   gap: 10px;
   white-space: nowrap;
-  border: 1px solid #dce4d473;
-  background: #213136ed;
-  color: #f2eee2;
+  border: 1px solid color-mix(in srgb, var(--aero-taupe) 45.1%, transparent);
+  background: color-mix(in srgb, var(--aero-cream) 92.9%, transparent);
+  color: var(--aero-espresso);
   padding: 10px 13px;
-  box-shadow: 0 7px 25px #17202026;
+  box-shadow: 0 7px 25px
+    color-mix(in srgb, var(--aero-espresso) 14.9%, transparent);
   transform: translateY(-15px);
   transition:
     background 0.2s,
@@ -248,35 +256,35 @@ button:disabled {
   left: 50%;
   width: 1px;
   height: 20px;
-  background: #d9d4bc;
+  background: var(--aero-eggshell);
 }
 .station-marker > span {
   font-size: 8px;
-  color: #e3bf8b;
+  color: var(--aero-espresso);
 }
 .station-marker strong {
   font-weight: 500;
 }
 .station-marker i {
   font-style: normal;
-  color: #e3bf8b;
+  color: var(--aero-espresso);
 }
 .station-marker.is-hovered {
-  background: #f0eadb;
-  color: #203237;
-  border-color: #e7bf80;
+  background: var(--aero-parchment);
+  color: var(--aero-olive);
+  border-color: var(--aero-taupe);
   transform: translateY(-20px);
 }
 .station-marker.is-hovered > span,
 .station-marker.is-hovered i {
-  color: #74512a;
+  color: var(--aero-olive);
 }
 .discovery-cue {
   position: absolute;
   bottom: 129px;
   left: 40px;
   z-index: 20;
-  color: #f2e7d1;
+  color: var(--aero-espresso);
   font-size: 11px;
   opacity: 0;
   transform: translateY(4px);
@@ -303,29 +311,30 @@ button:disabled {
 .workspace-caption {
   font-size: 10px;
   letter-spacing: 0.015em;
-  color: #edf0e6;
+  color: var(--aero-espresso);
   max-width: 310px;
 }
 .workspace-caption small {
   display: block;
   margin-top: 7px;
-  color: #cad2ce;
+  color: var(--aero-espresso);
   font-size: 8px;
 }
 .room-indicator {
   width: 5px;
   height: 5px;
   display: inline-block;
-  background: #b1d2ce;
+  background: var(--aero-eggshell);
   margin-right: 8px;
   vertical-align: middle;
 }
 .station-controls {
   display: flex;
   gap: 0;
-  border-top: 1px solid #e2e5d66b;
-  border-bottom: 1px solid #e2e5d63d;
-  background: #152b329c;
+  border-top: 1px solid color-mix(in srgb, var(--aero-taupe) 42%, transparent);
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--aero-taupe) 23.9%, transparent);
+  background: color-mix(in srgb, var(--aero-cream) 61.2%, transparent);
 }
 .station-controls button {
   background: transparent;
@@ -340,20 +349,21 @@ button:disabled {
   transition: background 0.2s;
 }
 .station-controls button + button {
-  border-left: 1px solid #dde2d32b;
+  border-left: 1px solid
+    color-mix(in srgb, var(--aero-taupe) 16.9%, transparent);
 }
 .station-controls button:hover,
 .station-controls button[aria-pressed="true"] {
-  background: #e7ddc7;
-  color: #233338;
+  background: var(--aero-parchment);
+  color: var(--aero-olive);
 }
 .station-number {
   font-size: 8px;
-  color: #d4b78d;
+  color: var(--aero-espresso);
 }
 .station-controls button:hover .station-number,
 .station-controls button[aria-pressed="true"] .station-number {
-  color: #755a34;
+  color: var(--aero-olive);
 }
 .station-control-arrow {
   font-size: 13px;
@@ -365,12 +375,13 @@ button:disabled {
   top: 120px;
   bottom: 114px;
   width: min(540px, 44vw);
-  background: #f1ecdf;
-  color: #243235;
-  box-shadow: 0 20px 70px #0a171e38;
+  background: var(--aero-parchment);
+  color: var(--aero-olive);
+  box-shadow: 0 20px 70px
+    color-mix(in srgb, var(--aero-espresso) 22%, transparent);
   display: flex;
   flex-direction: column;
-  border-top: 3px solid #bd9769;
+  border-top: 3px solid var(--aero-taupe);
   animation: panel-appear 0.35s ease-out;
 }
 .station-panel:before {
@@ -380,11 +391,12 @@ button:disabled {
   height: 1px;
   right: 100%;
   top: 92px;
-  background: #e8d2b0aa;
+  background: color-mix(in srgb, var(--aero-eggshell) 66.7%, transparent);
 }
 .panel-topline {
   padding: 20px 27px 16px;
-  border-bottom: 1px solid #263c3a26;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--aero-taupe) 14.9%, transparent);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -392,21 +404,21 @@ button:disabled {
 }
 .panel-topline .eyebrow {
   font-size: 8px;
-  color: #635a49;
+  color: var(--aero-olive);
 }
 .back-button {
   border: 0;
   background: transparent;
-  color: #334343;
+  color: var(--aero-olive);
   font-size: 10px;
   padding: 5px 0;
 }
 .back-button:hover {
-  color: #775327;
+  color: var(--aero-olive);
 }
 kbd {
   font-family: inherit;
-  border: 1px solid #73695455;
+  border: 1px solid color-mix(in srgb, var(--aero-taupe) 33.3%, transparent);
   padding: 1px 4px;
   margin-left: 6px;
   font-size: 8px;
@@ -416,7 +428,7 @@ kbd {
   overscroll-behavior: contain;
   padding: 27px;
   scrollbar-width: thin;
-  scrollbar-color: #9b998a transparent;
+  scrollbar-color: var(--aero-eggshell) transparent;
 }
 .panel-body h2 {
   font-size: 38px;
@@ -431,7 +443,7 @@ kbd {
   line-height: 1.8;
 }
 .panel-intro {
-  color: #53645c;
+  color: var(--aero-olive);
 }
 .project-selector {
   display: grid;
@@ -440,29 +452,29 @@ kbd {
   margin: 24px 0 30px;
 }
 .project-selector button {
-  border: 1px solid #7a86795c;
+  border: 1px solid color-mix(in srgb, var(--aero-taupe) 36.1%, transparent);
   padding: 10px 12px;
   text-align: left;
   background: transparent;
-  color: #3e504e;
+  color: var(--aero-olive);
   font-size: 11px;
   min-height: 42px;
 }
 .project-selector button[aria-pressed="true"] {
-  background: #2c4549;
-  color: #f2efdf;
-  border-color: #2c4549;
+  background: var(--aero-cream);
+  color: var(--aero-espresso);
+  border-color: var(--aero-taupe);
 }
 .project-selector button:hover {
-  border-color: #7d6444;
-  color: #70512d;
+  border-color: var(--aero-taupe);
+  color: var(--aero-olive);
 }
 .project-selector button[aria-pressed="true"]:hover {
-  color: #fff;
+  color: var(--aero-espresso);
 }
 .case-preview .eyebrow {
   font-size: 8px;
-  color: #56634f;
+  color: var(--aero-olive);
 }
 .case-preview h3 {
   font-family: Georgia, "Times New Roman", serif;
@@ -477,19 +489,19 @@ kbd {
 }
 .case-preview .case-lead {
   font-size: 15px;
-  color: #53615b;
+  color: var(--aero-olive);
 }
 .case-insight {
   padding: 16px 18px;
-  border-left: 2px solid #a58761;
-  background: #e5e0d2;
+  border-left: 2px solid var(--aero-taupe);
+  background: var(--aero-parchment);
   margin: 20px 0;
 }
 .case-insight span {
   font-size: 8px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: #5e5544;
+  color: var(--aero-olive);
 }
 .case-insight p {
   font-size: 13px;
@@ -500,7 +512,7 @@ kbd {
   margin: 22px 0 8px;
 }
 details {
-  border-top: 1px solid #87917f55;
+  border-top: 1px solid color-mix(in srgb, var(--aero-taupe) 33.3%, transparent);
   margin-top: 18px;
   padding-top: 3px;
 }
@@ -532,12 +544,13 @@ details p {
   gap: 8px;
   padding: 22px 0;
   margin-bottom: 20px;
-  border-block: 1px solid #7c8c7755;
+  border-block: 1px solid
+    color-mix(in srgb, var(--aero-taupe) 33.3%, transparent);
   font-size: 11px;
 }
 .concept-flow b {
   font-weight: 400;
-  color: #96723f;
+  color: var(--aero-olive);
 }
 blockquote {
   margin: 25px 0;
@@ -545,13 +558,13 @@ blockquote {
   font-size: 26px;
   line-height: 1.3;
   letter-spacing: -0.025em;
-  border-left: 2px solid #ac956f;
+  border-left: 2px solid var(--aero-taupe);
   padding-left: 22px;
 }
 .panel-footnote {
   font-size: 11px !important;
-  color: #6b746b;
-  border-top: 1px solid #7b8c7955;
+  color: var(--aero-olive);
+  border-top: 1px solid color-mix(in srgb, var(--aero-taupe) 33.3%, transparent);
   padding-top: 20px;
 }
 .static-library {
@@ -606,7 +619,8 @@ blockquote {
   margin-top: 20px;
 }
 .resume .text-link {
-  border-bottom: 1px solid #caa77880;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--aero-taupe) 50.2%, transparent);
   padding-bottom: 5px;
   font-size: 13px;
 }
@@ -737,11 +751,11 @@ blockquote {
   .room-vignette {
     background: linear-gradient(
       180deg,
-      #14262bea 0%,
-      #172b2f8c 25%,
+      color-mix(in srgb, var(--aero-cream) 91.8%, transparent) 0%,
+      color-mix(in srgb, var(--aero-cream) 54.9%, transparent) 25%,
       transparent 50%,
-      #0d222c22 71%,
-      #11232cfa 100%
+      color-mix(in srgb, var(--aero-cream) 13.3%, transparent) 71%,
+      color-mix(in srgb, var(--aero-cream) 98%, transparent) 100%
     );
   }
   .station-marker {
@@ -838,7 +852,12 @@ blockquote {
     display: none;
   }
   .station-focused .room-vignette {
-    background: linear-gradient(180deg, #14262bd9, transparent 45%, #13252c55);
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--aero-cream) 85.1%, transparent),
+      transparent 45%,
+      color-mix(in srgb, var(--aero-cream) 33.3%, transparent)
+    );
   }
   .resume h1 {
     font-size: 37px;
@@ -857,8 +876,8 @@ blockquote {
 }
 @media print {
   body {
-    background: white;
-    color: #172729;
+    background: var(--aero-parchment);
+    color: var(--aero-olive);
     font-size: 11px;
   }
   .resume {
@@ -883,13 +902,13 @@ blockquote {
   .resume article {
     break-inside: avoid;
     padding: 12px 0;
-    border-color: #ccc;
+    border-color: var(--aero-taupe);
   }
   .resume article p {
     font-size: 11px;
   }
   .resume .project-date {
-    color: #444;
+    color: var(--aero-olive);
   }
   a {
     color: inherit;
@@ -926,8 +945,8 @@ blockquote {
   letter-spacing: 0.02em;
 }
 .atelier-header nav a[aria-current="page"] {
-  border-bottom: 1px solid #dfc098;
-  color: #fff4dc;
+  border-bottom: 1px solid var(--aero-taupe);
+  color: var(--aero-espresso);
 }
 .overline {
   text-transform: uppercase;
@@ -937,7 +956,7 @@ blockquote {
 }
 .entrance-copy > .overline {
   margin-bottom: 14px;
-  color: #eee4d2;
+  color: var(--aero-espresso);
 }
 .entrance-copy > p:not(.overline) {
   margin-top: 14px;
@@ -945,7 +964,7 @@ blockquote {
 }
 .physical-cv {
   display: block;
-  color: #333b3b;
+  color: var(--aero-olive);
   font: 22px Georgia;
   pointer-events: none;
 }
@@ -962,17 +981,17 @@ blockquote {
   display: block;
   font-size: 9px;
   font-weight: 400;
-  color: #d2d6cf;
+  color: var(--aero-espresso);
 }
 .station-controls button {
   min-width: 138px;
 }
 .station-focused .room-vignette {
   background: linear-gradient(
-    #101a24a6,
+    color-mix(in srgb, var(--aero-cream) 65.1%, transparent),
     transparent 15%,
     transparent 90%,
-    #101a2444
+    color-mix(in srgb, var(--aero-cream) 26.7%, transparent)
   );
 }
 .object-interface {
@@ -982,9 +1001,10 @@ blockquote {
   width: var(--screen-width, 80%);
   height: var(--screen-height, 78%);
   z-index: 25;
-  color: #263332;
-  background: #f1f0e9;
-  box-shadow: 0 2px 12px #0003;
+  color: var(--aero-olive);
+  background: var(--aero-parchment);
+  box-shadow: 0 2px 12px
+    color-mix(in srgb, var(--aero-espresso) 20%, transparent);
   overflow: hidden;
   opacity: 0;
   transition: opacity 0.22s ease;
@@ -999,12 +1019,12 @@ blockquote {
 }
 .object-interface a:hover,
 .object-interface button:hover {
-  color: #345f66;
+  color: var(--aero-olive);
 }
 .object-interface button:focus-visible,
 .object-interface a:focus-visible,
 .object-interface summary:focus-visible {
-  outline-color: #266772;
+  outline-color: var(--aero-olive);
   outline-offset: 3px;
 }
 .object-interface h1:focus {
@@ -1016,9 +1036,10 @@ blockquote {
   display: flex;
   align-items: center;
   gap: 22px;
-  border-bottom: 1px solid #26333224;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--aero-taupe) 14.1%, transparent);
   padding: 0 22px;
-  background: #e5e8e1;
+  background: var(--aero-parchment);
 }
 .interface-toolbar button {
   background: transparent;
@@ -1035,7 +1056,7 @@ blockquote {
 .interface-toolbar > span {
   margin-left: auto;
   font-size: 10px;
-  color: #56625e;
+  color: var(--aero-olive);
 }
 .interface-content {
   flex: 1;
@@ -1050,13 +1071,14 @@ blockquote {
 }
 .project-rail {
   padding: 25px 13px;
-  background: #e6e8e1;
-  border-right: 1px solid #26333220;
+  background: var(--aero-parchment);
+  border-right: 1px solid
+    color-mix(in srgb, var(--aero-taupe) 12.5%, transparent);
   overflow: auto;
 }
 .project-rail > .overline {
   padding: 0 10px 20px;
-  color: #586560;
+  color: var(--aero-olive);
 }
 .project-rail button {
   display: grid;
@@ -1072,24 +1094,25 @@ blockquote {
   font-size: 13px;
 }
 .project-rail button[aria-pressed="true"] {
-  background: #f6f6ef;
-  border-color: #aab8ac;
+  background: var(--aero-parchment);
+  border-color: var(--aero-taupe);
   border-radius: 3px;
-  box-shadow: 0 2px 5px #21382a08;
+  box-shadow: 0 2px 5px
+    color-mix(in srgb, var(--aero-espresso) 3.1%, transparent);
 }
 .project-ordinal {
   font-size: 9px;
-  color: #69756a;
+  color: var(--aero-olive);
   padding-top: 3px;
 }
 .project-rail small {
   grid-column: 2;
   font-size: 9px;
-  color: #56665d;
+  color: var(--aero-olive);
 }
 .rail-note {
   font-size: 10px;
-  color: #607067;
+  color: var(--aero-olive);
   line-height: 1.8;
   margin: 30px 10px;
 }
@@ -1107,7 +1130,7 @@ blockquote {
   margin: 12px 0 15px;
 }
 .project-reading .overline {
-  color: #596961;
+  color: var(--aero-olive);
   font-size: 9px;
 }
 .project-outcome {
@@ -1116,8 +1139,8 @@ blockquote {
   max-width: 680px;
 }
 .flow-diagram {
-  background: #e4e9e4;
-  border: 1px solid #b9c9be;
+  background: var(--aero-parchment);
+  border: 1px solid var(--aero-taupe);
   margin: 26px 0;
   padding: 18px;
   border-radius: 4px;
@@ -1130,7 +1153,7 @@ blockquote {
 }
 .flow-title small {
   font-weight: 400;
-  color: #58665c;
+  color: var(--aero-olive);
 }
 .flow-stages {
   display: flex;
@@ -1140,8 +1163,8 @@ blockquote {
 .flow-stages button {
   flex: 1;
   text-align: left;
-  border: 1px solid #aebfb4;
-  background: #f2f4ec;
+  border: 1px solid var(--aero-taupe);
+  background: var(--aero-parchment);
   padding: 11px;
   position: relative;
   font-size: 12px;
@@ -1149,9 +1172,9 @@ blockquote {
   border-radius: 3px;
 }
 .flow-stages button[aria-pressed="true"] {
-  background: #25484c;
-  color: #f4f5e9;
-  border-color: #25484c;
+  background: var(--aero-cream);
+  color: var(--aero-espresso);
+  border-color: var(--aero-taupe);
 }
 .flow-stages span {
   display: block;
@@ -1163,13 +1186,13 @@ blockquote {
   position: absolute;
   right: -16px;
   top: 18px;
-  color: #506957;
+  color: var(--aero-olive);
   font-style: normal;
 }
 .flow-explanation {
   font-size: 12px;
   min-height: 38px;
-  color: #43574b;
+  color: var(--aero-olive);
 }
 .project-copy-grid {
   display: grid;
@@ -1187,14 +1210,14 @@ blockquote {
 .approach p,
 .project-limitations p {
   font-size: 13px;
-  color: #47584f;
+  color: var(--aero-olive);
 }
 .approach,
 .project-limitations {
   margin-top: 23px;
 }
 .result-note {
-  border-left: 2px solid #517d72;
+  border-left: 2px solid var(--aero-taupe);
   padding: 4px 0 4px 15px;
   margin: 24px 0;
   font-size: 13px;
@@ -1203,10 +1226,10 @@ blockquote {
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #4b6c5c;
+  color: var(--aero-olive);
 }
 .technical-details {
-  border-block: 1px solid #bcc8bd;
+  border-block: 1px solid var(--aero-taupe);
   padding: 14px 0;
 }
 .technical-details summary {
@@ -1220,7 +1243,7 @@ blockquote {
 .technical-details p {
   font-size: 12px;
   margin-top: 12px;
-  color: #4b5f52;
+  color: var(--aero-olive);
 }
 .technology-list {
   list-style: none;
@@ -1232,7 +1255,7 @@ blockquote {
 }
 .technology-list li {
   font-size: 10px;
-  background: #e4e7df;
+  background: var(--aero-parchment);
   padding: 4px 8px;
   border-radius: 3px;
 }
@@ -1252,7 +1275,7 @@ blockquote {
 }
 .career-intro p:not(.overline) {
   font-size: 12px;
-  color: #526459;
+  color: var(--aero-olive);
 }
 .timeline-legend {
   list-style: none;
@@ -1275,13 +1298,13 @@ blockquote {
   border-radius: 50%;
 }
 .kind-experience {
-  --node: #3a686c;
+  --node: var(--aero-olive);
 }
 .kind-project {
-  --node: #866242;
+  --node: var(--aero-olive);
 }
 .kind-education {
-  --node: #63678b;
+  --node: var(--aero-olive);
 }
 .career-layout {
   display: grid;
@@ -1313,7 +1336,7 @@ blockquote {
   content: "";
   position: absolute;
   width: 1px;
-  background: #bac6bb;
+  background: var(--aero-eggshell);
   left: 146px;
   top: 35px;
   bottom: -22px;
@@ -1321,7 +1344,7 @@ blockquote {
 }
 .career-graph time {
   font-size: 9px;
-  color: #586a60;
+  color: var(--aero-olive);
 }
 .timeline-dot {
   width: 9px;
@@ -1330,7 +1353,7 @@ blockquote {
   border-radius: 50%;
   position: relative;
   z-index: 1;
-  box-shadow: 0 0 0 4px #f1f0e9;
+  box-shadow: 0 0 0 4px var(--aero-espresso);
 }
 .kind-project .timeline-dot {
   border-radius: 1px;
@@ -1348,7 +1371,7 @@ blockquote {
 }
 .timeline-label small {
   font-size: 9px;
-  color: #56655c;
+  color: var(--aero-olive);
   display: block;
   margin-top: 3px;
 }
@@ -1357,13 +1380,13 @@ blockquote {
   opacity: 0;
 }
 .is-current button {
-  background: #e2e8e0;
+  background: var(--aero-parchment);
 }
 .is-current .timeline-chevron {
   opacity: 1;
 }
 .career-detail {
-  background: #e6e9e0;
+  background: var(--aero-parchment);
   border-top: 3px solid var(--node);
   padding: 22px;
   height: fit-content;
@@ -1376,7 +1399,7 @@ blockquote {
 }
 .career-detail p {
   font-size: 12px;
-  color: #4c5f52;
+  color: var(--aero-olive);
 }
 .career-detail .overline {
   font-size: 8px;
@@ -1385,7 +1408,7 @@ blockquote {
   margin-bottom: 24px;
 }
 .career-detail div {
-  border-top: 1px solid #bbc8bb;
+  border-top: 1px solid var(--aero-taupe);
   margin-top: 24px;
   padding-top: 18px;
 }
@@ -1396,24 +1419,24 @@ blockquote {
 }
 .timeline-footnote {
   font-size: 9px;
-  color: #5c6a61;
+  color: var(--aero-olive);
   margin-top: 18px;
 }
 .interface-cv {
-  background: #f4efe3;
+  background: var(--aero-parchment);
 }
 .interface-cv .interface-toolbar {
-  background: #e9e3d6;
+  background: var(--aero-parchment);
 }
 .cv-document {
   padding: 35px 42px;
   max-width: 860px;
   margin: auto;
-  color: #303c37;
+  color: var(--aero-olive);
   font-size: 12px;
 }
 .cv-document header {
-  border-bottom: 2px solid #40574b;
+  border-bottom: 2px solid var(--aero-taupe);
   padding-bottom: 23px;
 }
 .cv-document h2 {
@@ -1426,7 +1449,7 @@ blockquote {
 }
 .cv-summary {
   margin: 13px 0;
-  color: #566157;
+  color: var(--aero-olive);
 }
 .cv-links {
   display: flex;
@@ -1447,7 +1470,7 @@ blockquote {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  border-bottom: 1px solid #c7cbbb;
+  border-bottom: 1px solid var(--aero-taupe);
   padding-bottom: 8px;
   margin-bottom: 15px;
 }
@@ -1466,7 +1489,7 @@ blockquote {
 .cv-date {
   white-space: nowrap;
   font-size: 9px;
-  color: #58645b;
+  color: var(--aero-olive);
 }
 .cv-organization {
   font-size: 10px;
@@ -1481,17 +1504,17 @@ blockquote {
   margin: 4px 0;
 }
 .cv-document footer {
-  border-top: 1px solid #bdc6b8;
+  border-top: 1px solid var(--aero-taupe);
   padding-top: 15px;
   margin-top: 30px;
   font-size: 9px;
-  color: #5b675e;
+  color: var(--aero-olive);
 }
 .standalone-cv {
-  background: #f4efe3;
+  background: var(--aero-parchment);
   min-height: 100vh;
   padding: 30px;
-  color: #303c37;
+  color: var(--aero-olive);
 }
 .standalone-cv > a,
 .standalone-cv > .print-hint {
@@ -1673,7 +1696,7 @@ blockquote {
     overflow-x: auto;
     gap: 6px;
     padding: 10px;
-    border-bottom: 1px solid #bec9bd;
+    border-bottom: 1px solid var(--aero-taupe);
     border-right: 0;
   }
   .project-rail > .overline,
@@ -1802,7 +1825,7 @@ blockquote {
 @media print {
   .standalone-cv {
     padding: 0;
-    background: white;
+    background: var(--aero-parchment);
   }
   .standalone-cv > a,
   .print-hint {
@@ -1826,23 +1849,27 @@ blockquote {
   background:
     linear-gradient(
       180deg,
-      #182125c7,
+      color-mix(in srgb, var(--aero-cream) 78%, transparent),
       transparent 28%,
       transparent 72%,
-      #172024e6
+      color-mix(in srgb, var(--aero-cream) 90.2%, transparent)
     ),
-    linear-gradient(90deg, #1820248f, transparent 60%);
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--aero-cream) 56.1%, transparent),
+      transparent 60%
+    );
 }
 .project-ordinal,
 .rail-note {
-  color: #48594e;
+  color: var(--aero-olive);
 }
 .atelier:has(.station-marker.is-hovered) .architectural-scene {
   cursor: pointer;
 }
 .static-library#cv {
-  background: #f4efe3;
-  color: #303c37;
+  background: var(--aero-parchment);
+  color: var(--aero-olive);
 }
 .static-library#cv h3 {
   font-size: 12px;

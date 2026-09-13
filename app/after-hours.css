@@ -1,143 +1,151 @@
 /* After-hours material and motion layer; destination geometry remains unchanged. */
 .atelier {
-  background: #101726;
+  background: var(--aero-cream);
 }
 .room-view .room-vignette {
   background:
     linear-gradient(
       180deg,
-      #080f1b91,
+      color-mix(in srgb, var(--aero-cream) 56.9%, transparent),
       transparent 35%,
       transparent 70%,
-      #080f1bc9
+      color-mix(in srgb, var(--aero-cream) 78.8%, transparent)
     ),
-    linear-gradient(90deg, #080f1b70, transparent 53%);
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--aero-cream) 43.9%, transparent),
+      transparent 53%
+    );
 }
 .room-ready .architectural-scene {
   animation: studio-exposure 1s ease-out both;
 }
 .station-focused .room-vignette {
   background: linear-gradient(
-    #060e1cb0,
+    color-mix(in srgb, var(--aero-cream) 69%, transparent),
     transparent 17%,
     transparent 88%,
-    #060e1b88
+    color-mix(in srgb, var(--aero-cream) 53.3%, transparent)
   );
 }
 .atelier-header nav a[aria-current="page"] {
-  color: #c5eaff;
-  border-color: #86d8ef;
+  color: var(--aero-espresso);
+  border-color: var(--aero-taupe);
 }
 .identity strong {
   letter-spacing: -0.035em;
 }
 .entrance-copy > .overline {
-  color: #a9d9ef;
+  color: var(--aero-espresso);
   letter-spacing: 0.19em;
 }
 .entrance-copy h1 {
-  color: #f1eddf;
-  text-shadow: 0 3px 35px #030b1766;
+  color: var(--aero-espresso);
+  text-shadow: 0 3px 35px
+    color-mix(in srgb, var(--aero-espresso) 40%, transparent);
 }
 .entrance-copy > p:not(.overline) {
-  color: #cbd3dd;
+  color: var(--aero-espresso);
 }
 .entrance-actions button {
-  background: #e8e1d1;
-  box-shadow: 0 4px 24px #080e2033;
+  background: var(--aero-parchment);
+  box-shadow: 0 4px 24px
+    color-mix(in srgb, var(--aero-espresso) 20%, transparent);
 }
 .entrance-actions a {
-  border-color: #8aa1b954;
+  border-color: color-mix(in srgb, var(--aero-taupe) 32.9%, transparent);
 }
 .workspace-footer {
-  color: #cfdae6;
+  color: var(--aero-espresso);
 }
 .station-controls {
-  background: #111d2be8;
-  border-color: #637d944d;
-  box-shadow: 0 10px 34px #0003;
+  background: color-mix(in srgb, var(--aero-cream) 91%, transparent);
+  border-color: color-mix(in srgb, var(--aero-taupe) 30.2%, transparent);
+  box-shadow: 0 10px 34px
+    color-mix(in srgb, var(--aero-espresso) 20%, transparent);
 }
 .station-controls button:hover,
 .station-controls button:focus-visible {
-  background: #244454;
-  color: #ebfaff;
+  background: var(--aero-cream);
+  color: var(--aero-espresso);
 }
 .station-controls button small {
-  color: #b5c5d6;
+  color: var(--aero-espresso);
 }
 .station-marker {
-  background: #111e2bf0;
-  border-color: #7fb0c26b;
-  box-shadow: 0 5px 25px #050c2280;
+  background: color-mix(in srgb, var(--aero-cream) 94.1%, transparent);
+  border-color: color-mix(in srgb, var(--aero-taupe) 42%, transparent);
+  box-shadow: 0 5px 25px
+    color-mix(in srgb, var(--aero-espresso) 50.2%, transparent);
 }
 .station-marker > span,
 .station-marker i {
-  color: #9ee6f4;
+  color: var(--aero-espresso);
 }
 .station-marker.is-hovered {
-  color: #edfaff;
-  background: #254653;
-  border-color: #97e5fa;
+  color: var(--aero-espresso);
+  background: var(--aero-cream);
+  border-color: var(--aero-taupe);
   box-shadow:
-    0 0 24px #78cbf226,
-    0 5px 25px #050c2280;
+    0 0 24px color-mix(in srgb, var(--aero-espresso) 14.9%, transparent),
+    0 5px 25px color-mix(in srgb, var(--aero-espresso) 50.2%, transparent);
 }
 .station-marker.is-hovered > span,
 .station-marker.is-hovered i {
-  color: #c3edff;
+  color: var(--aero-espresso);
 }
 .station-marker:after {
-  background: #85c9e4;
+  background: var(--aero-eggshell);
 }
 .render-status {
-  color: #bdcbd7;
+  color: var(--aero-espresso);
 }
 .interface-projects,
 .interface-career {
-  background: #111c2a;
-  color: #ecede7;
-  color-scheme: dark;
+  background: var(--aero-cream);
+  color: var(--aero-espresso);
+  color-scheme: light;
   box-shadow:
-    0 0 0 1px #729aad40,
-    0 12px 55px #01091866;
+    0 0 0 1px color-mix(in srgb, var(--aero-espresso) 25.1%, transparent),
+    0 12px 55px color-mix(in srgb, var(--aero-espresso) 40%, transparent);
 }
 .interface-projects .interface-toolbar,
 .interface-career .interface-toolbar {
-  background: #0c1521;
-  border-color: #36475d;
+  background: var(--aero-cream);
+  border-color: var(--aero-taupe);
 }
 .interface-projects .interface-toolbar > span,
 .interface-career .interface-toolbar > span {
-  color: #b5c6d8;
+  color: var(--aero-espresso);
 }
 .interface-projects .interface-toolbar button,
 .interface-career .interface-toolbar button {
-  color: #d2e4ed;
+  color: var(--aero-espresso);
 }
 .interface-projects a:hover,
 .interface-projects button:hover,
 .interface-career button:hover {
-  color: #aee8ff;
+  color: var(--aero-espresso);
 }
 .interface-projects button:focus-visible,
 .interface-projects summary:focus-visible,
 .interface-career button:focus-visible {
-  outline-color: #91dff5;
+  outline-color: var(--aero-espresso);
 }
 .interface-projects h2,
 .interface-career h2 {
-  color: #f1ece0;
+  color: var(--aero-espresso);
 }
 .project-rail {
-  background: #0c1520;
-  border-color: #2c3e51;
+  background: var(--aero-cream);
+  border-color: var(--aero-taupe);
 }
 .project-rail > .overline {
-  color: #a4bdce;
+  color: var(--aero-espresso);
   letter-spacing: 0.17em;
 }
 .project-rail button {
-  color: #d8e4ea;
+  color: var(--aero-espresso);
   border-radius: 0;
   border-left: 2px solid transparent;
   transition:
@@ -145,50 +153,57 @@
     border-color 0.18s;
 }
 .project-rail button[aria-pressed="true"] {
-  background: #1a2c3b;
+  background: var(--aero-cream);
   border-color: transparent;
-  border-left-color: #84d8ef;
+  border-left-color: var(--aero-taupe);
   box-shadow: none;
   border-radius: 0;
 }
 .project-rail small,
 .project-ordinal,
 .rail-note {
-  color: #b0bdca;
+  color: var(--aero-espresso);
 }
 .project-reading .overline {
-  color: #9bb8cb;
+  color: var(--aero-espresso);
 }
 .project-reading h2 {
   font-size: clamp(31px, 3.1vw, 48px);
   margin-bottom: 18px;
 }
 .project-outcome {
-  color: #d9e1e5;
+  color: var(--aero-espresso);
   font-size: 18px;
   line-height: 1.6;
 }
 .flow-diagram {
-  background-color: #152837;
+  background-color: var(--aero-cream);
   background-image:
-    linear-gradient(#a6d4f107 1px, transparent 1px),
-    linear-gradient(90deg, #a6d4f107 1px, transparent 1px);
+    linear-gradient(
+      color-mix(in srgb, var(--aero-eggshell) 2.7%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--aero-eggshell) 2.7%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 23px 23px;
-  border-color: #40586d;
+  border-color: var(--aero-taupe);
   border-radius: 1px;
   position: relative;
   padding: 20px;
 }
 .flow-title {
-  color: #d8e7ed;
+  color: var(--aero-espresso);
 }
 .flow-title small {
-  color: #aebfcd;
+  color: var(--aero-espresso);
 }
 .flow-stages button {
-  background: #111e2c;
-  border-color: #4e677a;
-  color: #e0e8ed;
+  background: var(--aero-cream);
+  border-color: var(--aero-taupe);
+  color: var(--aero-espresso);
   border-radius: 2px;
   transition:
     background 0.25s,
@@ -196,60 +211,60 @@
     box-shadow 0.25s;
 }
 .flow-stages button[aria-pressed="true"] {
-  background: #285160;
-  border-color: #8dcadd;
-  color: #f3fcff;
+  background: var(--aero-sand);
+  border-color: var(--aero-taupe);
+  color: var(--aero-espresso);
   box-shadow:
-    0 0 22px #7dbed80d,
-    inset 0 1px #c3f1ff22;
+    0 0 22px color-mix(in srgb, var(--aero-espresso) 5.1%, transparent),
+    inset 0 1px color-mix(in srgb, var(--aero-espresso) 13.3%, transparent);
 }
 .flow-stages button[aria-pressed="true"]:hover {
-  color: #fff;
+  color: var(--aero-espresso);
 }
 .flow-stages i {
-  color: #9dbdd1;
+  color: var(--aero-espresso);
 }
 .flow-stages span {
   opacity: 1;
-  color: #b4cbd7;
+  color: var(--aero-espresso);
 }
 .flow-explanation {
-  color: #c4d3de;
+  color: var(--aero-espresso);
   font-size: 13px;
 }
 .project-copy-grid p,
 .approach p,
 .project-limitations p {
-  color: #b8c8d4;
+  color: var(--aero-espresso);
 }
 .project-reading h3 {
-  color: #e4e9e8;
+  color: var(--aero-espresso);
   font-size: 12px;
 }
 .result-note {
-  border-color: #70b9c7;
-  color: #d8e6ea;
+  border-color: var(--aero-taupe);
+  color: var(--aero-espresso);
 }
 .result-note > span {
-  color: #a3d2e0;
+  color: var(--aero-espresso);
 }
 .technical-details {
-  border-color: #3b4c60;
+  border-color: var(--aero-taupe);
 }
 .technical-details summary {
-  color: #cfe3ed;
+  color: var(--aero-espresso);
 }
 .technical-details p {
-  color: #c1d0da;
+  color: var(--aero-espresso);
 }
 .technology-list li {
-  background: #243346;
-  color: #cdd8e2;
-  border: 1px solid #3b5063;
+  background: var(--aero-cream);
+  color: var(--aero-espresso);
+  border: 1px solid var(--aero-taupe);
   border-radius: 1px;
 }
 .project-limitations {
-  border-left: 1px solid #b193634f;
+  border-left: 1px solid color-mix(in srgb, var(--aero-taupe) 31%, transparent);
   padding-left: 15px;
 }
 .interface-projects.is-ready .project-rail {
@@ -266,36 +281,40 @@
 }
 .interface-cv {
   box-shadow:
-    0 15px 65px #0007,
-    inset 0 0 60px #b68b3a09;
+    0 15px 65px color-mix(in srgb, var(--aero-espresso) 46.7%, transparent),
+    inset 0 0 60px color-mix(in srgb, var(--aero-espresso) 3.5%, transparent);
 }
 .interface-cv .interface-toolbar {
-  border-bottom-color: #b9ad954f;
+  border-bottom-color: color-mix(in srgb, var(--aero-taupe) 31%, transparent);
 }
 .cv-document header {
-  border-color: #6e6b50;
+  border-color: var(--aero-taupe);
 }
 .career-workspace {
-  background: radial-gradient(ellipse at 95% 10%, #23325066, transparent 45%);
+  background: radial-gradient(
+    ellipse at 95% 10%,
+    color-mix(in srgb, var(--aero-cream) 40%, transparent),
+    transparent 45%
+  );
 }
 .career-intro p:not(.overline) {
-  color: #b4c6d5;
+  color: var(--aero-espresso);
 }
 .career-intro > .overline,
 .career-intro .overline {
-  color: #9fcfdf;
+  color: var(--aero-espresso);
 }
 .timeline-legend {
-  color: #c9d6e0;
+  color: var(--aero-espresso);
 }
 .kind-experience {
-  --node: #8ed1e2;
+  --node: var(--aero-olive);
 }
 .kind-project {
-  --node: #b0b4e6;
+  --node: var(--aero-olive);
 }
 .kind-education {
-  --node: #dfc194;
+  --node: var(--aero-olive);
 }
 .career-graph {
   position: relative;
@@ -307,13 +326,18 @@
   top: 27px;
   bottom: 29px;
   width: 1px;
-  background: linear-gradient(#7edff0, #8498d4 75%, #cab68f);
+  background: linear-gradient(
+    var(--aero-eggshell),
+    var(--aero-eggshell) 75%,
+    var(--aero-eggshell)
+  );
   transform-origin: top;
   animation: timeline-draw 0.85s 0.08s backwards;
-  box-shadow: 0 0 9px #86c4ff55;
+  box-shadow: 0 0 9px
+    color-mix(in srgb, var(--aero-espresso) 33.3%, transparent);
 }
 .career-graph li:not(:last-child):after {
-  background: #647e9b40;
+  background: color-mix(in srgb, var(--aero-sand) 25.1%, transparent);
 }
 .career-graph li {
   animation: node-arrive 0.4s calc(var(--node-order) * 45ms) backwards;
@@ -326,61 +350,62 @@
     border-color 0.2s;
 }
 .career-graph time {
-  color: #b0c0d0;
+  color: var(--aero-espresso);
 }
 .timeline-label strong {
-  color: #e2e9eb;
+  color: var(--aero-espresso);
 }
 .timeline-label small {
-  color: #a6bacb;
+  color: var(--aero-espresso);
 }
 .timeline-dot {
-  box-shadow: 0 0 0 4px #111c2a;
+  box-shadow: 0 0 0 4px var(--aero-espresso);
 }
 .is-current button {
-  background: #23384b;
-  border-color: #7897b63d;
+  background: var(--aero-cream);
+  border-color: color-mix(in srgb, var(--aero-taupe) 23.9%, transparent);
 }
 .is-current .timeline-dot {
   box-shadow:
-    0 0 0 4px #23384b,
-    0 0 17px #9de3ff7a;
+    0 0 0 4px var(--aero-espresso),
+    0 0 17px color-mix(in srgb, var(--aero-espresso) 47.8%, transparent);
 }
 .timeline-chevron {
-  color: #b0e5f5;
+  color: var(--aero-espresso);
 }
 .career-detail {
-  background: #1c2a3b;
+  background: var(--aero-cream);
   border-top-width: 2px;
-  border-bottom: 1px solid #495b6e;
-  box-shadow: 0 10px 30px #050c1422;
+  border-bottom: 1px solid var(--aero-taupe);
+  box-shadow: 0 10px 30px
+    color-mix(in srgb, var(--aero-espresso) 13.3%, transparent);
 }
 .career-detail h3 {
-  color: #f1ece2;
+  color: var(--aero-espresso);
   font-size: 26px;
 }
 .career-detail p {
-  color: #c2d0dd;
+  color: var(--aero-espresso);
 }
 .career-detail .overline {
-  color: #b1cbdc;
+  color: var(--aero-espresso);
 }
 .career-detail div {
-  border-color: #475b70;
+  border-color: var(--aero-taupe);
 }
 .career-detail h4 {
-  color: #d5e6ef;
+  color: var(--aero-espresso);
 }
 .career-detail-copy {
   animation: diagram-explain 0.3s ease-out;
 }
 .timeline-footnote {
-  color: #adbdcb;
+  color: var(--aero-espresso);
 }
 .promotion-milestone {
   display: block;
   margin-top: 6px;
-  color: #b7e9ed;
+  color: var(--aero-espresso);
   font-size: 9px;
   letter-spacing: 0.02em;
 }
@@ -390,17 +415,17 @@
 }
 .career-detail .promotion-note {
   font-size: 10px;
-  border-left: 1px solid #8fcfdb;
+  border-left: 1px solid var(--aero-taupe);
   padding-left: 10px;
   margin-top: 14px;
 }
 .timeline-return {
-  color: #bbe7f3;
+  color: var(--aero-espresso);
 }
 .timeline-pulse {
   position: absolute;
   inset: -5px;
-  border: 1px solid #a0dcf3;
+  border: 1px solid var(--aero-taupe);
   border-radius: 50%;
   animation: node-pulse 0.65s ease-out both;
   pointer-events: none;
@@ -512,7 +537,7 @@
     font-size: 25px;
   }
   .career-workspace {
-    background: #111c2a;
+    background: var(--aero-cream);
   }
   .entrance-copy h1 {
     font-size: 30px;
@@ -570,13 +595,13 @@
   min-width: 66px;
   height: 30px;
   padding: 0 10px;
-  border: 1px solid #849caf66;
+  border: 1px solid color-mix(in srgb, var(--aero-taupe) 40%, transparent);
   border-radius: 2px;
   line-height: 1;
   isolation: isolate;
-  background: #192a3955;
+  background: color-mix(in srgb, var(--aero-cream) 33.3%, transparent);
 }
 .interface-cv .interface-toolbar > button {
-  border-color: #9d907366;
-  background: #f3eee3;
+  border-color: color-mix(in srgb, var(--aero-taupe) 40%, transparent);
+  background: var(--aero-parchment);
 }
