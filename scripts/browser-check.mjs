@@ -96,7 +96,7 @@ try {
   }
   assert.equal(
     await p.locator(".identity strong").innerText(),
-    "SARSEEJ SHRESTHA",
+    "Sarseej Shrestha",
   );
   assert.equal(
     await p.locator("#destination-nav a").last().getAttribute("href"),
@@ -194,16 +194,18 @@ try {
     career: [1.06, 2.14, -0.24],
     cv: [-2, 1.45, 0.7],
   })) {
-    const camera = new PerspectiveCamera(46, 1440 / 900, 0.1, 80);
-    camera.position.set(
-      ...(await p.locator("canvas").getAttribute("data-camera"))
-        .split(",")
-        .map(Number),
-    );
-    camera.lookAt(-0.5, 1.9, -1.2);
-    camera.updateMatrixWorld();
-    const hit = new Vector3(...point).project(camera);
-    await p.mouse.click((hit.x + 1) * 720, (1 - hit.y) * 450);
+    const projectHit = async () => {
+      const camera = new PerspectiveCamera(46, 1440 / 900, 0.1, 80);
+      camera.position.set(...(await p.locator("canvas").getAttribute("data-camera")).split(",").map(Number));
+      camera.lookAt(...(await p.locator("canvas").getAttribute("data-target")).split(",").map(Number));
+      camera.updateMatrixWorld();
+      const hit = new Vector3(...point).project(camera);
+      return [(hit.x + 1) * 720, (1 - hit.y) * 450];
+    };
+    // Let the cursor-responsive view settle before measuring the actual hitbox.
+    await p.mouse.move(...await projectHit());
+    await p.waitForTimeout(900);
+    await p.mouse.click(...await projectHit());
     await settled(p, view);
     await p.keyboard.press("Escape");
     await settled(p, "home");

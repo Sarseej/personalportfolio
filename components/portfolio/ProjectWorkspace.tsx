@@ -3,8 +3,8 @@ import { useState } from "react";
 import ProjectVisual from "./ProjectVisual";
 import { projects, projectStories } from "@/lib/content/portfolio";
 
-export default function ProjectWorkspace() {
-  const [selected, setSelected] = useState(0);
+export default function ProjectWorkspace({initialProject}:{initialProject?:string}) {
+  const [selected, setSelected] = useState(() => Math.max(0, projects.findIndex(p => p.id === initialProject)));
   const [stage, setStage] = useState(0);
   const project = projects[selected];
   const story = projectStories[project.id];

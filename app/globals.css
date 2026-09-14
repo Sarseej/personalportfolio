@@ -20,7 +20,7 @@ body {
   margin: 0;
   background: var(--aero-cream);
   color: var(--paper);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 15px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -63,7 +63,7 @@ h3 {
 }
 h1,
 h2 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), serif;
   letter-spacing: -0.04em;
   line-height: 1.12;
 }
@@ -75,7 +75,7 @@ button:disabled {
 }
 .eyebrow {
   text-transform: uppercase;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   font-weight: 600;
 }
@@ -166,7 +166,7 @@ button:disabled {
   color: var(--aero-espresso);
 }
 .identity small {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--aero-espresso);
   letter-spacing: 0.035em;
 }
@@ -202,7 +202,7 @@ button:disabled {
   gap: 26px;
   align-items: center;
   margin-top: 24px;
-  font-size: 11px;
+  font-size: 12px;
   pointer-events: auto;
 }
 .entrance-actions button {
@@ -246,7 +246,7 @@ button:disabled {
     background 0.2s,
     transform 0.2s,
     border-color 0.2s;
-  font-size: 10px;
+  font-size: 12px;
   min-height: 38px;
 }
 .station-marker:after {
@@ -259,7 +259,7 @@ button:disabled {
   background: var(--aero-eggshell);
 }
 .station-marker > span {
-  font-size: 8px;
+  font-size: 12px;
   color: var(--aero-espresso);
 }
 .station-marker strong {
@@ -285,7 +285,7 @@ button:disabled {
   left: 40px;
   z-index: 20;
   color: var(--aero-espresso);
-  font-size: 11px;
+  font-size: 12px;
   opacity: 0;
   transform: translateY(4px);
   pointer-events: none;
@@ -309,7 +309,7 @@ button:disabled {
   z-index: 30;
 }
 .workspace-caption {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.015em;
   color: var(--aero-espresso);
   max-width: 310px;
@@ -318,7 +318,7 @@ button:disabled {
   display: block;
   margin-top: 7px;
   color: var(--aero-espresso);
-  font-size: 8px;
+  font-size: 12px;
 }
 .room-indicator {
   width: 5px;
@@ -344,7 +344,7 @@ button:disabled {
   align-items: center;
   gap: 13px;
   padding: 13px 18px;
-  font-size: 11px;
+  font-size: 12px;
   text-align: left;
   transition: background 0.2s;
 }
@@ -358,7 +358,7 @@ button:disabled {
   color: var(--aero-olive);
 }
 .station-number {
-  font-size: 8px;
+  font-size: 12px;
   color: var(--aero-espresso);
 }
 .station-controls button:hover .station-number,
@@ -403,14 +403,14 @@ button:disabled {
   gap: 10px;
 }
 .panel-topline .eyebrow {
-  font-size: 8px;
+  font-size: 12px;
   color: var(--aero-olive);
 }
 .back-button {
   border: 0;
   background: transparent;
   color: var(--aero-olive);
-  font-size: 10px;
+  font-size: 12px;
   padding: 5px 0;
 }
 .back-button:hover {
@@ -421,7 +421,7 @@ kbd {
   border: 1px solid color-mix(in srgb, var(--aero-taupe) 33.3%, transparent);
   padding: 1px 4px;
   margin-left: 6px;
-  font-size: 8px;
+  font-size: 12px;
 }
 .panel-body {
   overflow-y: auto;
@@ -457,7 +457,7 @@ kbd {
   text-align: left;
   background: transparent;
   color: var(--aero-olive);
-  font-size: 11px;
+  font-size: 12px;
   min-height: 42px;
 }
 .project-selector button[aria-pressed="true"] {
@@ -473,11 +473,11 @@ kbd {
   color: var(--aero-espresso);
 }
 .case-preview .eyebrow {
-  font-size: 8px;
+  font-size: 12px;
   color: var(--aero-olive);
 }
 .case-preview h3 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), serif;
   font-size: 29px;
   line-height: 1.2;
   margin: 12px 0;
@@ -498,7 +498,7 @@ kbd {
   margin: 20px 0;
 }
 .case-insight span {
-  font-size: 8px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--aero-olive);
@@ -508,7 +508,7 @@ kbd {
   margin: 5px 0 0;
 }
 .case-preview h4 {
-  font-size: 11px;
+  font-size: 12px;
   margin: 22px 0 8px;
 }
 details {
@@ -523,7 +523,7 @@ summary {
   justify-content: space-between;
   align-items: center;
   gap: 18px;
-  font-size: 11px;
+  font-size: 12px;
   padding: 15px 0;
   min-height: 44px;
 }
@@ -546,7 +546,7 @@ details p {
   margin-bottom: 20px;
   border-block: 1px solid
     color-mix(in srgb, var(--aero-taupe) 33.3%, transparent);
-  font-size: 11px;
+  font-size: 12px;
 }
 .concept-flow b {
   font-weight: 400;
@@ -554,7 +554,7 @@ details p {
 }
 blockquote {
   margin: 25px 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), serif;
   font-size: 26px;
   line-height: 1.3;
   letter-spacing: -0.025em;
@@ -562,7 +562,7 @@ blockquote {
   padding-left: 22px;
 }
 .panel-footnote {
-  font-size: 11px !important;
+  font-size: 12px !important;
   color: var(--aero-olive);
   border-top: 1px solid color-mix(in srgb, var(--aero-taupe) 33.3%, transparent);
   padding-top: 20px;
@@ -658,15 +658,15 @@ blockquote {
   }
   .workspace-caption {
     max-width: 200px;
-    font-size: 9px;
+    font-size: 12px;
   }
   .workspace-caption small {
-    font-size: 8px;
+    font-size: 12px;
   }
   .station-controls button {
     padding: 12px;
     gap: 9px;
-    font-size: 10px;
+    font-size: 12px;
     min-height: 55px;
   }
   .station-panel {
@@ -711,13 +711,13 @@ blockquote {
     font-size: 21px;
   }
   .identity small {
-    font-size: 8px;
+    font-size: 12px;
   }
   .atelier-header nav {
     width: 100%;
     justify-content: space-between;
     gap: 10px;
-    font-size: 11px;
+    font-size: 12px;
   }
   .atelier-header nav a {
     padding: 5px 0;
@@ -733,11 +733,11 @@ blockquote {
     max-width: 350px;
   }
   .entrance-copy .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
     margin-bottom: 14px;
   }
   .entrance-actions {
-    font-size: 10px;
+    font-size: 12px;
     margin-top: 20px;
     gap: 24px;
   }
@@ -771,7 +771,7 @@ blockquote {
   }
   .workspace-caption {
     max-width: none;
-    font-size: 8px;
+    font-size: 12px;
   }
   .workspace-caption small {
     display: none;
@@ -788,11 +788,11 @@ blockquote {
     flex-wrap: wrap;
     align-content: center;
     gap: 4px 8px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .station-number {
     width: 100%;
-    font-size: 8px;
+    font-size: 12px;
   }
   .station-control-arrow {
     display: none;
@@ -813,10 +813,10 @@ blockquote {
     min-height: 46px;
   }
   .panel-topline .eyebrow {
-    font-size: 7px;
+    font-size: 12px;
   }
   .back-button {
-    font-size: 10px;
+    font-size: 12px;
   }
   kbd {
     display: none;
@@ -835,7 +835,7 @@ blockquote {
     gap: 5px;
   }
   .project-selector button {
-    font-size: 10px;
+    font-size: 12px;
     padding: 9px;
     min-height: 42px;
   }
@@ -846,7 +846,7 @@ blockquote {
     left: 20px;
     right: 20px;
     bottom: 121px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .is-exploring .entrance-copy {
     display: none;
@@ -878,7 +878,7 @@ blockquote {
   body {
     background: var(--aero-parchment);
     color: var(--aero-olive);
-    font-size: 11px;
+    font-size: 12px;
   }
   .resume {
     width: 100%;
@@ -905,7 +905,7 @@ blockquote {
     border-color: var(--aero-taupe);
   }
   .resume article p {
-    font-size: 11px;
+    font-size: 12px;
   }
   .resume .project-date {
     color: var(--aero-olive);
@@ -940,7 +940,7 @@ blockquote {
   letter-spacing: -0.04em;
 }
 .identity > span {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.02em;
 }
@@ -950,7 +950,7 @@ blockquote {
 }
 .overline {
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   font-weight: 600;
 }
@@ -965,21 +965,21 @@ blockquote {
 .physical-cv {
   display: block;
   color: var(--aero-olive);
-  font: 22px Georgia;
+  font: 22px var(--font-display);
   pointer-events: none;
 }
 .workspace-footer > p {
-  font-size: 11px;
+  font-size: 12px;
   margin-bottom: 12px;
 }
 .render-status {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 12px;
 }
 .station-controls button small {
   display: block;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 400;
   color: var(--aero-espresso);
 }
@@ -1048,14 +1048,14 @@ blockquote {
   padding: 9px 0;
 }
 .interface-toolbar h1 {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 13px;
   letter-spacing: 0;
   font-weight: 600;
 }
 .interface-toolbar > span {
   margin-left: auto;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--aero-olive);
 }
 .interface-content {
@@ -1101,17 +1101,17 @@ blockquote {
     color-mix(in srgb, var(--aero-espresso) 3.1%, transparent);
 }
 .project-ordinal {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--aero-olive);
   padding-top: 3px;
 }
 .project-rail small {
   grid-column: 2;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--aero-olive);
 }
 .rail-note {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--aero-olive);
   line-height: 1.8;
   margin: 30px 10px;
@@ -1131,7 +1131,7 @@ blockquote {
 }
 .project-reading .overline {
   color: var(--aero-olive);
-  font-size: 9px;
+  font-size: 12px;
 }
 .project-outcome {
   font-size: 17px;
@@ -1148,7 +1148,7 @@ blockquote {
 .flow-title {
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
 }
 .flow-title small {
@@ -1178,7 +1178,7 @@ blockquote {
 }
 .flow-stages span {
   display: block;
-  font-size: 9px;
+  font-size: 12px;
   opacity: 0.7;
   margin-bottom: 4px;
 }
@@ -1200,7 +1200,7 @@ blockquote {
   gap: 30px;
 }
 .project-reading h3 {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0;
@@ -1223,7 +1223,7 @@ blockquote {
   font-size: 13px;
 }
 .result-note > span {
-  font-size: 9px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--aero-olive);
@@ -1254,7 +1254,7 @@ blockquote {
   margin: 22px 0 0;
 }
 .technology-list li {
-  font-size: 10px;
+  font-size: 12px;
   background: var(--aero-parchment);
   padding: 4px 8px;
   border-radius: 3px;
@@ -1281,7 +1281,7 @@ blockquote {
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: 10px;
+  font-size: 12px;
   display: flex;
   gap: 13px;
   flex-wrap: wrap;
@@ -1343,7 +1343,7 @@ blockquote {
   pointer-events: none;
 }
 .career-graph time {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--aero-olive);
 }
 .timeline-dot {
@@ -1370,7 +1370,7 @@ blockquote {
   line-height: 1.35;
 }
 .timeline-label small {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--aero-olive);
   display: block;
   margin-top: 3px;
@@ -1394,7 +1394,7 @@ blockquote {
 }
 .career-detail h3 {
   font-size: 23px;
-  font-family: Georgia;
+  font-family: var(--font-display);
   margin: 17px 0 7px;
 }
 .career-detail p {
@@ -1402,7 +1402,7 @@ blockquote {
   color: var(--aero-olive);
 }
 .career-detail .overline {
-  font-size: 8px;
+  font-size: 12px;
 }
 .career-organization {
   margin-bottom: 24px;
@@ -1413,12 +1413,12 @@ blockquote {
   padding-top: 18px;
 }
 .career-detail h4 {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
   margin-bottom: 7px;
 }
 .timeline-footnote {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--aero-olive);
   margin-top: 18px;
 }
@@ -1454,7 +1454,7 @@ blockquote {
 .cv-links {
   display: flex;
   gap: 18px;
-  font-size: 10px;
+  font-size: 12px;
   flex-wrap: wrap;
 }
 .cv-document a {
@@ -1465,8 +1465,8 @@ blockquote {
   margin-top: 25px;
 }
 .cv-document section > h3 {
-  font-family: Arial;
-  font-size: 11px;
+  font-family: var(--font-body);
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1488,11 +1488,11 @@ blockquote {
 }
 .cv-date {
   white-space: nowrap;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--aero-olive);
 }
 .cv-organization {
-  font-size: 10px;
+  font-size: 12px;
   font-style: italic;
   margin: 2px 0 7px;
 }
@@ -1507,7 +1507,7 @@ blockquote {
   border-top: 1px solid var(--aero-taupe);
   padding-top: 15px;
   margin-top: 30px;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--aero-olive);
 }
 .standalone-cv {
@@ -1598,14 +1598,14 @@ blockquote {
     font-size: 19px;
   }
   .identity > span {
-    font-size: 9px;
+    font-size: 12px;
   }
   .atelier-header nav {
     display: flex;
     gap: 0;
     justify-content: space-between;
     margin-top: 16px;
-    font-size: 11px;
+    font-size: 12px;
   }
   .atelier-header nav a {
     padding: 5px 0;
@@ -1621,15 +1621,15 @@ blockquote {
     max-width: 355px;
   }
   .entrance-copy > .overline {
-    font-size: 8px;
+    font-size: 12px;
   }
   .entrance-copy > p:not(.overline) {
-    font-size: 11px;
+    font-size: 12px;
     max-width: 270px;
   }
   .entrance-actions {
     gap: 18px;
-    font-size: 10px;
+    font-size: 12px;
     margin-top: 18px;
     flex-wrap: wrap;
   }
@@ -1643,7 +1643,7 @@ blockquote {
     bottom: 20px;
   }
   .workspace-footer > p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .station-controls {
     display: flex !important;
@@ -1656,10 +1656,10 @@ blockquote {
     font-size: 12px;
   }
   .station-controls button small {
-    font-size: 8px;
+    font-size: 12px;
   }
   .render-status {
-    font-size: 8px;
+    font-size: 12px;
     max-width: 320px;
   }
   .station-marker {
@@ -1679,7 +1679,7 @@ blockquote {
     gap: 18px;
   }
   .interface-toolbar > span {
-    font-size: 8px;
+    font-size: 12px;
     max-width: 125px;
     text-align: right;
   }
@@ -1708,7 +1708,7 @@ blockquote {
   .project-rail button {
     display: block;
     flex: 0 0 128px;
-    font-size: 10px;
+    font-size: 12px;
     margin: 0;
     padding: 9px;
     min-height: 44px;
@@ -1734,14 +1734,14 @@ blockquote {
     gap: 12px;
   }
   .flow-stages button {
-    font-size: 10px;
+    font-size: 12px;
     padding: 9px 6px;
   }
   .flow-stages i {
     right: -12px;
   }
   .flow-explanation {
-    font-size: 11px;
+    font-size: 12px;
   }
   .project-reading .overline span {
     display: block;
@@ -1760,7 +1760,7 @@ blockquote {
   .timeline-legend {
     max-width: none;
     margin-top: 15px;
-    font-size: 9px;
+    font-size: 12px;
   }
   .career-layout {
     display: flex;
@@ -1774,13 +1774,13 @@ blockquote {
     min-height: 65px;
   }
   .career-graph time {
-    font-size: 8px;
+    font-size: 12px;
   }
   .timeline-label strong {
-    font-size: 11px;
+    font-size: 12px;
   }
   .timeline-label small {
-    font-size: 8px;
+    font-size: 12px;
   }
   .career-graph li:not(:last-child):after {
     left: 93px;
@@ -1832,7 +1832,7 @@ blockquote {
     display: none !important;
   }
   .cv-document {
-    font-size: 10px;
+    font-size: 12px;
     padding: 0;
   }
   .cv-document article {
@@ -1892,7 +1892,7 @@ blockquote {
     display: block;
     border: 0;
     background: none;
-    font-size: 11px;
+    font-size: 12px;
     padding: 0 0 18px;
     text-decoration: underline;
     text-underline-offset: 3px;

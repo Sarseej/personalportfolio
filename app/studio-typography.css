@@ -1,0 +1,34 @@
+body,button,input,select,textarea {font-family:var(--font-body),system-ui,sans-serif;}
+.atelier :is(p,button,a,span,small,li,dt,dd,summary,figcaption),.resume-page :is(p,li,span,small,a){font-family:var(--font-body),system-ui,sans-serif;}
+.atelier :is(button,a,summary){font-size:14px;}
+.atelier :is(p,li,dd){font-size:16px;line-height:1.65;}
+.atelier :is(small,.overline,.chapter-number,.render-status,.studio-caption,.cluster-label,.anchor-label,.explorer-status,.explorer-location,.interface-toolbar>span){font-family:var(--font-mono),monospace;font-size:12px;letter-spacing:0;}
+.atelier .identity strong{font-family:var(--font-body),system-ui;font-size:16px;letter-spacing:-.03em;}
+.atelier .identity>span{font:12px/1.5 var(--font-body);text-transform:none;letter-spacing:0;}
+.atelier .entrance-copy .opening-identity{font:400 clamp(4.5rem,10vw,9.5rem)/.92 var(--font-display),serif;letter-spacing:-.035em;white-space:nowrap;}
+.atelier .entrance-copy>.overline{font:14px/1.6 var(--font-body);letter-spacing:0;text-transform:none;}
+.atelier .studio-caption{top:310px;}
+.atelier :is(.project-reading h2,.interface-toolbar h1,.cv-document h1){font-family:var(--font-display),serif;font-weight:400;letter-spacing:-.025em;}
+.atelier .project-reading h2{font-size:clamp(48px,6.5vw,96px);line-height:.96;}
+.atelier :is(.project-copy-grid p,.approach p,.project-limitations p,.technical-details p,.project-outcome,.flow-explanation){font-size:16px;}
+.atelier .interface-toolbar h1{font-size:28px;}
+.atelier :is(.sound-toggle,.sound-entry button,.reveal-control,.station-marker,.project-rail button,.flow-stages button){font:14px/1.5 var(--font-body);}
+.atelier :is(.sound-entry .overline,.structure-key p,.structure-key .cluster-label,.project-reading .overline,.project-visual figcaption,.flow-title small){font-size:12px;}
+.atelier .sound-entry p{font-size:16px;}
+.atelier .atelier-header nav{gap:20px;font-family:var(--font-body);}
+.atelier .atelier-header nav a{text-transform:none;letter-spacing:0;}
+.atelier .workspace-footer{max-width:650px;}
+.field-entry{display:inline-flex;align-items:center;min-height:44px;margin-top:12px;color:var(--latent-bright);background:none;border:0;border-bottom:1px solid #52677c;padding:0 0 2px;letter-spacing:.025em;}
+:focus-visible{outline:2px solid #8fb6ff;outline-offset:5px;}
+@media(max-width:700px){
+ .atelier .entrance-copy .opening-identity{font-size:clamp(58px,17vw,88px);white-space:normal;max-width:350px;}
+ .atelier .atelier-header nav{gap:3px;}.atelier .atelier-header nav a{font-size:14px;}.atelier .chapter-number{display:none;}
+ .atelier .studio-caption{top:325px;}.atelier .entrance-copy>.overline{font-size:13px;}
+ .atelier .render-status{max-width:240px;font-size:12px;}.atelier .project-reading h2{font-size:52px;}
+ .atelier .workspace-footer{bottom:26px;}.atelier .sound-toggle{right:18px;bottom:20px;min-width:90px;}
+ .atelier .sound-entry{bottom:190px;}.atelier .structure-key{bottom:160px;}
+}
+.atelier .workspace-footer{display:grid;grid-template-columns:180px 220px;gap:8px 24px;max-width:660px;}
+.atelier .workspace-footer .reveal-control,.atelier .workspace-footer .field-entry{white-space:nowrap;margin:0;justify-content:space-between;}
+.atelier .workspace-footer .render-status{grid-column:1/-1;max-width:640px;margin:0;}
+@media(max-width:700px){.atelier .workspace-footer{display:grid;grid-template-columns:1fr;gap:10px;max-width:none;}.atelier .workspace-footer .render-status{max-width:240px;}.atelier .workspace-footer .field-entry{justify-content:flex-start;}}

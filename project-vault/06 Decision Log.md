@@ -39,3 +39,19 @@ A single retargetable 900 ms camera track prevents conflicting transitions. The 
 
 ## After-hours studio and Career correction — 8 September 2026
 See [[ADR — After-hours studio and career promotion]]. The later instruction supersedes CV-only tutoring placement: use one continuous Career role with a visible promotion and verified responsibilities. Preserve all destination/camera systems. Address visual flatness through directional evening light, local warm task light, darker material separation, architectural depth and finite entry/selection effects. Considered full-screen bloom; chose emissive geometry and local light bounce to retain clarity and the existing performance tiers.
+
+## The Latent Studio — phase 1
+
+Replace the unsuccessful Warm Aero Home and Projects presentation with a blue-hour computational observatory. Preserve verified content, routes, static export and the existing Career/CV workflows. Keep old visual files for later approved cleanup.
+
+Use a curated deterministic graph of canonical projects, technologies and experience rather than pretending to display an embedding. Reveal structure makes the real relationships discoverable without requiring labels in the default composition.
+
+Use procedural Web Audio with explicit consent and a permanent sound-state control. This avoids external tracks and network audio requests. Quiet and sound entrances are equally available; returning visitors never receive automatic sound without a gesture.
+
+Projects must occupy the full viewport after a physical screen approach. Keep the current project narratives and distinct diagrams; change the chapter presentation rather than rewriting facts. Cursor motion is bounded, damped and disabled for reduced motion. Continuous rendering is restricted to visible animated Home.
+
+## Repository-backed field
+
+Replaced theme-membership connections with a static, inspectable project–concept graph. Evidence comes from OncoLA, LungNoduleClassification, lidc-reader-disagreement, and dchanson/Ruskin documentation, source, manifests, protocol/tests, and public history. The old case-study text remains unchanged even where repositories have evolved: OncoLA now documents CareSignal, and the lung repository has a newer training/evaluation pipeline.
+
+Shared imaging concepts include CT preprocessing, reader annotations, uncertainty, patient-level separation, and Python. OncoLA and the study connect through distinct human-review workflows, without equating clinician review with an operational annotation reference. Protocol proposals are explicitly distinguished from completed model work. Ruskin appears as a contributed collaborative platform, never sole-authored. Specific personal commit attribution remains deferred; repository-level capabilities do not imply authorship of each feature.

@@ -1,5 +1,5 @@
-export type View = "home" | "projects" | "career" | "cv";
-export type Station = Exclude<View, "home">;
+export type View = "home" | "projects" | "career" | "cv" | "field";
+export type Station = Exclude<View, "home" | "field">;
 export const stations: {
   id: Station;
   number: string;
@@ -12,7 +12,7 @@ export const stations: {
 ];
 export function viewFromHash(hash: string): View {
   const value = hash.replace(/^#/, "");
-  return value === "projects" || value === "career" || value === "cv"
+  return value === "field" || value === "projects" || value === "career" || value === "cv"
     ? value
     : "home";
 }
@@ -30,7 +30,9 @@ export type RoomProps = {
   onHover: (station: Station | null) => void;
   onSettled: (station: View) => void;
   onScreenBounds: (bounds: ScreenBounds) => void;
-  pointer: [number, number];
+  pointer: { current: [number, number] };
+  interacting: { current: boolean };
+  reveal: boolean;
   mobile: boolean;
   economy: boolean;
   reduced: boolean;

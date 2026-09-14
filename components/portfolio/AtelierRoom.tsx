@@ -33,6 +33,7 @@ import {
   RepeatWrapping,
   SRGBColorSpace,
   Vector3,
+  Spherical,
   type Material,
   type PointLight,
   type Mesh,
@@ -44,7 +45,9 @@ import {
   type View,
 } from "./atelier-types";
 
-import { warmAero as palette } from "@/lib/visual/warm-aero";
+import { studioMaterials as palette, latent } from "@/lib/visual/latent-studio";
+import { projects } from "@/lib/content/portfolio";
+import LatentLandscape from "./LatentLandscape";
 
 type V3 = [number, number, number];
 type Block = { position: V3; scale: V3; rotation?: V3 };
@@ -129,199 +132,20 @@ function Repeated({ blocks, material }: { blocks: Block[]; material: string }) {
 }
 
 function Architecture({ mobile }: { mobile: boolean }) {
-  return (
-    <group>
-      <Box position={[0, -0.12, 0]} scale={[18, 0.2, 18]} material="stone" />
-      <Box position={[0, 0.015, 1]} scale={[7.7, 0.035, 6]} material="rug" />
-      <Box
-        position={[-3.8, 3, -4.9]}
-        scale={[7.4, 6, 0.22]}
-        material="plaster"
-      />
-      <Box position={[-7.4, 3, 0]} scale={[0.22, 6, 10]} material="plaster" />
-      <Box
-        position={[3.6, 0.6, -4.9]}
-        scale={[7.4, 1.2, 0.22]}
-        material="plaster"
-      />
-      <Box
-        position={[3.6, 5.6, -4.9]}
-        scale={[7.4, 0.8, 0.22]}
-        material="plaster"
-      />
-      <Box
-        position={[7.3, 3, -4.9]}
-        scale={[0.22, 6, 0.22]}
-        material="plaster"
-      />
-      <Box
-        position={[3.6, 4, -18]}
-        scale={[30, 18, 0.15]}
-        material="exterior"
-        cast={false}
-      />
-      {[0, 1, 2].map((i) => (
-        <group key={i}>
-          <Box
-            position={[i * 3.5 - 1, 1.1 + i * 0.25, -10 - i]}
-            scale={[2.7, 2.5 + i * 0.5, 2]}
-            material="exteriorColumn"
-          />
-          <Box
-            position={[i * 3.5 - 1, 1.9 + i * 0.25, -8.95 - i]}
-            scale={[2.2, 0.42, 0.02]}
-            material="exterior"
-          />
-          {[0, 1, 2, 3].slice(0, mobile ? 2 : 4).map((j) => (
-            <Box
-              key={j}
-              position={[
-                i * 3.5 - 1.85 + j * 0.48,
-                1.75 + (i % 2) * 0.3,
-                -8.94 - i,
-              ]}
-              scale={[0.15, 0.18, 0.01]}
-              material={j === i ? "shelfLight" : "screenLine"}
-              cast={false}
-            />
-          ))}
-        </group>
-      ))}
-      <Box
-        position={[3.6, 5.39, -4.64]}
-        scale={[7.4, 0.23, 0.7]}
-        material="recess"
-      />
-      <Box
-        position={[3.6, 5.25, -4.55]}
-        scale={[7.1, 0.024, 0.035]}
-        material="accent"
-        cast={false}
-      />
-      <Box
-        position={[-0.12, 3.2, -4.62]}
-        scale={[0.22, 4.3, 0.65]}
-        material="recess"
-      />
-      <Box
-        position={[7.32, 3.2, -4.62]}
-        scale={[0.22, 4.3, 0.65]}
-        material="recess"
-      />
-      <Box
-        position={[-2.1, 2.24, -4.13]}
-        scale={[2.6, 0.018, 0.045]}
-        material="shelfLight"
-        cast={false}
-      />
-      <Box
-        position={[-3.6, 5.7, -2.2]}
-        scale={[7.5, 0.16, 4.8]}
-        material="recess"
-      />
-      <Box
-        position={[-3.6, 5.6, 0.12]}
-        scale={[7.3, 0.018, 0.028]}
-        material="shelfLight"
-        cast={false}
-      />
-      {!mobile && (
-        <Box
-          position={[3.57, 3.15, -4.88]}
-          scale={[7.0, 3.9, 0.012]}
-          material="windowGlass"
-          cast={false}
-        />
-      )}
-      {[0, 3.6, 7.2].map((x) => (
-        <Box
-          key={x}
-          position={[x, 3.2, -4.85]}
-          scale={[0.075, 4.15, 0.16]}
-          material="metal"
-        />
-      ))}
-      <Box
-        position={[3.6, 1.17, -4.7]}
-        scale={[7.3, 0.12, 0.52]}
-        material="limestone"
-      />
-      <Box
-        position={[3.6, 5.22, -4.85]}
-        scale={[7.3, 0.1, 0.16]}
-        material="metal"
-      />
-      {[0, 1, 2].map((i) => (
-        <Box
-          key={i}
-          position={[-5.6 + i * 0.87, 3.15, -4.67]}
-          scale={[0.7, 2.5, 0.13]}
-          material={i === 1 ? "rug" : "chair"}
-        />
-      ))}
-      <Box
-        position={[-2.1, 2.3, -4.4]}
-        scale={[2.8, 0.09, 0.7]}
-        material="wood"
-      />
-      <Box
-        position={[-2.1, 0.7, -4.5]}
-        scale={[2.8, 1.4, 0.72]}
-        material="wood"
-      />
-      {[-2.8, -1.4].map((x) => (
-        <Box
-          key={x}
-          position={[x, 0.74, -4.11]}
-          scale={[1.33, 1.22, 0.05]}
-          material="limestone"
-        />
-      ))}
-      {[0, 1, 2, 3, 4].map((i) => (
-        <Box
-          key={i}
-          position={[-3 + i * 0.16, 2.62, -4.38]}
-          scale={[0.12, 0.53 + (i % 2) * 0.11, 0.35]}
-          rotation={[0, 0, i === 4 ? -0.15 : 0]}
-          material={i % 2 ? "paper" : "book"}
-        />
-      ))}
-      <group position={[-1.45, 2.7, -4.35]} rotation={[0, 0.35, 0.12]}>
-        {[0, 1, 2].map((i) => (
-          <Box
-            key={i}
-            position={[i * 0.16 - 0.16, 0, 0]}
-            scale={[0.055, 0.6, 0.48]}
-            rotation={[0, i * 0.45, 0]}
-            material="glass"
-          />
-        ))}
-      </group>
-      {!mobile && (
-        <>
-          <Box
-            position={[-7.23, 3.1, -0.8]}
-            scale={[0.06, 2.1, 2.7]}
-            material="wood"
-          />
-          <Box
-            position={[-7.18, 3.1, -0.8]}
-            scale={[0.045, 1.96, 2.56]}
-            material="art"
-          />
-          {[0, 1, 2, 3, 4].map((i) => (
-            <Box
-              key={i}
-              position={[-7.14, 2.5 + i * 0.3, -0.8]}
-              scale={[0.04, 0.035, 1.9 - i * 0.23]}
-              rotation={[0.2 + i * 0.08, 0, 0]}
-              material={i === 2 ? "accent" : "bronze"}
-            />
-          ))}
-        </>
-      )}
-    </group>
-  );
+  return <group>
+    <Box position={[0,-.13,4]} scale={[30,.2,18]} material="stone" />
+    <Box position={[0,-.35,-20]} scale={[65,.2,30]} material="plaster" />
+    <Box position={[0,.005,1]} scale={[7,.03,5]} material="rug" />
+    <Box position={[-9,3,-1]} scale={[.3,7,15]} material="plaster" />
+    <Box position={[0,6.4,-3]} scale={[20,.3,5]} material="plaster" />
+    <Box position={[0,.45,-5]} scale={[25,.9,.22]} material="plaster" />
+    <Box position={[0,6,-5]} scale={[25,.3,.22]} material="metal" />
+    {[-8,-3,2,7,12].map(x=><Box key={x} position={[x,3.4,-5]} scale={[.055,5.1,.15]} material="metal" />)}
+    {!mobile && <Box position={[0,3.4,-5.04]} scale={[25,5,.012]} material="windowGlass" cast={false} />}
+    <Box position={[0,.96,-4.9]} scale={[25,.035,.4]} material="bronze" />
+    {[-12,-6,0,8,13].map((x,i)=><Box key={x} position={[x,-.1,-19-i%2*4]} scale={[2+i%3,1.8+i%3,2]} material="exteriorColumn" cast={false} />)}
+    <Box position={[-8.8,2,-2]} scale={[.1,.02,9]} material="shelfLight" cast={false} />
+  </group>;
 }
 
 function Workbench({
@@ -335,6 +159,7 @@ function Workbench({
   mobile: boolean;
   reduced: boolean;
 }) {
+  const { materials } = useContext(RoomResources);
   const folio = useRef<Group>(null);
   const liftStarted = useRef(0);
   const { invalidate } = useThree();
@@ -465,38 +290,10 @@ function Workbench({
             cast={false}
           />
           {side === -1 ? (
-            <>
-              {[-0.57, 0, 0.57].map((x, i) => (
-                <group key={i}>
-                  <Box
-                    position={[x, 2.2, 0.057]}
-                    scale={[0.28, 0.28, 0.008]}
-                    material={i === 1 ? "glassEdge" : "screenLine"}
-                    cast={false}
-                  />
-                  <Box
-                    position={[x, 1.95, 0.057]}
-                    scale={[0.24, 0.012, 0.008]}
-                    material="screenLine"
-                    cast={false}
-                  />
-                  {i < 2 && (
-                    <Box
-                      position={[x + 0.285, 2.2, 0.057]}
-                      scale={[0.27, 0.01, 0.008]}
-                      material="screenLine"
-                      cast={false}
-                    />
-                  )}
-                </group>
-              ))}
-              <Box
-                position={[0, 2.39, 0.057]}
-                scale={[0.025, 0.05, 0.008]}
-                material="coldLight"
-                cast={false}
-              />
-            </>
+            <mesh position={[0,2.14,.057]}>
+              <planeGeometry args={[1.88,1.13]} />
+              <primitive object={materials.projectPreview} attach="material" />
+            </mesh>
           ) : (
             <>
               <Box
@@ -557,6 +354,7 @@ function Workbench({
             transform
             rotation={[-Math.PI / 2, 0, 0]}
             distanceFactor={1.5}
+            pointerEvents="none"
             zIndexRange={[1, 0]}
           >
             <span className="physical-cv" aria-hidden="true">
@@ -566,22 +364,22 @@ function Workbench({
         )}
       </group>
       <Box
-        position={[2.13, 1.38, -0.2]}
+        position={[-2.6, 1.38, -.3]}
         scale={[0.35, 0.1, 0.35]}
         material="metal"
       />
       <Box
-        position={[2.13, 1.95, -0.2]}
+        position={[-2.6, 1.95, -.3]}
         scale={[0.045, 1.08, 0.045]}
         material="bronze"
       />
       <Box
-        position={[1.85, 2.48, -0.2]}
+        position={[-2.32, 2.48, -.3]}
         scale={[0.62, 0.08, 0.25]}
         material="metal"
       />
       <Box
-        position={[1.85, 2.434, -0.2]}
+        position={[-2.32, 2.434, -.3]}
         scale={[0.5, 0.014, 0.2]}
         material="warmLight"
         cast={false}
@@ -665,7 +463,7 @@ function SupportingObjects({ mobile }: { mobile: boolean }) {
             castShadow
           >
             <sphereGeometry args={[1, 12, 8]} />
-            <meshStandardMaterial color={palette.olive} roughness={0.85} />
+            <meshStandardMaterial color="#34463F" roughness={0.85} />
           </mesh>
         </group>
       ))}
@@ -733,14 +531,15 @@ function InteractionTargets({
 }
 
 const desktopViews: Record<View, { position: V3; target: V3 }> = {
-  home: { position: [7.6, 4.4, 10.3], target: [-0.5, 1.9, -1.2] },
-  projects: { position: [-1.06, 2.14, 1.4], target: [-1.06, 2.14, -0.27] },
+  field: { position: [0, 4, -6.3], target: [0, 3.7, -14] },
+  home: { position: [-4.3, 3.3, 6.6], target: [-0.2, 2.2, -0.8] },
+  projects: { position: [-1.06, 2.14, 0.48], target: [-1.06, 2.14, -0.27] },
   career: { position: [1.06, 2.14, 1.4], target: [1.06, 2.14, -0.27] },
   cv: { position: [-2, 2.86, 0.7], target: [-2, 1.42, 0.7] },
 };
 const mobileViews: typeof desktopViews = {
   ...desktopViews,
-  home: { position: [7, 6.2, 11.5], target: [-0.2, 1.5, -0.5] },
+  home: { position: [3.8, 3.4, 8.7], target: [-0.55, 2.4, -0.7] },
 };
 function CameraDirector({
   station,
@@ -748,6 +547,7 @@ function CameraDirector({
   mobile,
   reduced,
   pointer,
+  interacting,
   visible,
   onSettled,
   onScreenBounds,
@@ -767,12 +567,15 @@ function CameraDirector({
   });
   const initialized = useRef(false);
   const offset = useRef({ x: 0, y: 0 });
+  const orbit = useRef(new Spherical());
+  const ambientTime = useRef(0);
   useEffect(() => {
     const view = (mobile ? mobileViews : desktopViews)[station],
       t = track.current;
     t.start.copy(camera.position);
+    offset.current = { x: 0, y: 0 };
     t.end.set(...view.position);
-    if (!mobile && (station === "projects" || station === "career")) {
+    if (!mobile && station === "career") {
       const halfFov = Math.tan((23 * Math.PI) / 180);
       const distance = Math.max(
         1.67,
@@ -806,7 +609,7 @@ function CameraDirector({
     const t = track.current;
     t.progress = Math.min(
       1,
-      t.progress === 1 ? 1 : (performance.now() - t.startedAt) / 900,
+      t.progress === 1 ? 1 : (performance.now() - t.startedAt) / (station === "field" ? 1000 : latent.flightMs),
     );
     const ease =
       t.progress *
@@ -817,27 +620,17 @@ function CameraDirector({
     look.current.lerpVectors(t.fromLook, t.toLook, ease);
     camera.up.lerpVectors(t.fromUp, t.toUp, ease).normalize();
     if (t.progress < 1) invalidate();
-    else if (station === "home" && !mobile && !reduced) {
-      offset.current.x = MathUtils.damp(
-        offset.current.x,
-        pointer[0] * 0.2,
-        7,
-        Math.min(dt, 0.05),
-      );
-      offset.current.y = MathUtils.damp(
-        offset.current.y,
-        -pointer[1] * 0.1,
-        7,
-        Math.min(dt, 0.05),
-      );
-      camera.position.x += offset.current.x;
-      camera.position.y += offset.current.y;
-      if (
-        Math.abs(offset.current.x - pointer[0] * 0.2) +
-          Math.abs(offset.current.y + pointer[1] * 0.1) >
-        0.001
-      )
-        invalidate();
+    else if (station === "home" && !reduced) {
+      if(!interacting.current) ambientTime.current += Math.min(dt,.05);
+      const drift = mobile && !interacting.current ? Math.sin(ambientTime.current/19)*.08 : 0;
+      const yaw = mobile ? drift : pointer.current[0] * 2;
+      const pitch = mobile ? drift*.4 : -pointer.current[1] * 2;
+      offset.current.x = MathUtils.damp(offset.current.x, yaw, 9, Math.min(dt,.05));
+      offset.current.y = MathUtils.damp(offset.current.y, pitch, 9, Math.min(dt,.05));
+      orbit.current.setFromVector3(camera.position.sub(look.current));
+      orbit.current.theta += MathUtils.degToRad(latent.yawDegrees)*offset.current.x;
+      orbit.current.phi -= MathUtils.degToRad(latent.pitchDegrees)*offset.current.y;
+      camera.position.setFromSpherical(orbit.current).add(look.current);
     }
     camera.lookAt(look.current);
     camera.updateMatrixWorld();
@@ -845,8 +638,9 @@ function CameraDirector({
       .toArray()
       .map((v) => v.toFixed(3))
       .join(",");
+    gl.domElement.dataset.target = look.current.toArray().join(",");
     gl.domElement.dataset.transition = t.progress === 1 ? "settled" : "moving";
-    if (station !== "home") {
+    if (station !== "home" && station !== "field") {
       const points =
         station === "cv"
           ? [
@@ -907,7 +701,7 @@ function DestinationLighting({
       attention === "projects" ? 5 : attention ? 0.7 : 1.6,
       attention === "career" ? 5 : attention ? 0.6 : 1.4,
       attention === "cv" ? 8 : attention ? 2.2 : 4,
-      station === "cv" ? 8 : 6,
+      station === "cv" ? 8 : station === "field" ? 3.5 : 6,
     ];
     let moving = false;
     [main, secondary, paper, lamp].forEach((ref, i) => {
@@ -925,7 +719,7 @@ function DestinationLighting({
       <pointLight
         ref={main}
         position={[-1.06, 2.03, 0.26]}
-        color={palette.parchment}
+        color={latent.cyan}
         intensity={reduced ? 1.6 : 0}
         distance={3.4}
         decay={2}
@@ -933,7 +727,7 @@ function DestinationLighting({
       <pointLight
         ref={secondary}
         position={[1.06, 2.03, 0.26]}
-        color={palette.parchment}
+        color={latent.lunar}
         intensity={reduced ? 1.4 : 0}
         distance={3.4}
         decay={2}
@@ -941,15 +735,15 @@ function DestinationLighting({
       <pointLight
         ref={paper}
         position={[-1.7, 2.6, 1.05]}
-        color={palette.parchment}
+        color={latent.lamp}
         intensity={reduced ? 2.8 : 0}
         distance={3.4}
         decay={2}
       />
       <pointLight
         ref={lamp}
-        position={[1.8, 2.38, -0.05]}
-        color={palette.parchment}
+        position={[-2.25, 2.38, 0.45]}
+        color={latent.lamp}
         intensity={reduced ? 5 : 0}
         distance={4}
         decay={2}
@@ -969,11 +763,11 @@ function MonitorSweep({ station, reduced }: RoomProps) {
     if (!mesh.current) return;
     const time = (performance.now() - started.current) / 780;
     const active =
-      !reduced && (station === "projects" || station === "career") && time < 1;
+      !reduced && station === "career" && time < 1;
     mesh.current.visible = active;
     if (active) {
       mesh.current.position.set(
-        station === "projects" ? -1.06 : 1.06,
+        1.06,
         1.62 + time * 1.03,
         -0.248,
       );
@@ -1003,12 +797,25 @@ function Studio(props: RoomProps) {
       stone = surfaceTexture("stone");
     const standard = (color: string, roughness = 0.65, metalness = 0) =>
       new MeshStandardMaterial({ color, roughness, metalness });
+    const preview = document.createElement("canvas");
+    preview.width=1024;preview.height=620;
+    const ctx=preview.getContext("2d")!;
+    ctx.fillStyle=latent.night;ctx.fillRect(0,0,1024,620);
+    ctx.fillStyle=latent.silver;ctx.font="18px monospace";ctx.fillText("01 / SELECTED WORK",58,60);
+    ctx.fillStyle=latent.bright;ctx.font=`90px ${getComputedStyle(document.documentElement).getPropertyValue("--font-display")}`;ctx.fillText(projects[0].title,58,185);
+    ctx.fillStyle=latent.silver;ctx.font=`22px ${getComputedStyle(document.documentElement).getPropertyValue("--font-body")}`;ctx.fillText(projects[0].category,60,232);
+    ctx.strokeStyle=latent.lunar;ctx.lineWidth=2;
+    [[70,320,170,54],[70,395,170,54],[70,470,170,54],[395,365,230,120],[795,395,130,90]].forEach(([x,y,w,h])=>ctx.strokeRect(x,y,w,h));
+    ctx.beginPath();ctx.moveTo(240,420);ctx.lineTo(395,420);ctx.moveTo(625,420);ctx.lineTo(795,420);ctx.stroke();
+    ctx.fillStyle=latent.cyan;ctx.font="17px monospace";ctx.fillText("REPORT",90,354);ctx.fillText("STRUCTURE",420,430);ctx.fillText("REVIEW",810,445);
+    const screenTexture=new CanvasTexture(preview);screenTexture.colorSpace=SRGBColorSpace;
     const materials: Materials = {
+      projectPreview: new MeshStandardMaterial({map:screenTexture,emissiveMap:screenTexture,emissive:latent.bright,emissiveIntensity:.8,roughness:.7}),
       wood: new MeshStandardMaterial({ map: wood, roughness: 0.5 }),
       stone: new MeshStandardMaterial({
         map: stone,
-        roughness: 0.38,
-        metalness: 0.15,
+        roughness: 0.85,
+        metalness: 0,
       }),
       plaster: standard(palette.eggshell, 0.83),
       limestone: standard(palette.cream),
@@ -1019,16 +826,16 @@ function Studio(props: RoomProps) {
       vent: standard(palette.ink),
       mat: standard(palette.sage),
       screenOff: new MeshStandardMaterial({
-        color: palette.cream,
-        emissive: palette.parchment,
-        emissiveIntensity: 0.5,
+        color: latent.glass,
+        emissive: latent.navy,
+        emissiveIntensity: 0.7,
         roughness: 0.78,
         metalness: 0,
       }),
       screenOn: new MeshStandardMaterial({
-        color: palette.parchment,
-        emissive: palette.cream,
-        emissiveIntensity: 0.45,
+        color: latent.glass,
+        emissive: latent.cyan,
+        emissiveIntensity: 0.3,
         roughness: 0.28,
       }),
       screenTrace: new MeshStandardMaterial({
@@ -1049,20 +856,20 @@ function Studio(props: RoomProps) {
         emissiveIntensity: 0.2,
       }),
       screenFrameActive: new MeshStandardMaterial({
-        color: palette.olive,
+        color: latent.glass,
         metalness: 0.4,
         roughness: 0.4,
       }),
       key: standard(palette.eggshell),
-      paper: standard(palette.parchment),
+      paper: standard(latent.paper),
       folio: standard(palette.espresso),
       folioActive: standard(palette.olive, 0.5, 0.35),
-      book: standard(palette.olive),
+      book: standard("#34463F"),
       chair: standard(palette.sage, 0.78),
       warmLight: new MeshStandardMaterial({
-        color: palette.parchment,
-        emissive: palette.cream,
-        emissiveIntensity: 1.1,
+        color: latent.lamp,
+        emissive: latent.lamp,
+        emissiveIntensity: 2,
       }),
       coldLight: new MeshStandardMaterial({
         color: palette.parchment,
@@ -1092,7 +899,7 @@ function Studio(props: RoomProps) {
         roughness: 0.23,
         metalness: 0.2,
         transparent: true,
-        opacity: 0.12,
+        opacity: 0.045,
         depthWrite: false,
       }),
       recess: standard(palette.sand),
@@ -1115,6 +922,7 @@ function Studio(props: RoomProps) {
       materials,
       wood,
       stone,
+      screenTexture,
     };
   }, []);
   useEffect(
@@ -1123,6 +931,7 @@ function Studio(props: RoomProps) {
       resources.cushion.dispose();
       resources.wood.dispose();
       resources.stone.dispose();
+      resources.screenTexture.dispose();
       Object.values(resources.materials).forEach((material) =>
         material.dispose(),
       );
@@ -1135,18 +944,18 @@ function Studio(props: RoomProps) {
   return (
     <RoomResources.Provider value={resources}>
       <color attach="background" args={[palette.eggshell]} />
-      <fog attach="fog" args={[palette.eggshell, 20, 55]} />
+      <fog attach="fog" args={[latent.navy, 16, 48]} />
       <hemisphereLight
         args={[
-          palette.parchment,
-          palette.taupe,
-          props.station === "cv" ? 0.85 : 1.05,
+          latent.lunar,
+          latent.navy,
+          props.station === "cv" ? 1.1 : 0.75,
         ]}
       />
       <directionalLight
         position={[5, 8, -3]}
-        intensity={props.station === "cv" ? 2.1 : 2.8}
-        color={palette.parchment}
+        intensity={props.station === "cv" ? 2.1 : 2.2}
+        color={latent.lunar}
         castShadow={!props.economy}
         shadow-mapSize={[1024, 1024]}
         shadow-radius={3}
@@ -1159,8 +968,8 @@ function Studio(props: RoomProps) {
       />
       <directionalLight
         position={[-3, 5, 7]}
-        intensity={0.85}
-        color={palette.parchment}
+        intensity={0.75}
+        color={latent.silver}
       />
       <DestinationLighting {...props} />
       <pointLight
@@ -1202,6 +1011,7 @@ function Studio(props: RoomProps) {
           reduced={props.reduced}
         />
         <SupportingObjects mobile={props.economy} />
+        <LatentLandscape {...props} />
         {!props.economy && (
           <ContactShadows
             position={[0, 0.039, 1]}
@@ -1237,11 +1047,11 @@ export default function AtelierRoom(props: RoomProps) {
         dpr={[1, props.economy ? 1.15 : 1.5]}
         camera={{
           position: desktopViews.home.position,
-          fov: props.mobile ? 53 : 46,
+          fov: props.mobile ? 48 : 46,
           near: 0.1,
           far: 80,
         }}
-        frameloop={props.visible ? "demand" : "never"}
+        frameloop={!props.visible ? "never" : props.reduced || (props.station !== "home" && props.station !== "field") ? "demand" : "always"}
         gl={{ antialias: true, alpha: false, powerPreference: "low-power" }}
         onCreated={({ gl }) => {
           gl.toneMappingExposure = 1.05;
