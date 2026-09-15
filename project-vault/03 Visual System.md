@@ -1,6 +1,10 @@
 # Visual system
 
-Current direction: **The Latent Studio**. A computational observatory at blue hour, with a close three-quarter workstation in front of a glass wall and a deterministic landscape of projects, methods and experience.
+Current direction: **Blue Meadow**, extending the existing Latent Studio workstation. See the Blue Meadow correction below for the active exterior, typography and navigation.
+
+## Previous Latent Studio treatment
+
+The initial treatment used a computational observatory at blue hour, with a close three-quarter workstation in front of a glass wall and a deterministic landscape of projects, methods and experience.
 
 Warm Aero is discarded as the active Home and Projects direction. Its stylesheet and material module remain unused cleanup candidates. Career and CV retain their existing document presentation and functionality pending a later visual phase. Historical decisions remain in the decision log.
 
@@ -23,3 +27,8 @@ Production posters are clean scene captures in `public`; review media belongs ou
 The studio now opens into a dedicated signal field. Instrument Serif Regular carries the identity and editorial titles; Manrope carries reading and interface text; IBM Plex Mono is reserved for small technical metadata. Local Latin WOFF2 assets total 49,668 bytes, with SIL OFL notices. Display/body preload; metadata does not. Identity scale is `clamp(4.5rem, 10vw, 9.5rem)` at 0.92 line-height; mobile uses `clamp(58px, 17vw, 88px)`. Project titles use 48–96px; body text is 16px; controls generally 14px and metadata 12px.
 
 The field uses three large project anchors, one outlined contribution anchor, ten softer concepts, and six precise technology points. Curves express 22 repository-supported relationships. Dashed relationships distinguish documented protocol decisions from implemented functionality. Overview limits labels; Connections exposes names, and selection gives concise relationship labels and source links. Mobile reserves relationship explanations for a bottom sheet.
+# Blue Meadow correction — September 2026
+
+The studio now overlooks rolling blue grass and warm amber fireflies. The existing workstation stays intact. Fireflies are the factual graph nodes, not a separate decorative network. Connections remain hidden until interaction or the Connections control reveals warm curved trails.
+
+Home uses a small Newsreader Light Italic wordmark, Manrope introduction and plain edge-positioned navigation. Numbered chapters, floating object markers and pill controls are removed from the visible interface. Mobile uses a full-viewport text menu. Career occupies the prominent monitor; Projects occupies the secondary monitor. Shared links retain generous invisible hit areas and warm keyboard underlines.

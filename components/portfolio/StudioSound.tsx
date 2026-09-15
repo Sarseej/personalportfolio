@@ -26,9 +26,10 @@ function createDirector(): Director {
   pulse.connect(depth).connect(detail.gain);upper.connect(detail);upper.start();pulse.start();sources.push(upper,pulse);nodes.push(depth);
   return {context,master,detail,nodes,sources};
 }
-export default function StudioSound({view,visible}:{view:View;visible:boolean}) {
+export default function StudioSound({view,visible,onState}:{view:View;visible:boolean;onState?:(enabled:boolean)=>void}) {
   const [entered,setEntered]=useState(false),[enabled,setEnabled]=useState(false),[unavailable,setUnavailable]=useState(false);
   const director=useRef<Director|null>(null), intent=useRef(false), alive=useRef(true);
+  useEffect(()=>onState?.(enabled),[enabled,onState]);
   useEffect(()=>{alive.current=true;try{if(localStorage.getItem('latent-sound')==='quiet')setEntered(true);}catch{}return()=>{alive.current=false; const d=director.current;if(d){d.sources.forEach(s=>s.stop());d.nodes.forEach(n=>n.disconnect());void d.context.close();director.current=null;}};},[]);
   const choose=async(sound:boolean)=>{
     setEntered(true);intent.current=sound;setUnavailable(false);

@@ -33,6 +33,8 @@ export type RoomProps = {
   pointer: { current: [number, number] };
   interacting: { current: boolean };
   reveal: boolean;
+  fieldActive?: string | null;
+  fieldFilter?: string;
   mobile: boolean;
   economy: boolean;
   reduced: boolean;
