@@ -2,12 +2,14 @@
 import { useState } from "react";
 import ProjectVisual from "./ProjectVisual";
 import { projects, projectStories } from "@/lib/content/portfolio";
+import { signalNodes } from "@/lib/visual/signal-field";
 
 export default function ProjectWorkspace({initialProject}:{initialProject?:string}) {
   const [selected, setSelected] = useState(() => Math.max(0, projects.findIndex(p => p.id === initialProject)));
   const [stage, setStage] = useState(0);
   const project = projects[selected];
   const story = projectStories[project.id];
+  const repository = signalNodes.find(node=>node.destination===project.id)?.repository;
   return (
     <div className="projects-workspace">
       <nav className="project-rail" aria-label="Project navigator">
@@ -63,6 +65,7 @@ export default function ProjectWorkspace({initialProject}:{initialProject?:strin
           </p>
           <h2>{project.title}</h2>
           <p className="project-outcome">{story.result}</p>
+          {repository && <a className="project-repository" href={repository} target="_blank" rel="noreferrer">GitHub repository</a>}
           <section
             className="flow-diagram"
             onPointerMove={(event) => {

@@ -47,7 +47,8 @@ import {
 
 import { studioMaterials as palette, latent } from "@/lib/visual/latent-studio";
 import { projects } from "@/lib/content/portfolio";
-import LatentLandscape from "./LatentLandscape";
+import BlueMeadow from "./BlueMeadow";
+import MeadowFireflies from "./MeadowFireflies";
 
 type V3 = [number, number, number];
 type Block = { position: V3; scale: V3; rotation?: V3 };
@@ -134,7 +135,6 @@ function Repeated({ blocks, material }: { blocks: Block[]; material: string }) {
 function Architecture({ mobile }: { mobile: boolean }) {
   return <group>
     <Box position={[0,-.13,4]} scale={[30,.2,18]} material="stone" />
-    <Box position={[0,-.35,-20]} scale={[65,.2,30]} material="plaster" />
     <Box position={[0,.005,1]} scale={[7,.03,5]} material="rug" />
     <Box position={[-9,3,-1]} scale={[.3,7,15]} material="plaster" />
     <Box position={[0,6.4,-3]} scale={[20,.3,5]} material="plaster" />
@@ -143,7 +143,6 @@ function Architecture({ mobile }: { mobile: boolean }) {
     {[-8,-3,2,7,12].map(x=><Box key={x} position={[x,3.4,-5]} scale={[.055,5.1,.15]} material="metal" />)}
     {!mobile && <Box position={[0,3.4,-5.04]} scale={[25,5,.012]} material="windowGlass" cast={false} />}
     <Box position={[0,.96,-4.9]} scale={[25,.035,.4]} material="bronze" />
-    {[-12,-6,0,8,13].map((x,i)=><Box key={x} position={[x,-.1,-19-i%2*4]} scale={[2+i%3,1.8+i%3,2]} material="exteriorColumn" cast={false} />)}
     <Box position={[-8.8,2,-2]} scale={[.1,.02,9]} material="shelfLight" cast={false} />
   </group>;
 }
@@ -249,8 +248,8 @@ function Workbench({
             position={[0, 2.13, -0.03]}
             scale={[2.02, 1.28, 0.12]}
             material={
-              hovered === (side === -1 ? "projects" : "career") ||
-              active === (side === -1 ? "projects" : "career")
+              hovered === (side === -1 ? "career" : "projects") ||
+              active === (side === -1 ? "career" : "projects")
                 ? side === -1
                   ? "screenFrameActive"
                   : "frameTrace"
@@ -261,7 +260,7 @@ function Workbench({
             position={[0, 2.14, 0.041]}
             scale={[1.91, 1.16, 0.015]}
             material={
-              active === (side === -1 ? "projects" : "career")
+              active === (side === -1 ? "career" : "projects")
                 ? side === -1
                   ? "screenOn"
                   : "screenTrace"
@@ -273,7 +272,7 @@ function Workbench({
             position={[0.65, 1.53, 0.065]}
             scale={[0.23, 0.009, 0.012]}
             material={
-              hovered === (side === -1 ? "projects" : "career")
+              hovered === (side === -1 ? "career" : "projects")
                 ? "accent"
                 : "screenLine"
             }
@@ -283,19 +282,23 @@ function Workbench({
             position={[-0.72, 2.52, 0.055]}
             scale={[0.25, 0.025, 0.008]}
             material={
-              active === (side === -1 ? "projects" : "career")
+              active === (side === -1 ? "career" : "projects")
                 ? "coldLight"
                 : "screenLine"
             }
             cast={false}
           />
-          {side === -1 ? (
+          {side === 1 ? (
             <mesh position={[0,2.14,.057]}>
               <planeGeometry args={[1.88,1.13]} />
               <primitive object={materials.projectPreview} attach="material" />
             </mesh>
           ) : (
             <>
+              <mesh position={[0,2.14,.072]}>
+                <planeGeometry args={[1.88,1.13]}/>
+                <primitive object={materials.careerPreview} attach="material"/>
+              </mesh>
               <Box
                 position={[-0.59, 2.16, 0.057]}
                 scale={[0.012, 0.66, 0.008]}
@@ -471,8 +474,8 @@ function SupportingObjects({ mobile }: { mobile: boolean }) {
   );
 }
 const positions: Record<Station, V3> = {
-  projects: [-1.06, 2.97, -0.25],
-  career: [1.06, 2.97, -0.25],
+  projects: [1.06, 2.97, -0.25],
+  career: [-1.06, 2.97, -0.25],
   cv: [-2, 1.48, 1.36],
 };
 function InteractionTargets({
@@ -482,8 +485,8 @@ function InteractionTargets({
   onHover,
 }: Pick<RoomProps, "station" | "hovered" | "onSelect" | "onHover">) {
   const hitboxes: Record<Station, Block> = {
-    projects: { position: [-1.06, 2.14, -0.24], scale: [2, 1.3, 0.14] },
-    career: { position: [1.06, 2.14, -0.24], scale: [2, 1.3, 0.14] },
+    projects: { position: [1.06, 2.14, -0.24], scale: [2, 1.3, 0.14] },
+    career: { position: [-1.06, 2.14, -0.24], scale: [2, 1.3, 0.14] },
     cv: { position: [-2, 1.45, 0.7], scale: [0.95, 0.16, 1.12] },
   };
   if (station !== "home") return null;
@@ -533,8 +536,8 @@ function InteractionTargets({
 const desktopViews: Record<View, { position: V3; target: V3 }> = {
   field: { position: [0, 4, -6.3], target: [0, 3.7, -14] },
   home: { position: [-4.3, 3.3, 6.6], target: [-0.2, 2.2, -0.8] },
-  projects: { position: [-1.06, 2.14, 0.48], target: [-1.06, 2.14, -0.27] },
-  career: { position: [1.06, 2.14, 1.4], target: [1.06, 2.14, -0.27] },
+  projects: { position: [1.06, 2.14, 0.48], target: [1.06, 2.14, -0.27] },
+  career: { position: [-1.06, 2.14, 1.4], target: [-1.06, 2.14, -0.27] },
   cv: { position: [-2, 2.86, 0.7], target: [-2, 1.42, 0.7] },
 };
 const mobileViews: typeof desktopViews = {
@@ -655,7 +658,7 @@ function CameraDirector({
               [-0.955, 0.58],
               [0.955, 0.58],
             ].map(([x, y]) => [
-              x + (station === "projects" ? -1.06 : 1.06),
+              x + (station === "projects" ? 1.06 : -1.06),
               y + 2.14,
               -0.265,
             ]);
@@ -718,7 +721,7 @@ function DestinationLighting({
     <>
       <pointLight
         ref={main}
-        position={[-1.06, 2.03, 0.26]}
+        position={[1.06, 2.03, 0.26]}
         color={latent.cyan}
         intensity={reduced ? 1.6 : 0}
         distance={3.4}
@@ -726,7 +729,7 @@ function DestinationLighting({
       />
       <pointLight
         ref={secondary}
-        position={[1.06, 2.03, 0.26]}
+        position={[-1.06, 2.03, 0.26]}
         color={latent.lunar}
         intensity={reduced ? 1.4 : 0}
         distance={3.4}
@@ -767,7 +770,7 @@ function MonitorSweep({ station, reduced }: RoomProps) {
     mesh.current.visible = active;
     if (active) {
       mesh.current.position.set(
-        1.06,
+        -1.06,
         1.62 + time * 1.03,
         -0.248,
       );
@@ -801,15 +804,18 @@ function Studio(props: RoomProps) {
     preview.width=1024;preview.height=620;
     const ctx=preview.getContext("2d")!;
     ctx.fillStyle=latent.night;ctx.fillRect(0,0,1024,620);
-    ctx.fillStyle=latent.silver;ctx.font="18px monospace";ctx.fillText("01 / SELECTED WORK",58,60);
-    ctx.fillStyle=latent.bright;ctx.font=`90px ${getComputedStyle(document.documentElement).getPropertyValue("--font-display")}`;ctx.fillText(projects[0].title,58,185);
-    ctx.fillStyle=latent.silver;ctx.font=`22px ${getComputedStyle(document.documentElement).getPropertyValue("--font-body")}`;ctx.fillText(projects[0].category,60,232);
-    ctx.strokeStyle=latent.lunar;ctx.lineWidth=2;
-    [[70,320,170,54],[70,395,170,54],[70,470,170,54],[395,365,230,120],[795,395,130,90]].forEach(([x,y,w,h])=>ctx.strokeRect(x,y,w,h));
-    ctx.beginPath();ctx.moveTo(240,420);ctx.lineTo(395,420);ctx.moveTo(625,420);ctx.lineTo(795,420);ctx.stroke();
-    ctx.fillStyle=latent.cyan;ctx.font="17px monospace";ctx.fillText("REPORT",90,354);ctx.fillText("STRUCTURE",420,430);ctx.fillText("REVIEW",810,445);
+    const face=getComputedStyle(document.documentElement).getPropertyValue("--font-body");
+    ctx.fillStyle=latent.bright;ctx.font=`112px ${face}`;ctx.fillText('Projects',64,265);
+    ctx.fillStyle=latent.silver;ctx.font=`32px ${face}`;ctx.fillText(projects[0].title,68,338);
     const screenTexture=new CanvasTexture(preview);screenTexture.colorSpace=SRGBColorSpace;
+    const careerCanvas=document.createElement('canvas');careerCanvas.width=1024;careerCanvas.height=620;
+    const careerContext=careerCanvas.getContext('2d')!;
+    careerContext.fillStyle=latent.night;careerContext.fillRect(0,0,1024,620);
+    careerContext.fillStyle=latent.bright;careerContext.font=`112px ${face}`;careerContext.fillText('Career',64,265);
+    careerContext.fillStyle=latent.silver;careerContext.font=`30px ${face}`;careerContext.fillText('Research · Software · Teaching',68,338);
+    const careerTexture=new CanvasTexture(careerCanvas);careerTexture.colorSpace=SRGBColorSpace;
     const materials: Materials = {
+      careerPreview: new MeshStandardMaterial({map:careerTexture,emissiveMap:careerTexture,emissive:latent.bright,emissiveIntensity:.8,roughness:.7}),
       projectPreview: new MeshStandardMaterial({map:screenTexture,emissiveMap:screenTexture,emissive:latent.bright,emissiveIntensity:.8,roughness:.7}),
       wood: new MeshStandardMaterial({ map: wood, roughness: 0.5 }),
       stone: new MeshStandardMaterial({
@@ -923,6 +929,7 @@ function Studio(props: RoomProps) {
       wood,
       stone,
       screenTexture,
+      careerTexture,
     };
   }, []);
   useEffect(
@@ -932,6 +939,7 @@ function Studio(props: RoomProps) {
       resources.wood.dispose();
       resources.stone.dispose();
       resources.screenTexture.dispose();
+      resources.careerTexture.dispose();
       Object.values(resources.materials).forEach((material) =>
         material.dispose(),
       );
@@ -1011,7 +1019,8 @@ function Studio(props: RoomProps) {
           reduced={props.reduced}
         />
         <SupportingObjects mobile={props.economy} />
-        <LatentLandscape {...props} />
+        <BlueMeadow {...props} />
+        <MeadowFireflies {...props} />
         {!props.economy && (
           <ContactShadows
             position={[0, 0.039, 1]}
@@ -1049,7 +1058,7 @@ export default function AtelierRoom(props: RoomProps) {
           position: desktopViews.home.position,
           fov: props.mobile ? 48 : 46,
           near: 0.1,
-          far: 80,
+          far: 180,
         }}
         frameloop={!props.visible ? "never" : props.reduced || (props.station !== "home" && props.station !== "field") ? "demand" : "always"}
         gl={{ antialias: true, alpha: false, powerPreference: "low-power" }}

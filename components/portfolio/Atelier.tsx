@@ -19,7 +19,7 @@ import {
   type View,
   type ScreenBounds,
 } from "./atelier-types";
-import { themes } from "@/lib/visual/latent-graph";
+import MeadowMenu from "./MeadowMenu";
 import SignalField from "./SignalField";
 import StudioSound from "./StudioSound";
 import StudioPoster from "./StudioPoster";
@@ -59,6 +59,12 @@ export default function Atelier() {
   const interacting = useRef(false);
   const [projectDestination, setProjectDestination] = useState<string | undefined>();
   const [reveal, setReveal] = useState(false);
+  const [fieldActive,setFieldActive] = useState<string|null>(null);
+  const [fieldFilter,setFieldFilter] = useState('all');
+  const [soundEnabled,setSoundEnabled] = useState(false);
+  useEffect(()=>{if(view!=='field'){setReveal(false);setFieldActive(null);setFieldFilter('all');}},[view]);
+  const [oriented,setOriented] = useState(false);
+  useEffect(()=>{const timer=setTimeout(()=>setOriented(true),6000);return()=>clearTimeout(timer);},[]);
   const [mobile, setMobile] = useState(false),
     [economy, setEconomy] = useState(false),
     [reduced, setReduced] = useState(true),
@@ -205,7 +211,8 @@ export default function Atelier() {
           ];
       }}
       onPointerLeave={() => { pointer.current = [0, 0]; interacting.current = false; }}
-      onPointerDown={() => { interacting.current = true; }}
+      onPointerDown={() => { interacting.current = true; setOriented(true); }}
+      onKeyDown={()=>setOriented(true)}
       onPointerUp={() => { interacting.current = false; }}
       onPointerCancel={() => { interacting.current = false; }}
       data-visible={visible}
@@ -231,10 +238,12 @@ export default function Atelier() {
               pointer={pointer}
               interacting={interacting}
               reveal={reveal}
+              fieldActive={fieldActive}
+              fieldFilter={fieldFilter}
               mobile={mobile}
               economy={economy}
               reduced={reduced}
-              visible={visible && !(view === "field" && panelReady)}
+              visible={visible}
               onReady={onReady}
               onFailure={onFailure}
             />
@@ -242,7 +251,7 @@ export default function Atelier() {
         </RoomBoundary>
       )}
       <div className="room-vignette" aria-hidden="true" />
-      <StudioSound view={view} visible={visible} />
+      <StudioSound view={view} visible={visible} onState={setSoundEnabled}/>
       <header className="atelier-header">
         <a
           className="identity"
@@ -253,10 +262,9 @@ export default function Atelier() {
           }}
         >
           <strong>Sarseej Shrestha</strong>
-          <span>The latent studio</span>
         </a>
         <nav id="destination-nav" aria-label="Main navigation">
-          {(["home", "projects", "career", "cv"] as (Station | "home")[]).map((item) => (
+          {(["career", "projects", "cv"] as (Station | "home")[]).map((item) => (
             <a
               key={item}
               href={`#${item}`}
@@ -276,23 +284,20 @@ export default function Atelier() {
                 navigate(item, event.currentTarget);
               }}
             >
-              <span className="chapter-number">0{["home", "projects", "career", "cv"].indexOf(item)} / </span>{item === "cv" ? "CV" : item[0].toUpperCase() + item.slice(1)}
+              {item === "cv" ? "CV" : item[0].toUpperCase() + item.slice(1)}
             </a>
           ))}
-          <a href="mailto:sarseej.shrestha@selu.edu"><span className="chapter-number">04 / </span>Contact ↗</a>
+          <a href="mailto:sarseej.shrestha@selu.edu">Contact</a>
         </nav>
+        <MeadowMenu onNavigate={navigate} soundEnabled={soundEnabled}/>
       </header>
       {view === "home" && (
         <>
           <section className="entrance-copy">
-            <h1 className="opening-identity">Sarseej Shrestha</h1>
-            <p className="overline">Computer Science · AI/ML · Systems</p>
-            <span className="studio-caption">THE LATENT STUDIO <span> / </span> BLUE HOUR</span>
+            <h1 className="opening-identity">Computer Science.<br/>AI/ML &amp; systems.</h1>
           </section>
           <footer className="workspace-footer">
-            <button className="reveal-control" aria-pressed={reveal} onClick={() => setReveal(!reveal)}>{reveal ? "Hide structure" : "Reveal structure"} <span aria-hidden="true">{reveal ? "−" : "+"}</span></button>
-            <button className="field-entry" id="field-entry" onClick={(event)=>navigate("field",event.currentTarget)}>EXPLORE THE FIELD ↗</button>
-            {reveal && <div className="structure-key"><p>Connections trace repository-supported concepts.</p>{themes.map((theme, i) => <span className="cluster-label" key={theme.name}>0{i+1} / {theme.name}</span>)}</div>}
+            <button className="field-entry" id="field-entry" onFocus={()=>setReveal(true)} onBlur={()=>setReveal(false)} onPointerEnter={()=>setReveal(true)} onPointerLeave={()=>setReveal(false)} onClick={(event)=>{setReveal(false);navigate("field",event.currentTarget);}}><i aria-hidden="true"/>Enter the meadow</button>
             <div className="station-controls">
               {stations.map((item) => (
                 <button
@@ -303,22 +308,15 @@ export default function Atelier() {
                   onPointerLeave={() => setHovered(null)}
                   onClick={(event) => navigate(item.id, event.currentTarget)}
                 >
-                  <span>{item.number}</span> {item.label}
-                  <small>{item.detail}</small>
+                  {item.label}
                 </button>
               ))}
             </div>
-            <span className="render-status">
-              {failed
-                ? "Static workspace · All destinations available"
-                : ready
-                  ? "Southeastern Louisiana University · B.S. expected May 2027"
-                  : "Preparing workspace · Content available now"}
-            </span>
+            <p className={`orientation-note ${oriented?'is-dismissed':''}`}>Choose a screen, open the CV, or use the menu.</p>
           </footer>
         </>
       )}
-      {view === "field" && <SignalField ready={panelReady} onBack={()=>navigate("home")} onProject={(id)=>{setProjectDestination(id);navigate("projects");}}/>}
+      {view === "field" && <SignalField ready={panelReady} fallback={failed} onActive={setFieldActive} onMode={setReveal} onFilter={setFieldFilter} onBack={()=>{setReveal(false);setFieldActive(null);navigate("home");}} onProject={(id)=>{setProjectDestination(id);navigate("projects");}}/>}
       {displayView !== "home" && displayView !== "field" && (
         <section
           ref={panel}
@@ -340,9 +338,9 @@ export default function Atelier() {
             </h1>
             <span>
               {displayView === "projects" ? (
-                "01 / SELECTED WORK"
+                ""
               ) : displayView === "career" ? (
-                "Trace mode · The path so far"
+                ""
               ) : (
                 <Link href="/resume">Print-friendly view ↗</Link>
               )}

@@ -16,7 +16,7 @@ const browser = await chromium.launch({
     process.env.PORTFOLIO_BROWSER ||
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
   headless: true,
-  args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
+  args: process.env.PORTFOLIO_NATIVE_GPU === "1" ? [] : ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
 });
 const base = process.env.PORTFOLIO_PREVIEW_URL || "http://127.0.0.1:4173",
   output =
@@ -40,7 +40,11 @@ async function settled(p, view) {
   await p.waitForTimeout(700);
 }
 async function nav(p, view) {
-  await p.locator(`#destination-nav a[href="#${view}"]`).click();
+  if(view==='home') await p.locator('.identity').click();
+  else if(await p.locator('.menu-toggle').isVisible()) {
+    await p.locator('.menu-toggle').click();
+    await p.locator('.meadow-menu').getByRole('button',{name:view==='cv'?'CV':view[0].toUpperCase()+view.slice(1),exact:true}).click();
+  } else await p.locator(`#destination-nav a[href="#${view}"]`).click();
   await settled(p, view);
 }
 async function axe(p, label) {
@@ -107,12 +111,7 @@ try {
   for (const view of ["projects", "career", "cv"]) {
     await p.locator(`#destination-nav a[href="#${view}"]`).hover();
     assert.equal(await p.locator(".station-marker.is-hovered").count(), 1);
-    await p
-      .locator(".station-marker")
-      .filter({
-        hasText: view === "cv" ? "CV" : view[0].toUpperCase() + view.slice(1),
-      })
-      .click();
+    await p.locator(`#destination-nav a[href="#${view}"]`).click();
     await settled(p, view);
     assert.notEqual(
       await p.locator("canvas").getAttribute("data-camera"),
@@ -190,8 +189,8 @@ try {
     "three",
   );
   for (const [view, point] of Object.entries({
-    projects: [-1.06, 2.14, -0.24],
-    career: [1.06, 2.14, -0.24],
+    projects: [1.06, 2.14, -0.24],
+    career: [-1.06, 2.14, -0.24],
     cv: [-2, 1.45, 0.7],
   })) {
     const projectHit = async () => {
@@ -228,7 +227,7 @@ try {
   assert.match(await p.locator("#interface-title").innerText(), /Career/);
   report.checks.push("Rapid navigation converges on final destination");
   await nav(p, "home");
-  await p.locator(".station-marker").first().focus();
+  await p.locator('#destination-nav a[href="#projects"]').focus();
   await p.keyboard.press("Enter");
   await settled(p, "projects");
   await p.keyboard.press("Escape");

@@ -12,6 +12,7 @@ export default function CVDocument() {
           evaluation and human judgment in the loop.
         </p>
         <div className="cv-links">
+          <a href="/sarseej-shrestha-cv.pdf" download>Download CV</a>
           <a href="mailto:sarseej.shrestha@selu.edu">
             sarseej.shrestha@selu.edu
           </a>
